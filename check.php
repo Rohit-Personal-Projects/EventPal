@@ -1,11 +1,23 @@
 <?php
+
+  include 'Constants.php';
+
+  echo "server: ".SERVER_NAME;
+  echo "<br/>";
+  echo "row_size: ".MAX_ROW_SIZE;
+  echo "<br/>";
+  echo "row_size type: ".getType(MAX_ROW_SIZE);
+  echo "<br/>";
+  
+
+  //$servername = Constants::servername;
   $servername = "eventpal.cp4hghmjwcmi.us-west-2.rds.amazonaws.com";
   $username = "rohit";
   $password = "rohitnair987";
   $database = "eventpal";
 
   // Create connection
-  $conn = mysqli_connect($servername, $username, $password, $database);
+  $conn = mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
 
   // Check connection
   if (!$conn) {
