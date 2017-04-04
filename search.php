@@ -1,6 +1,7 @@
 <?php
 
-	include 'header.php';
+	include 'Constants.php';
+    include 'header.php';
 
 
 	echo "
@@ -14,7 +15,6 @@
 			<div class='clearfix'>&nbsp;</div>
 
 
-
 			<div class='col-md-4'>Search Filters
 			</div>
 
@@ -26,7 +26,6 @@
             
             getEvents($queryString['interest']);
 
-			
 				
         echo "
 		</div><!--End container-->
@@ -51,13 +50,8 @@
         
         //Display Events that fall under selected interest
 
-        $servername = "eventpal.cp4hghmjwcmi.us-west-2.rds.amazonaws.com";
-        $username = "rohit";
-        $password = "rohitnair987";
-        $database = "eventpal";
-    
         // Create connection
-        $conn = mysqli_connect($servername, $username, $password, $database);
+        $conn = mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
     
         // Check connection
         if (!$conn) {
@@ -82,7 +76,6 @@
 
         if($stmt->num_rows > 0) {
             
-            $MAX_ROW_SIZE = 3;
             $rowEleCount = 1;
             echo "<div class='row'>";
 
@@ -98,7 +91,7 @@
     
             while($stmt->fetch()) {
     
-                if($rowEleCount > $MAX_ROW_SIZE) {
+                if($rowEleCount > MAX_ROW_SIZE) {
                     $rowEleCount = 1;
                     // start a new row
                     echo "</div>

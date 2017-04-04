@@ -1,12 +1,6 @@
 save and load interest img from db
 
-db access details in a separate file
 
-search page .. 
-
-Prepared Statements in MySQLi
-
-load interest id from prev page
 load interest id from the search filter
 
 
@@ -20,6 +14,5 @@ user, event:
 	location google maps api
 	event pic
 
-no of interests in an event, i can get by joining and iterating, i dont need a column for that
 
 already logged in? which page to load??? use cookies??
