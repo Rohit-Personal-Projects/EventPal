@@ -1,5 +1,7 @@
 save and load interest img from db
 
+db access details in a separate file
+
 search page .. 
 
 Prepared Statements in MySQLi
