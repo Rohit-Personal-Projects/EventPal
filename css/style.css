@@ -462,3 +462,15 @@ display: inline-block;
   font-weight: normal;
   cursor: pointer;
 }
+
+
+.btn-primary {
+background-color: #cd4436;
+  
+  border-color:transparent;
+}
+.btn-large {
+font-size: 21px;
+line-height: 36px;
+padding: 8px 14px;
+}
