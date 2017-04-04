@@ -74,10 +74,49 @@
               die("Connection failed: " . mysqli_connect_error());
             }
             
-            $query = "SELECT InterestId, Name, Description FROM Interest;";
-            mysqli_query($conn, $query) or die('Error querying the database.');
+            $getAllInterestsQuery = "SELECT InterestId, Name, Description FROM Interest;";
+            $stmt = $conn->prepare($getAllInterestsQuery);
+            $stmt->execute();
+            $stmt->store_result();
+            $stmt->bind_result($InterestId, $Name, $Description);
+
+            if($stmt->num_rows > 0) {
         
-            $result = mysqli_query($conn, $query);
+                $MAX_ROW_SIZE = 3;
+                $rowEleCount = 1;
+                echo "<div class='row'>";
+                
+                while($stmt->fetch()) {
+        
+                    if($rowEleCount > $MAX_ROW_SIZE) {
+                        $rowEleCount = 1;
+                        // start a new row
+                        echo "</div>
+                        <div class='row'>";
+                    }
+        
+                    $rowEleCount = $rowEleCount + 1;
+        
+                    echo "<div class='col-md-4 col-sm-10 col-xs-11 wow bounceIn' id=".$InterestId.">
+                        <figure class='effect'>
+                            <img alt='LMB Productions' src='images/bat.jpg' />
+                            <figcaption>
+                                <h3>".$Name."</h3>
+                                <p>".$Description."</p>
+                                <a href='search.php?interest=".$InterestId."' target='_self'>View more</a> <span class='icon'> </span> 
+                            </figcaption>
+                        </figure>
+                    </div>";
+                }
+        
+                echo "</div>"; //end last row
+            } else {
+                echo "0 results";
+            }
+
+            //mysqli_query($conn, $getAllInterestsQuery) or die('Error querying the database.');
+        
+            //$result = mysqli_query($conn, $getAllInterestsQuery);
             if (mysqli_num_rows($result) > 0) {
         
                 $MAX_ROW_SIZE = 3;
@@ -102,7 +141,7 @@
                             <figcaption>
                                 <h3>".$row['Name']."</h3>
                                 <p>".$row['Description']."</p>
-                                <a href='http://lmbproductions.in' target='_blank'>View more</a> <span class='icon'> </span> 
+                                <a href='search.php?interest=".$row['InterestId']."' target='_self'>View more</a> <span class='icon'> </span> 
                             </figcaption>
                         </figure>
                     </div>";
