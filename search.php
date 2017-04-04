@@ -6,14 +6,11 @@
 
     echo "
 
-        <head>
             <link rel='stylesheet' href='js/plugins/chosen_v1.7.0/docsupport/style.css'>
             <link rel='stylesheet' href='js/plugins/chosen_v1.7.0/docsupport/prism.css'>
             <link rel='stylesheet' href='js/plugins/chosen_v1.7.0/chosen.css'>
             <script src='js/search.js' type='text/javascript'></script>
-        </head>
 
-        <body>
 
             <div class='clearfix'>&nbsp;</div>
             
@@ -78,7 +75,7 @@
                             $parts = parse_url($_SERVER['REQUEST_URI']);
                             parse_str($parts['query'], $queryString);
 
-                            echo "asd:".$queryString['interest'];
+                            #echo "asd:".$queryString['interest'];
 
                             foreach (explode(",", $queryString['interest']) as $interest) {
                                 getEvents($interest);
@@ -99,7 +96,6 @@
     ';
 
 
-    include 'footer.php';
 
     echo "</body>";
 
@@ -219,6 +215,6 @@
 
 
     }
-
+include 'footer.php'
 
 ?>
