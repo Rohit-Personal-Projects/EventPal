@@ -32,7 +32,7 @@ echo"<!DOCTYPE html>
             <span class='icon-bar'></span>
             <span class='icon-bar'></span>
           </button>
-          <a class='navbar-brand animated bounceInLeft' href='#'>Eventpal</a>
+          <a class='navbar-brand animated bounceInLeft' href='http://ella.ils.indiana.edu/~vipmunot/friends/index.php'>Eventpal</a>
         </div>
         <div id='navbar' class='navbar-collapse collapse'>
           <ul class='nav navbar-nav navbar-right'>
