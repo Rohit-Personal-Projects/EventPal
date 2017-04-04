@@ -102,6 +102,7 @@
                                 <a href='search.php?interest=".$InterestId."' target='_self'>View more</a> <span class='icon'> </span> 
                             </figcaption>
                         </figure>
+						<h3 class='text-center'>".$Name."</h3>
                     </div>";
                 }
         

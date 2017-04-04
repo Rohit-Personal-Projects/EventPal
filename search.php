@@ -198,6 +198,7 @@
                             <a href='http://lmbproductions.in' target='_blank'>View more</a> <span class='icon'> </span> 
                         </figcaption>
                     </figure>
+					<h3 class='text-center'>".$Title."</h3>
                 </div>";
             }
 
