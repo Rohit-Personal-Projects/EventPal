@@ -1,3 +1,13 @@
+<?php
+require 'Constants.php';
+$conn = mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+    $result = $conn->query("SELECT InterestId, Name, Description FROM Interest");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,11 +20,13 @@
 	<title>Eventpal</title>
 	<!-- Bootstrap Core CSS -->
 	<link rel="stylesheet" href="css/datepicker.css" type="text/css">
+	  
+  <link rel="stylesheet" type="text/css" href="css/jquery.timepicker.css" />
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" /><!-- Custom Fonts -->
 	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" /><!-- Plugin CSS -->
 	<link href="css/animate.min.css" rel="stylesheet" type="text/css" /><!-- Custom CSS -->
 	<link href="css/creative.css" rel="stylesheet" type="text/css" />
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	
 	<link href="css/style.css" rel="stylesheet" /><!-- Fonts -->
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries --><!-- WARNING: Respond.js doesn't work if you view the page via file:// --><!--[if lt IE 9]>
@@ -54,7 +66,7 @@
 <section id ="createevent">
 <div class="container"><div class="row">
 <div class="col-md-7 col-sm-5">
-<form action = "" method="POST">
+<form action = "" method="POST" enctype="multipart/form-data">
               <div class="row">
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">Name</label>
@@ -71,7 +83,40 @@
                         
                   </div>
                 </div><!-- end form-group -->
-              </div><!-- /row -->  			  
+              </div><!-- /row -->  
+
+              <div class="row">
+                <div class="form-group">
+                  <label for="name" class="col-md-3 control-label">Image</label>
+                  <div class="col-md-9">
+					<input type="file" name="fileToUpload" id="fileToUpload"class="form-control">
+                  </div>
+                </div><!-- end form-group -->
+              </div><!-- /row -->
+
+              <div class="row">
+                <div class="form-group">
+                  <label for="name" class="col-md-3 control-label">Category</label>
+                  <div class="col-md-9">
+							<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+							<?php	
+							
+								while ($row = $result->fetch_assoc()) {
+
+											  unset($id, $name);
+											  $id = $row['InterestId'];
+											  $name = $row['Name']; 
+											  
+											  echo"<label class='checkbox'><input name='checkbox' type='checkbox' value='".$id."'/>".$name."</label>";
+
+							}
+							?>                            
+
+                  </div>
+                </div><!-- end form-group -->
+              </div><!-- /row -->  
+
+			  
               <div class="row">
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">Days</label>
@@ -102,6 +147,26 @@
                   <label for="name" class="col-md-3 control-label">End Date</label>
                   <div class="col-md-9">
                              <input  type="text" class="form-control floating-label" placeholder="dd/mm/yyyy"  id="example2">
+                  </div>
+                </div><!-- end form-group -->
+              </div><!-- /row --> 
+
+              <div class="row">
+                <div class="form-group">
+                  <label for="name" class="col-md-3 control-label">Start Time</label>
+                  <div class="col-md-9">
+							<input id="basicExample" type="text" class="time form-control floating-label" />
+                             
+
+                  </div>
+                </div><!-- end form-group -->
+              </div><!-- /row -->                         
+
+              <div class="row">
+                <div class="form-group">
+                  <label for="name" class="col-md-3 control-label">End Time</label>
+                  <div class="col-md-9">
+                             <input id="basicExample1" type="text" class="time form-control floating-label" />
                   </div>
                 </div><!-- end form-group -->
               </div><!-- /row --> 
@@ -433,7 +498,7 @@
 </div>
 </div>
 </footer>
-<!-- jQuery --><script src="js/jquery.js"></script><!-- Bootstrap Core JavaScript --><script src="js/bootstrap.min.js"></script><!-- Plugin JavaScript --><script src="js/jquery.easing.min.js"></script><script src="js/jquery.fittext.js"></script><script src="js/wow.min.js"></script><!-- Custom Theme JavaScript --><script src="js/creative.js"></script>        <script src="js/bootstrap-datepicker.js"></script>
+<!-- jQuery --><script src="js/jquery.js"></script><!-- Bootstrap Core JavaScript --><script src="js/bootstrap.min.js"></script><!-- Plugin JavaScript --><script src="js/jquery.easing.min.js"></script><script src="js/jquery.fittext.js"></script><script src="js/wow.min.js"></script><!-- Custom Theme JavaScript --><script src="js/creative.js"></script>        <script src="js/bootstrap-datepicker.js"></script><script type="text/javascript" src="js/jquery.timepicker.js"></script>
         <script type="text/javascript">
             // When the document is ready
             $(document).ready(function () {
@@ -444,7 +509,8 @@
                 $('#example2').datepicker({
                     format: "dd/mm/yyyy"
                 });				
-            
+            $('#basicExample').timepicker();
+			$('#basicExample1').timepicker();
             });
         </script>
 
@@ -452,3 +518,4 @@
 
 </body>
 </html>
+
