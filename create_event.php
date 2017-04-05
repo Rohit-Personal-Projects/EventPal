@@ -1,3 +1,13 @@
+<?php
+require 'Constants.php';
+$conn = mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+    $result = $conn->query("SELECT InterestId, Name, Description FROM Interest");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,7 +46,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand animated bounceInLeft" href="#">Eventpal</a>
+          <a class="navbar-brand animated bounceInLeft" href="index.php">Eventpal</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -61,7 +71,7 @@
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">Name</label>
                   <div class="col-md-9">
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Hello, what's Event name?"  >
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Hello, what's Event name?" required>
                   </div>
                 </div><!-- end form-group -->
               </div><!-- /row -->
@@ -69,7 +79,7 @@
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">Description</label>
                   <div class="col-md-9">
-				  <textarea class="form-control" id="message" name="message" rows="4" placeholder="What the event about?" ></textarea>
+				  <textarea class="form-control" id="message" name="message" rows="4" placeholder="What the event about?" required></textarea>
                         
                   </div>
                 </div><!-- end form-group -->
@@ -83,6 +93,29 @@
                   </div>
                 </div><!-- end form-group -->
               </div><!-- /row -->
+
+              <div class="row">
+                <div class="form-group">
+                  <label for="name" class="col-md-3 control-label">Category</label>
+                  <div class="col-md-9">
+							<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+							<?php	
+							
+								while ($row = $result->fetch_assoc()) {
+
+											  unset($id, $name);
+											  $id = $row['InterestId'];
+											  $name = $row['Name']; 
+											  
+											  echo"<label class='checkbox'><input name='checkbox' type='checkbox' value='".$id."'/>".$name."</label>";
+
+							}
+							?>                            
+
+                  </div>
+                </div><!-- end form-group -->
+              </div><!-- /row -->  
+
 			  
               <div class="row">
                 <div class="form-group">
@@ -103,7 +136,7 @@
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">Start Date</label>
                   <div class="col-md-9">
-                             <input  type="text" class="form-control floating-label" placeholder="dd/mm/yyyy"  id="example1">
+                             <input  type="text" class="form-control floating-label" placeholder="dd/mm/yyyy"  id="example1" required>
 
                   </div>
                 </div><!-- end form-group -->
@@ -122,7 +155,7 @@
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">Start Time</label>
                   <div class="col-md-9">
-							<input id="basicExample" type="text" class="time form-control floating-label" />
+							<input id="basicExample" type="text" class="time form-control floating-label"placeholder="HH:MM(AM/PM)"required />
                              
 
                   </div>
@@ -133,7 +166,7 @@
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">End Time</label>
                   <div class="col-md-9">
-                             <input id="basicExample1" type="text" class="time form-control floating-label" />
+                             <input id="basicExample1" type="text" class="time form-control floating-label"placeholder="HH:MM(AM/PM)"required />
                   </div>
                 </div><!-- end form-group -->
               </div><!-- /row --> 
@@ -163,7 +196,7 @@
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">City</label>
                   <div class="col-md-9">
-                             <input id="city" name="city" type="text" placeholder="city" class="form-control floating-label">
+                             <input id="city" name="city" type="text" placeholder="city" class="form-control floating-label" required>
                         
                   </div>
                 </div><!-- end form-group -->
@@ -173,7 +206,7 @@
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">State / Province / Region</label>
                   <div class="col-md-9">
-                             <input id="city" name="city" type="text" placeholder="State / Province / Region" class="form-control floating-label">
+                             <input id="city" name="city" type="text" placeholder="State / Province / Region" class="form-control floating-label" required>
                   </div>
                 </div><!-- end form-group -->
               </div><!-- /row -->                                                                            
@@ -182,7 +215,7 @@
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">Zip / Postal Code</label>
                   <div class="col-md-9">
-                             <input id="city" name="city" type="text" placeholder="Zip / Postal Code" class="form-control floating-label">
+                             <input id="city" name="city" type="text" placeholder="Zip / Postal Code" class="form-control floating-label" required>
                         
                   </div>
                 </div><!-- end form-group -->
@@ -485,3 +518,4 @@
 
 </body>
 </html>
+
