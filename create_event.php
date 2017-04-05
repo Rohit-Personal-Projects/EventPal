@@ -155,7 +155,7 @@ if (!$conn) {
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">Start Time</label>
                   <div class="col-md-9">
-							<input id="basicExample" type="text" class="time form-control floating-label" />
+							<input id="basicExample" type="text" class="time form-control floating-label"placeholder="HH:MM(AM/PM)" />
                              
 
                   </div>
@@ -166,7 +166,7 @@ if (!$conn) {
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">End Time</label>
                   <div class="col-md-9">
-                             <input id="basicExample1" type="text" class="time form-control floating-label" />
+                             <input id="basicExample1" type="text" class="time form-control floating-label"placeholder="HH:MM(AM/PM)" />
                   </div>
                 </div><!-- end form-group -->
               </div><!-- /row --> 
