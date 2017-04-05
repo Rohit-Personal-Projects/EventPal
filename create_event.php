@@ -46,7 +46,7 @@ if (!$conn) {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand animated bounceInLeft" href="#">Eventpal</a>
+          <a class="navbar-brand animated bounceInLeft" href="index.php">Eventpal</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -71,7 +71,7 @@ if (!$conn) {
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">Name</label>
                   <div class="col-md-9">
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Hello, what's Event name?"  >
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Hello, what's Event name?" required>
                   </div>
                 </div><!-- end form-group -->
               </div><!-- /row -->
@@ -79,7 +79,7 @@ if (!$conn) {
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">Description</label>
                   <div class="col-md-9">
-				  <textarea class="form-control" id="message" name="message" rows="4" placeholder="What the event about?" ></textarea>
+				  <textarea class="form-control" id="message" name="message" rows="4" placeholder="What the event about?" required></textarea>
                         
                   </div>
                 </div><!-- end form-group -->
@@ -136,7 +136,7 @@ if (!$conn) {
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">Start Date</label>
                   <div class="col-md-9">
-                             <input  type="text" class="form-control floating-label" placeholder="dd/mm/yyyy"  id="example1">
+                             <input  type="text" class="form-control floating-label" placeholder="dd/mm/yyyy"  id="example1" required>
 
                   </div>
                 </div><!-- end form-group -->
@@ -155,7 +155,7 @@ if (!$conn) {
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">Start Time</label>
                   <div class="col-md-9">
-							<input id="basicExample" type="text" class="time form-control floating-label"placeholder="HH:MM(AM/PM)" />
+							<input id="basicExample" type="text" class="time form-control floating-label"placeholder="HH:MM(AM/PM)"required />
                              
 
                   </div>
@@ -166,7 +166,7 @@ if (!$conn) {
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">End Time</label>
                   <div class="col-md-9">
-                             <input id="basicExample1" type="text" class="time form-control floating-label"placeholder="HH:MM(AM/PM)" />
+                             <input id="basicExample1" type="text" class="time form-control floating-label"placeholder="HH:MM(AM/PM)"required />
                   </div>
                 </div><!-- end form-group -->
               </div><!-- /row --> 
@@ -196,7 +196,7 @@ if (!$conn) {
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">City</label>
                   <div class="col-md-9">
-                             <input id="city" name="city" type="text" placeholder="city" class="form-control floating-label">
+                             <input id="city" name="city" type="text" placeholder="city" class="form-control floating-label" required>
                         
                   </div>
                 </div><!-- end form-group -->
@@ -206,7 +206,7 @@ if (!$conn) {
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">State / Province / Region</label>
                   <div class="col-md-9">
-                             <input id="city" name="city" type="text" placeholder="State / Province / Region" class="form-control floating-label">
+                             <input id="city" name="city" type="text" placeholder="State / Province / Region" class="form-control floating-label" required>
                   </div>
                 </div><!-- end form-group -->
               </div><!-- /row -->                                                                            
@@ -215,7 +215,7 @@ if (!$conn) {
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">Zip / Postal Code</label>
                   <div class="col-md-9">
-                             <input id="city" name="city" type="text" placeholder="Zip / Postal Code" class="form-control floating-label">
+                             <input id="city" name="city" type="text" placeholder="Zip / Postal Code" class="form-control floating-label" required>
                         
                   </div>
                 </div><!-- end form-group -->
