@@ -9,6 +9,7 @@
 	<meta content="Vipul Munot" name="author" />
 	<title>Eventpal</title>
 	<!-- Bootstrap Core CSS -->
+	<link rel="stylesheet" href="css/datepicker.css" type="text/css">
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" /><!-- Custom Fonts -->
 	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" /><!-- Plugin CSS -->
 	<link href="css/animate.min.css" rel="stylesheet" type="text/css" /><!-- Custom CSS -->
@@ -81,7 +82,8 @@
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">Start Date</label>
                   <div class="col-md-9">
-                             <input type="text" id="date" class="form-control floating-label" placeholder="Date">
+                             <input  type="text" class="form-control floating-label" placeholder="dd/mm/yyyy"  id="example1">
+
                   </div>
                 </div><!-- end form-group -->
               </div><!-- /row -->                         
@@ -90,7 +92,7 @@
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">End Date</label>
                   <div class="col-md-9">
-                             <input type="text" id="date" class="form-control floating-label" placeholder="Date">
+                             <input  type="text" class="form-control floating-label" placeholder="dd/mm/yyyy"  id="example2">
                   </div>
                 </div><!-- end form-group -->
               </div><!-- /row --> 
@@ -150,7 +152,7 @@
                   <label for="name" class="col-md-3 control-label">Country</label>
                   <div class="col-md-9">
                         <select id="country" name="country" class="form-control floating-label">
-                            <option value="" selected="selected">(please select a country)</option>
+                           <option value="" selected="selected">(please select a country)</option>
                             <option value="AF">Afghanistan</option>
                             <option value="AL">Albania</option>
                             <option value="DZ">Algeria</option>
@@ -389,7 +391,7 @@
                             <option value="YE">Yemen</option>
                             <option value="YU">Yugoslavia</option>
                             <option value="ZM">Zambia</option>
-                            <option value="ZW">Zimbabwe</option>
+                            <option value="ZW">Zimbabwe</option> 
                         </select>                             
                         
                   </div>
@@ -399,7 +401,7 @@
                 <div class="form-group">
                   
                   <div class="col-md-9">
-                             <button class="btn btn-large btn-primary contact-submit pull-right" type="submit" name="submit">Send Away!</button>
+                             <button class="btn btn-large btn-primary contact-submit pull-right" type="submit" name="submit">Create Event!</button>
 
                   </div>
                 </div><!-- end form-group -->
@@ -422,7 +424,21 @@
 </div>
 </div>
 </footer>
-<!-- jQuery --><script src="js/jquery.js"></script><!-- Bootstrap Core JavaScript --><script src="js/bootstrap.min.js"></script><!-- Plugin JavaScript --><script src="js/jquery.easing.min.js"></script><script src="js/jquery.fittext.js"></script><script src="js/wow.min.js"></script><!-- Custom Theme JavaScript --><script src="js/creative.js"></script>
+<!-- jQuery --><script src="js/jquery.js"></script><!-- Bootstrap Core JavaScript --><script src="js/bootstrap.min.js"></script><!-- Plugin JavaScript --><script src="js/jquery.easing.min.js"></script><script src="js/jquery.fittext.js"></script><script src="js/wow.min.js"></script><!-- Custom Theme JavaScript --><script src="js/creative.js"></script>        <script src="js/bootstrap-datepicker.js"></script>
+        <script type="text/javascript">
+            // When the document is ready
+            $(document).ready(function () {
+                
+                $('#example1').datepicker({
+                    format: "dd/mm/yyyy"
+                });  
+                $('#example2').datepicker({
+                    format: "dd/mm/yyyy"
+                });				
+            
+            });
+        </script>
+
 
 
 </body>
