@@ -1,7 +1,7 @@
 <?php
 
 	class Location {
-		var $Steet;
+		var $Street;
 		var $City;
 		var $Zip;
 		var $State;
