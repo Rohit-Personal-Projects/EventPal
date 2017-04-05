@@ -16,3 +16,5 @@ user, event:
 
 
 already logged in? which page to load??? use cookies??
+
+accept and assign interests to events
