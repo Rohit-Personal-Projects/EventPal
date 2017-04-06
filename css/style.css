@@ -414,6 +414,10 @@ display: inline-block;
 
 .social-container .social li a:hover { color: #FC4A1A; }
 
+#searchbar{
+overflow-y: auto;
+max-height: 250px;
+}
 
 /*######################################
 
