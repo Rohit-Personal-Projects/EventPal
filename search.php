@@ -109,5 +109,6 @@
 
     include 'footer.php'
 
+    }
 
 ?>
