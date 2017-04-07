@@ -1,20 +1,42 @@
-save and load interest img from db
+PHP/DB Tasks:
+	save and load interest img from db
+
+	load interest id from the search filter
+
+	user table:
+		how to store passwords in mysql db
+		profile pic
+		check if email already exists while login
+
+	user, event:
+		event pic
+
+	accept and assign interests to events
+
+	add Founded column to event table
+
+	what if a pulled field is null
+	what happens when i try n display it on d screen
+
+	db operation returns nothing, return error ... for eg eventid doesnt exist
 
 
-load interest id from the search filter
+
+HTML/CSS Tasks:
+	create event page, make date and time fields such that user cant manually enter anything and is forced to select from the date-picker for date and dropdown list for time so that there's no problem of storing or displaying it
+
+	geolocation and google maps api
+
+	already logged in? which page to load??? use cookies??
+
+	add page titles for each page
+
+	comments at the end of events page
 
 
 
-user table:
-	how to store passwords in mysql
-	profile pic
-	check if email already exists while login
-
-user, event:
-	location google maps api
-	event pic
+JS Tasks:
+	form validations for pages ...
 
 
-already logged in? which page to load??? use cookies??
 
-accept and assign interests to events
