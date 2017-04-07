@@ -74,7 +74,7 @@
         param: OrganizerId
         return: Organizer Details
 
-        This function will return all the info about the organizer with OrganizerId passes as a parameter
+        This function will return all the info about the organizer with OrganizerId passed as a parameter
     */
     function getOrganizer($OrganizerId, $conn) {
 
@@ -112,5 +112,48 @@
         return $organizer;
 
 	}
+
+    /*
+        param: EventId
+        return: Event Details
+
+        This function will return all the info about the Event with EventId passed as a parameter
+    */
+    function getEvent($EventId, $conn) {
+
+        if(is_null ($conn)) {
+            $conn = mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
+            $flag = true;
+        }
+
+        // Query to get the Organizer of an Event
+        $eventOrganizerQuery = "
+            SELECT EventId, OrganizerId, Title, Description, Days, StartDate, EndDate, StartTime, EndTime, Image, Street, City, Zip, State, Country
+            FROM Event
+            WHERE EventId = ?
+            ;";
+
+        $stmt = $conn->prepare($eventOrganizerQuery);
+
+        // Get Organizer details
+        $stmt->bind_param("i", $EventId);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($EventId, $OrganizerId, $Title, $Description, $Days, $StartDate, $EndDate, $StartTime, $EndTime, $Image, $Street, $City, $Zip, $State, $Country);
+
+        if($stmt->num_rows == 1) {
+            while($stmt->fetch()) {
+                $event = new Event($EventId, $OrganizerId, $Title, $Description, $Days, $StartDate, $EndDate, $StartTime, $EndTime, $Image, $Street, $City, $Zip, $State, $Country);
+            }
+        }
+
+        $stmt->close();
+        if($flag) {
+            mysqli_close($conn);
+        }
+
+        return $event;
+
+    }
 
 ?>
