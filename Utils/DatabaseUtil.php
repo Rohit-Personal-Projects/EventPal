@@ -4,6 +4,10 @@
     include 'Models/Location.php';
     include 'Models/Member.php';
 
+    function createDBConnection() {
+        return mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
+    }
+
     /*
         param: InterestId
         return: Array of Events
@@ -16,7 +20,7 @@
         
         // Create connection
         if(is_null ($conn)) {
-    		$conn = mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
+    		$conn = createDBConnection();
     		$flag = true;
     	}
 
@@ -79,7 +83,7 @@
     function getOrganizer($OrganizerId, $conn) {
 
     	if(is_null ($conn)) {
-    		$conn = mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
+    		$conn = createDBConnection();
     		$flag = true;
     	}
 
@@ -122,7 +126,7 @@
     function getEvent($EventId, $conn) {
 
         if(is_null ($conn)) {
-            $conn = mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
+            $conn = createDBConnection();
             $flag = true;
         }
 
@@ -144,6 +148,7 @@
         if($stmt->num_rows == 1) {
             while($stmt->fetch()) {
                 $event = new Event($EventId, $OrganizerId, $Title, $Description, $Days, $StartDate, $EndDate, $StartTime, $EndTime, $Image, $Street, $City, $Zip, $State, $Country);
+                $event->Organizer = getOrganizer($OrganizerId, $conn);
             }
         }
 
@@ -153,6 +158,62 @@
         }
 
         return $event;
+
+    }
+
+
+    /*
+        param: EventId
+        return: Members who have joined the Event
+
+        This function will return a list of all the members who have joined the event with EventId passed as a parameter
+    */
+    function getMembers($EventId, $conn) {
+
+        if(is_null ($conn)) {
+            $conn = createDBConnection();
+            $flag = true;
+        }
+
+        // Query to get the Organizer of an Event
+        $membersInEventQuery = "
+            SELECT MemberId, FirstName, LastName, EMail, Phone, Bio, FacebookUrl, TwitterUrl, Password, Street, City, Zip, State, Country
+            FROM Member
+            WHERE MemberId IN
+            (
+                SELECT MemberId
+                FROM RegisteredEvents
+                WHERE Eventid = ?
+            );
+        ";
+
+        $stmt = $conn->prepare($membersInEventQuery);
+        $stmt->bind_param("i", $EventId);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($MemberId, $FirstName, $LastName, $EMail, $Phone, $Bio, $FacebookUrl, $TwitterUrl, $Password, $Street, $City, $Zip, $State, $Country);
+
+
+        if($stmt->num_rows > 0) {
+
+            $membersArray = array();
+            
+            while($stmt->fetch()) {
+
+                $member = new Member($MemberId, $FirstName, $LastName, $EMail, $Phone, $Bio, $FacebookUrl, $TwitterUrl, $Password, $Street, $City, $Zip, $State, $Country);
+                
+                array_push($membersArray, $member);
+
+            }
+
+        } 
+
+        $stmt->close();
+        if($flag) {
+            mysqli_close($conn);
+        }
+
+        return $membersArray;
 
     }
 
