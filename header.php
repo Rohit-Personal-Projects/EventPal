@@ -38,8 +38,8 @@ echo"<!DOCTYPE html>
           <ul class='nav navbar-nav navbar-right'>
             <li><a href='#'>Search</a></li>
             <li><a href='#about'>Create Event</a></li>
-            <li><a href='#about'>Login</a></li>
-            <li><a href='#about'>Sign up</a></li>            
+            <li><a href='register.html#login'>Login</a></li>
+            <li><a href='register.html#signup'>Sign up</a></li>            
           </ul>
         </div><!--/.nav-collapse -->
       </div>
