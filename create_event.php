@@ -17,7 +17,7 @@ if (!$conn) {
 	<meta content="This is my one page resume website." name="description" />
 	<meta content="Vipul,Vipul Munot,Munot,Indiana University,Indiana, Indiana University Bloomington,Bloomington,Data Science, Data, Scientist,Data Scientist" name="keywords" />
 	<meta content="Vipul Munot" name="author" />
-	<title>Eventpal</title>
+	<title>Create Event | Eventpal</title>
 	<!-- Bootstrap Core CSS -->
 	<link rel="stylesheet" href="css/datepicker.css" type="text/css">
 	  
