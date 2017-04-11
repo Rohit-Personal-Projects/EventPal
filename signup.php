@@ -9,6 +9,9 @@ $city = ""; //City
 $state = ""; //state
 $country= ""; // Country
 $zip= ""; // Zip Code	
+$error_array = array(); //Holds error messages
+
+
 $conn = mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
                     // Check connection
                     if (!$conn) {
@@ -68,21 +71,41 @@ if(isset($_POST['register_button'])){
 			$num_rows = mysqli_num_rows($e_check);
 
 			if($num_rows > 0) {
-				echo"Email already in use<br>";
+				array_push($error_array, "Email already in use<br>");
 			}
 
 		}
 		else {
-			echo"Invalid email format<br>";
+			array_push($error_array, "Invalid email format<br>");
 		}
+	if(strlen($fname) > 50 || strlen($fname) < 2){
+		array_push($error_array, "Your first name must be between 2 and 50 characters<br>");
+	}
+
+	if(strlen($lname) > 50 || strlen($lname) < 2){
+		array_push($error_array, "Your last name must be between 2 and 50 characters<br>");
+	}		
 	$password = strip_tags(mysqli_real_escape_string($conn, $_POST['password'])); //Remove html tags
-	if(strlen($password) > 30 || strlen($password) < 5){
-		echo "Your password must be between 5 and 30 characters<br>";
+	if(preg_match('/[^A-Za-z0-9]/', $password)) {
+		array_push($error_array, "Your password can only contain english characters or numbers<br>");
 	}	
+	elseif(strlen($password) > 30 || strlen($password) < 5){
+		array_push($error_array, "Your password must be between 5 and 30 characters<br>");
+	}	
+	if(empty($error_array)) {
+		$password = md5($password); //Encrypt password before sending to database
+		//Profile picture assignment
+		$rand = rand(1, 2); //Random number between 1 and 2
+
+		if($rand == 1)
+			$profile_pic = "images/profile_pics/defaults/head_alien.png";
+		else if ($rand == 2)
+			$profile_pic = "images/profile_pics/defaults/head_predator.png";	
+		
+		$query = mysqli_query($conn, "INSERT INTO Member(FirstName,LastName,EMail,Password,Phone,City,Zip,State,Country) VALUES ('$fname', '$lname','$email','$password','$phone','$city','$zip','$state','$country')");		
+		
+	array_push($error_array, "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>");	
+	}	//empty error array	
 }
-echo $fname;
-echo $zip;
-echo $city;
-echo $phone;
-echo $password;
+
 ?>
