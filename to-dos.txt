@@ -33,6 +33,7 @@ HTML/CSS Tasks:
 
 	comments at the end of events page
 
+	adding hyperlinks on all pages
 
 
 JS Tasks:
