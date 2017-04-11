@@ -23,7 +23,7 @@ if (!$conn) {
 	  
   <link rel="stylesheet" type="text/css" href="css/jquery.timepicker.css" />
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" /><!-- Custom Fonts -->
-	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" /><!-- Plugin CSS -->
+	<link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" /><!-- Plugin CSS -->
 	<link href="css/animate.min.css" rel="stylesheet" type="text/css" /><!-- Custom CSS -->
 	<link href="css/creative.css" rel="stylesheet" type="text/css" />
 	

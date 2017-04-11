@@ -10,7 +10,7 @@
 	<title>Welcome | Eventpal</title>
 	<!-- Bootstrap Core CSS -->
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" /><!-- Custom Fonts -->
-	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" /><!-- Plugin CSS -->
+	<link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" /><!-- Plugin CSS -->
 	<link href="css/animate.min.css" rel="stylesheet" type="text/css" /><!-- Custom CSS -->
 	<script src="js/modernizr.js"></script>
 	<link href="css/style.css" rel="stylesheet" /><!-- Fonts -->
