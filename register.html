@@ -56,66 +56,45 @@
         <div id="signup">   
           
           
-          <form action="/" method="post">
+          <form action="signup.php" method="post">
           
           <div class="top-row">
             <div class="field-wrap">
-              <label>
-                First Name<span class="req">*</span>
-              </label>
-              <input type="text" required autocomplete="off" />
+
+              <input type="text" name="fname" placeholder="First Name*" required autocomplete="off" />
             </div>
         
             <div class="field-wrap">
-              <label>
-                Last Name<span class="req">*</span>
-              </label>
-              <input type="text" required autocomplete="off"/>
+              <input type="text" name="lname" placeholder="Last Name*" required autocomplete="off"/>
             </div>
           </div>
 
           <div class="field-wrap">
-            <label>
-              Email Address<span class="req">*</span>
-            </label>
-            <input type="email" required autocomplete="off"/>
+
+            <input type="email" name="reg_email" placeholder="Email Address*" required autocomplete="off"/>
           </div>
           
           <div class="field-wrap">
-            <label>
-              Set A Password<span class="req">*</span>
-            </label>
-            
-            <input type="password" required autocomplete="off"/>
+            <input type="password" placeholder="Set A Password*" name = "password" required autocomplete="off"/>
           </div>
           
           <div class="field-wrap">
-            <label>
-              Phone
-            </label>
-            <input type="text"/>
+            <input type="text" placeholder="Phone" name = "phone"/>
           </div>
           
           <div class="field-wrap">
-            <label>
-              City
-            </label>
-            <input type="text"/>
+
+            <input type="text"name = "city" placeholder="City"/>
           </div>
           
           <div class="field-wrap">
-            <label>
-              State
-            </label>
-            <input type="text"/>
+            <input type="text"name = "state" placeholder="State"/>
           </div>
           
           <div class="field-wrap">
-            <label>
-              Country<span class="req">*</span>
-            </label>
+
             <select id="country" name="country" class="dropdown" required >
-                           <option value="" selected="selected"></option>
+                           <option value ="" selected>Country*</option>
                             <option value="AF">Afghanistan</option>
                             <option value="AL">Albania</option>
                             <option value="DZ">Algeria</option>
@@ -360,12 +339,10 @@
           </div>
           
           <div class="field-wrap">
-            <label>
-              Zip-Code<span class="req">*</span>
-            </label>
-            <input type="text" required/>
+
+            <input type="text" placeholder="Zip-Code*" name="zip"required/>
           </div>
-          <button type="submit" class="button button-block">Get Started</button>
+          <button type="submit" class="button button-block" name="register_button">Get Started</button>
           </form>
 
         </div><!--/Sign up -->

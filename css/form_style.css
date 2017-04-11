@@ -245,11 +245,12 @@ input, textarea {
   background: none;
   background-image: none;
   border: 1px solid #a0b3b0;
-  color: #0000;
+  color: #CCC;
   border-radius: 0;
   -webkit-transition: border-color .25s ease, box-shadow .25s ease;
   transition: border-color .25s ease, box-shadow .25s ease;
 }
+
 input:focus, textarea:focus {
   outline: 0;
   border-color: #1ab188;
