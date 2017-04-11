@@ -40,3 +40,20 @@ JS Tasks:
 
 
 
+Professor Requirements:
+
+
+CS people need to have a DB backend that talks to their frontend using PHP. You MUST have these functionalities: Adding/modifying/deleting/searching the DB all using a graphical interface that you write. Directly adding records into the DB is not allowed except initially to have some data to start with.
+
+ALL groups must have a contact form that uses PHP to receive some information from the user and stores in a text file (we have done the first part in the class. You gotta go and figure out how to open a file and write something into it using PHP). You could also be more adventurous and store this information in a DB but that's not a requirement.
+
+ALL groups must have at least 2 (two) jQueryUI effects on their site. Example: autocomplete, datepicker, accordion menu, tabbed menu and so on. Get creative here! [Find the zip file of the code I used in class on Canvas under files/resources]
+
+
+We have completed Adding Searching DB - Modifying and Deleting is remaining
+
+We need to create contact form - Refer LMB Productions
+
+
+jQueryUI Effects - I think we are Done with this (datepicker, accordion menu, tabbed menu)
+
