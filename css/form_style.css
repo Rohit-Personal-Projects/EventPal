@@ -8,7 +8,7 @@ html {
 
 body {
   background: #c1bdba;
-  font-family: 'Titillium Web', sans-serif;
+  
 }
 
 a {
@@ -28,7 +28,7 @@ a:hover {
   margin: 20px auto;
   border-radius: 4px;
   box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
-  height:950px;
+  height:680px;
   
 }
 
