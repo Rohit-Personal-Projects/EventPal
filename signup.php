@@ -27,6 +27,12 @@ if(isset($_POST['register_button'])){
 	$lname = ucfirst(strtolower($lname)); //Uppercase first letter
 	$_SESSION['lname'] = $lname; //Stores last name into session variable
 
+	//phone
+	$phone = strip_tags(mysqli_real_escape_string($conn, $_POST['phone'])); //Remove html tags
+	$phone = str_replace(' ', '', $phone); //remove spaces
+	$phone = strtolower($phone); //Lower case everything
+	$_SESSION['phone'] = $phone; //Stores email into session variable
+	
 	//email
 	$email = strip_tags(mysqli_real_escape_string($conn, $_POST['reg_email'])); //Remove html tags
 	$email = str_replace(' ', '', $email); //remove spaces
