@@ -478,3 +478,88 @@ font-size: 21px;
 line-height: 36px;
 padding: 8px 14px;
 }
+
+
+/*######################################
+
+		Members 
+
+######################################*/
+
+#members .row { margin: 0px; } 
+
+#members .row > div { margin-bottom: 30px; }
+
+#members figure { position: relative; overflow: hidden; }
+
+#members figure h3 { color: #FFF; font-weight: 600; margin-bottom: 5px; }
+
+#members figure p > strong { width: 60px; display: inline-block; margin: 0px; }
+
+#members figure img { width: 110%; }
+
+#members figure figcaption {
+
+    padding: 20px 30px;
+
+    position: absolute;
+
+    top: 0px;
+
+    left: 0px;
+
+    height: 100%;
+
+    width: 100%;
+
+}
+
+#members figure a {
+
+	z-index: 1000;
+
+	text-indent: 200%;
+
+	white-space: nowrap;
+
+	font-size: 0;
+
+	opacity: 0;
+
+    position: absolute;
+
+    top: 0px;
+
+    left: 0px;
+
+    height: 100%;
+
+    width: 100%;
+
+}
+
+#members figure .icon { 
+
+	background: #CCC;
+
+	position: absolute;
+
+	top: 0px;
+
+	right: 0px;
+
+	width: 48px;
+
+	height: 48px;
+
+}
+
+#members figure .icon span {
+
+	font-size: 18px;
+
+	line-height: 18px;
+
+	padding: 15px;
+
+}
