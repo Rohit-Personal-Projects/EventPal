@@ -350,20 +350,20 @@
         <div id="login">   
           <h1>Welcome Back!</h1>
           
-          <form action="/" method="post" style="height:auto" class="form1">
+          <form action="login.php" method="post" style="height:auto" class="form1">
           
             <div class="field-wrap">
             <label>
               Email Address<span class="req">*</span>
             </label>
-            <input type="email" required autocomplete="off"/>
+            <input type="email" required name="log_email" autocomplete="off"/>
           </div>
           
           <div class="field-wrap">
             <label>
               Password<span class="req">*</span>
             </label>
-            <input type="password" required autocomplete="off"/>
+            <input type="password" required name="pwd" autocomplete="off"/>
           </div>
           
           <p class="forgot"><a href="forgotpwd.html">Forgot Password?</a></p>
