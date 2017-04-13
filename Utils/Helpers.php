@@ -4,6 +4,22 @@
 		return "test string";
 	}
 
+	function displaySession() {
+		echo "<br>Session variables:<br>";
+		foreach ($_SESSION as $key => $value) {
+			echo "<br>" . $key . ": " . $value;
+		}
+		echo "<br><br>";
+	}
+
+	function displayPost() {
+		echo "<br>Post variables:<br>";
+		foreach ($_POST as $key => $value) {
+			echo "<br>" . $key . ": " . $value;
+		}
+		echo "<br><br>";
+	}
+
 	/*
 		Get the value of the particular parameter from the current page's query string
 	*/
