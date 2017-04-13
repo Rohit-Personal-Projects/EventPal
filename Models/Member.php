@@ -30,9 +30,24 @@
 
 		public static function Basic($MemberId, $FirstName, $LastName) {
 			$instance = new self();
+			
 			$instance->MemberId=$MemberId;
 			$instance->FirstName=$FirstName;
 			$instance->LastName=$LastName;
+			
+			return $instance;
+		}
+
+		public static function MemberHome($MemberId, $FirstName, $LastName, $EMail, $Phone, $Street, $City, $Zip, $State, $Country) {
+			$instance = new self();
+			
+			$instance->MemberId=$MemberId;
+			$instance->FirstName=$FirstName;
+			$instance->LastName=$LastName;
+			$instance->EMail=$EMail;
+			$instance->Phone=$Phone;
+			$instance->Address = new Location($Street, $City, $Zip, $State, $Country);
+			
 			return $instance;
 		}
 

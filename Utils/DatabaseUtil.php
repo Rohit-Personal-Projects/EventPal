@@ -1,11 +1,21 @@
 <?php
 
-	include 'Models/Event.php';
+    include 'Models/Event.php';
     include 'Models/Location.php';
     include 'Models/Member.php';
 
     function createDBConnection() {
-        return mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
+        $conn = mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
+        
+        if (!$conn) {
+          die("Connection failed: " . mysqli_connect_error());
+        }
+
+        return $conn;
+    }
+
+    function closeDBConnection() {
+        mysqli_close($conn);
     }
 
     /*
@@ -20,9 +30,9 @@
         
         // Create connection
         if(is_null ($conn)) {
-    		$conn = createDBConnection();
-    		$flag = true;
-    	}
+            $conn = createDBConnection();
+            $flag = true;
+        }
 
         // Check connection
         if (!$conn) {
@@ -48,13 +58,13 @@
 
         if($stmt->num_rows > 0) {
 
-        	$eventsArray = array();
+            $eventsArray = array();
             
             while($stmt->fetch()) {
 
-            	$event = new Event($EventId, $OrganizerId, $Title, $Description, $Days, $StartDate, $EndDate, $StartTime, $EndTime, $Image, $Street, $City, $Zip, $State, $Country);
-				
-    			$event->Organizer = getOrganizer($OrganizerId, $conn);
+                $event = new Event($EventId, $OrganizerId, $Title, $Description, $Days, $StartDate, $EndDate, $StartTime, $EndTime, $Image, $Street, $City, $Zip, $State, $Country);
+                
+                $event->Organizer = getOrganizer($OrganizerId, $conn);
 
                 array_push($eventsArray, $event);
 
@@ -65,7 +75,7 @@
         
         $stmt->close();
         if($flag) {
-        	mysqli_close($conn);
+            mysqli_close($conn);
         }
 
         
@@ -82,12 +92,12 @@
     */
     function getOrganizer($OrganizerId, $conn) {
 
-    	if(is_null ($conn)) {
-    		$conn = createDBConnection();
-    		$flag = true;
-    	}
+        if(is_null ($conn)) {
+            $conn = createDBConnection();
+            $flag = true;
+        }
 
-    	// Query to get the Organizer of an Event
+        // Query to get the Organizer of an Event
         $eventOrganizerQuery = "
             SELECT MemberId, FirstName, LastName
             FROM Member
@@ -104,18 +114,18 @@
 
         if($stmt->num_rows == 1) {
             while($stmt->fetch()) {
-            	$organizer = Member::Basic($MemberId, $FirstName, $LastName);
+                $organizer = Member::Basic($MemberId, $FirstName, $LastName);
             }
         }
 
         $stmt->close();
         if($flag) {
-        	mysqli_close($conn);
+            mysqli_close($conn);
         }
 
         return $organizer;
 
-	}
+    }
 
     /*
         param: EventId
@@ -214,6 +224,51 @@
         }
 
         return $membersArray;
+
+    }
+
+
+    /*
+        param: Member EMail, pw md5
+        return: If Member details are correct, return member details. Else return -1
+    */
+    function getMemberDetails($memberEMail, $pwMD5, $conn) {
+
+        if(is_null ($conn)) {
+            $conn = createDBConnection();
+            $flag = true;
+        }
+
+        // Query to get the Organizer of an Event
+        $memberQuery = "
+            SELECT MemberId, FirstName, LastName, EMail, Phone, Bio, FacebookUrl, TwitterUrl, Password, Street, City, Zip, State, Country
+            FROM Member
+            WHERE EMail = ?
+            AND Password = ?;
+        ";
+
+        $stmt = $conn->prepare($memberQuery);
+        $stmt->bind_param("ss", $memberEMail, $pwMD5);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($MemberId, $FirstName, $LastName, $EMail, $Phone, $Street, $City, $Zip, $State, $Country);
+
+
+        if($stmt->num_rows == 1) {
+            while($stmt->fetch()) {
+                $member = Member::MemberHome($MemberId, $FirstName, $LastName, $EMail, $Phone, $Street, $City, $Zip, $State, $Country);
+            }
+        }
+        else {
+            return -1;
+        }
+
+        $stmt->close();
+        if($flag) {
+            mysqli_close($conn);
+        }
+
+        return $member;
 
     }
 

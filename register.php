@@ -90,7 +90,11 @@ require 'login_handler.php';
 					<br>
 					<input type="password" name="log_password" placeholder="Password">
 					<br>
-					<?php if(in_array("Email or password was incorrect<br>", $error_array)) echo  "Email or password was incorrect<br>"; ?>
+					<?php 
+                        if(in_array("Email or password was incorrect<br>", $error_array)) {
+                            echo  "Email or password was incorrect<br>"; 
+                        }
+                    ?>
 					<input type="submit" name="login_button" value="Login">
 					<br>
 					<a href="#" id="signup" class="signup">Need and account? Register here!</a>
@@ -128,17 +132,27 @@ require 'login_handler.php';
 					?>" required>
 					<br>
 
-					<?php if(in_array("Email already in use<br>", $error_array)) echo "Email already in use<br>"; 
-					else if(in_array("Invalid email format<br>", $error_array)) echo "Invalid email format<br>";
-					else if(in_array("Emails don't match<br>", $error_array)) echo "Emails don't match<br>"; ?>
+					<?php 
+                        if(in_array("Email already in use<br>", $error_array)) 
+                            echo "Email already in use<br>"; 
+				        else if(in_array("Invalid email format<br>", $error_array)) 
+                            echo "Invalid email format<br>";
+                        else if(in_array("Emails don't match<br>", $error_array)) 
+                            echo "Emails don't match<br>"; 
+                    ?>
 
 
 					<input type="password" name="password" placeholder="Password*" required>
 					<br>
 
-					<?php if(in_array("Your passwords do not match<br>", $error_array)) echo "Your passwords do not match<br>"; 
-					else if(in_array("Your password can only contain english characters or numbers<br>", $error_array)) echo "Your password can only contain english characters or numbers<br>";
-					else if(in_array("Your password must be betwen 5 and 30 characters<br>", $error_array)) echo "Your password must be betwen 5 and 30 characters<br>"; ?>
+					<?php 
+                        if(in_array("Your passwords do not match<br>", $error_array)) 
+                            echo "Your passwords do not match<br>"; 
+                        else if(in_array("Your password can only contain english characters or numbers<br>", $error_array)) 
+                            echo "Your password can only contain english characters or numbers<br>";
+                        else if(in_array("Your password must be betwen 5 and 30 characters<br>", $error_array)) 
+                            echo "Your password must be betwen 5 and 30 characters<br>"; 
+                    ?>
 
 					<input type="text" name="phone" placeholder="Phone Number*">
 					<br>
@@ -400,9 +414,13 @@ require 'login_handler.php';
 
 					
 					
-					
-					<?php if(in_array("<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>", $error_array)) echo "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>"; ?>
+					<?php 
+                        if(in_array("<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>", $error_array)) 
+                            echo "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>";
+                    ?>
+
 					<a href="#" id="signin" class="signin">Already have an account? Sign in here!</a>
+                    
 				</form>
 			</div>
 
