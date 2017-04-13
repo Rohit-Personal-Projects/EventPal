@@ -3,6 +3,11 @@
     include 'Models/Event.php';
     include 'Models/Location.php';
     include 'Models/Member.php';
+    include 'Constants.php';
+
+    function testDBUtil() {
+        return "test testDBUtil success";
+    }
 
     function createDBConnection() {
         $conn = mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
@@ -14,10 +19,7 @@
         return $conn;
     }
 
-    function closeDBConnection() {
-        mysqli_close($conn);
-    }
-
+    
     /*
         param: InterestId
         return: Array of Events
@@ -28,16 +30,7 @@
 
         $interestId = (int) $interestId;
         
-        // Create connection
-        if(is_null ($conn)) {
-            $conn = createDBConnection();
-            $flag = true;
-        }
-
-        // Check connection
-        if (!$conn) {
-          die("Connection failed: " . mysqli_connect_error());
-        }
+        $conn = createDBConnection();
         
 
         // Query to get Events associated with the selected Interest
@@ -48,7 +41,7 @@
                     (SELECT EventId
                     FROM EventInterest
                     WHERE InterestId = ?);
-            ;";
+            ";
         $stmt = $conn->prepare($eventsUnderInterestIdQuery);
         $stmt->bind_param("i", $interestId);
         $stmt->execute();
@@ -74,10 +67,7 @@
         
         
         $stmt->close();
-        if($flag) {
-            mysqli_close($conn);
-        }
-
+        mysqli_close($conn);
         
         return $eventsArray;
 
@@ -145,11 +135,10 @@
             SELECT EventId, OrganizerId, Title, Description, Days, StartDate, EndDate, StartTime, EndTime, Image, Street, City, Zip, State, Country
             FROM Event
             WHERE EventId = ?
-            ;";
+        ;";
 
         $stmt = $conn->prepare($eventOrganizerQuery);
 
-        // Get Organizer details
         $stmt->bind_param("i", $EventId);
         $stmt->execute();
         $stmt->store_result();
@@ -232,20 +221,17 @@
         param: Member EMail, pw md5
         return: If Member details are correct, return member details. Else return -1
     */
-    function getMemberDetails($memberEMail, $pwMD5, $conn) {
+    function getMemberDetails($memberEMail, $pwMD5) {
 
-        if(is_null ($conn)) {
-            $conn = createDBConnection();
-            $flag = true;
-        }
-
+        $conn = createDBConnection();
+        
         // Query to get the Organizer of an Event
         $memberQuery = "
-            SELECT MemberId, FirstName, LastName, EMail, Phone, Bio, FacebookUrl, TwitterUrl, Password, Street, City, Zip, State, Country
+            SELECT MemberId, FirstName, LastName, EMail, Phone, Street, City, Zip, State, Country
             FROM Member
             WHERE EMail = ?
-            AND Password = ?;
-        ";
+            AND Password = ?
+        ;";
 
         $stmt = $conn->prepare($memberQuery);
         $stmt->bind_param("ss", $memberEMail, $pwMD5);
@@ -253,7 +239,7 @@
         $stmt->store_result();
         $stmt->bind_result($MemberId, $FirstName, $LastName, $EMail, $Phone, $Street, $City, $Zip, $State, $Country);
 
-
+        
         if($stmt->num_rows == 1) {
             while($stmt->fetch()) {
                 $member = Member::MemberHome($MemberId, $FirstName, $LastName, $EMail, $Phone, $Street, $City, $Zip, $State, $Country);
@@ -264,12 +250,75 @@
         }
 
         $stmt->close();
-        if($flag) {
-            mysqli_close($conn);
-        }
-
+        mysqli_close($conn);
+        
+        //return 1;
         return $member;
 
     }
+
+
+    /*
+        param: Member's EMail
+        return: Array of Events
+
+        This function will return all the events which belong to the member
+    */
+    function getMemberRegisteredEventsByMemberEMail($memberEMail) {
+        if(empty($memberEMail) || !isset($memberEMail) || is_null($memberEMail)) {
+            return -1;
+        }
+        
+        $conn = createDBConnection();
+
+        
+        // Query to get Events associated with the selected Interest
+        $query = "
+            SELECT EventId, OrganizerId, Title, Description, Days, StartDate, EndDate, StartTime, EndTime, Image, Street, City, Zip, State, Country
+            FROM Event
+            WHERE EventId IN
+            (
+                SELECT EventId
+                FROM RegisteredEvents
+                WHERE MemberId = 
+                (
+                    SELECT MemberId
+                    FROM Member
+                    WHERE EMail = ?
+                )
+            );
+        ";
+
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("s", $memberEMail);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($EventId, $OrganizerId, $Title, $Description, $Days, $StartDate, $EndDate, $StartTime, $EndTime, $Image, $Street, $City, $Zip, $State, $Country);
+
+
+        $eventsArray = array();
+        
+        if($stmt->num_rows > 0) {
+
+            while($stmt->fetch()) {
+
+                $event = new Event($EventId, $OrganizerId, $Title, $Description, $Days, $StartDate, $EndDate, $StartTime, $EndTime, $Image, $Street, $City, $Zip, $State, $Country);
+                
+                $event->Organizer = getOrganizer($OrganizerId, $conn);
+
+                array_push($eventsArray, $event);
+
+            }
+
+        }
+        
+        
+        $stmt->close();
+        mysqli_close($conn);
+        
+        return $eventsArray;
+
+    }
+
 
 ?>
