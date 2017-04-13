@@ -20,7 +20,7 @@
 						<?php if(empty($events)) { ?>
 								<h4>You have no Registered Events. Start now!</h4>
 						<?php } else { ?>
-								<h4>Your Registered Events:</h4>
+								<h4>Your Upcoming Events:</h4>
 								<div class="row">
 									<?php foreach ($events as $event) { ?>
 									
@@ -30,8 +30,11 @@
 												<figcaption>
 													<h3><?php echo $event->Title; ?></h3>
 													<p><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;April 25,2017</p>
-													<p><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;4:00 - 5:00 PM</p>
-													<a href='http://lmbproductions.in' target='_blank'>View more</a> <span class='icon'> </span> 
+													<p><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;<?php echo $event->StartTime . ' - ' . $event->EndTime; ?></p>
+
+													<a href="event.php?eventid=<?php echo $event->EventId; ?>">View more</a>
+													
+													<span class='icon'> </span> 
 												</figcaption>
 											</figure>
 										</div>
@@ -53,8 +56,10 @@
 			<div class="row">
 				<img src="images/calendar.jpg"/>
 			</div>
+			<br>
+
 			<div class="row">
-				<h4>Upcoming Events</h4>
+				<h4>Events you might like</h4>
 				<div class="row">
 					<ul type="none">
 						<li>

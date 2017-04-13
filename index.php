@@ -1,53 +1,52 @@
 <?php
-
     include 'Constants.php';
     include 'header.php';
+?>
 
+    <section id='slider'>
+        <div id='myCarousel' class='carousel slide' data-interval='2000' data-ride='carousel'>
 
-    echo "<section id='slider'>
-            <div id='myCarousel' class='carousel slide' data-interval='2000' data-ride='carousel'>
+            <!-- Carousel indicators -->
+            <ol class='carousel-indicators'>
+                <li data-target='#myCarousel' data-slide-to='0' class='active'></li>
+                <li data-target='#myCarousel' data-slide-to='1'></li>
+                <li data-target='#myCarousel' data-slide-to='2'></li>
+            </ol>  
 
-                <!-- Carousel indicators -->
-                <ol class='carousel-indicators'>
-                    <li data-target='#myCarousel' data-slide-to='0' class='active'></li>
-                    <li data-target='#myCarousel' data-slide-to='1'></li>
-                    <li data-target='#myCarousel' data-slide-to='2'></li>
-                </ol>  
-
-                <!-- Wrapper for carousel items -->
-                <div class='carousel-inner'>
-                    <div class='active item'>
-                        <img class = 'fill' src='images/600.jpg' alt='First Slide'>
-                        <div class='carousel-caption'>
-                          <h3>First slide label</h3>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                    </div>
-                    <div class='item'>
-                        <img src='images/600.jpg' alt='Second Slide'>
-                        <div class='carousel-caption'>
-                          <h3>Second slide label</h3>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                          <a href='http://bootstrapthemes.co/' target='_blank'  class='btn btn-primary' data-animation='animated fadeInDown'>Sign up</a>
-                        </div>
-                    </div>
-                    <div class='item'>
-                        <img src='images/600.jpg' alt='Third Slide'>
-                        <div class='carousel-caption'>
-                          <h3>Third slide label</h3>
-                          <a href='http://bootstrapthemes.co/' target='_blank'  class='btn btn-primary' data-animation='animated fadeInDown'>select two</a>
-                        </div>
+            <!-- Wrapper for carousel items -->
+            <div class='carousel-inner'>
+                <div class='active item'>
+                    <img class = 'fill' src='images/600.jpg' alt='First Slide'>
+                    <div class='carousel-caption'>
+                      <h3>First slide label</h3>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     </div>
                 </div>
-
-                <!-- Carousel controls -->
-                <a class='carousel-control left' href='#myCarousel' data-slide='prev'>
-                    <span class='glyphicon glyphicon-chevron-left'></span>
-                </a>
-                <a class='carousel-control right' href='#myCarousel' data-slide='next'>
-                    <span class='glyphicon glyphicon-chevron-right'></span>
-                </a>
+                <div class='item'>
+                    <img src='images/600.jpg' alt='Second Slide'>
+                    <div class='carousel-caption'>
+                      <h3>Second slide label</h3>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      <a href='http://bootstrapthemes.co/' target='_blank'  class='btn btn-primary' data-animation='animated fadeInDown'>Sign up</a>
+                    </div>
+                </div>
+                <div class='item'>
+                    <img src='images/600.jpg' alt='Third Slide'>
+                    <div class='carousel-caption'>
+                      <h3>Third slide label</h3>
+                      <a href='http://bootstrapthemes.co/' target='_blank'  class='btn btn-primary' data-animation='animated fadeInDown'>select two</a>
+                    </div>
+                </div>
             </div>
+
+            <!-- Carousel controls -->
+            <a class='carousel-control left' href='#myCarousel' data-slide='prev'>
+                <span class='glyphicon glyphicon-chevron-left'></span>
+            </a>
+            <a class='carousel-control right' href='#myCarousel' data-slide='next'>
+                <span class='glyphicon glyphicon-chevron-right'></span>
+            </a>
+        </div>
     </section>
     
 
@@ -60,61 +59,63 @@
             <div class='clearfix'>&nbsp;</div>
             <div class='row'> <h2 class='text-center'> What is on your mind? </h2>
             </div>
-            <div class='clearfix'>&nbsp;</div>";
+            <div class='clearfix'>&nbsp;</div>
     
-           
-            // Create connection
-            $conn = mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
-        
-            // Check connection
-            if (!$conn) {
-              die("Connection failed: " . mysqli_connect_error());
-            }
+            <?php
+                // Create connection
+                $conn = mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
             
-            $getAllInterestsQuery = "SELECT InterestId, Name, Description FROM Interest;";
-            $stmt = $conn->prepare($getAllInterestsQuery);
-            $stmt->execute();
-            $stmt->store_result();
-            $stmt->bind_result($InterestId, $Name, $Description);
-
-            if($stmt->num_rows > 0) {
-        
-                $rowEleCount = 1;
-                echo "<div class='row'>";
-                
-                while($stmt->fetch()) {
-        
-                    if($rowEleCount > MAX_ROW_SIZE) {
-                        $rowEleCount = 1;
-                        // start a new row
-                        echo "</div>
-                        <div class='row'>";
-                    }
-        
-                    $rowEleCount = $rowEleCount + 1;
-        
-                    echo "<div class='col-md-4 col-sm-10 col-xs-11 wow bounceIn' id=".$InterestId.">
-                        <figure class='effect'>
-                            <img alt='LMB Productions' src='images/bat.jpg' />
-                            <figcaption>
-                                <h3>".$Name."</h3>
-                                <p>".$Description."</p>
-                                <a href='search.php?interest=".$InterestId."' target='_self'>View more</a> <span class='icon'> </span> 
-                            </figcaption>
-                        </figure>
-						<h3 class='text-center'>".$Name."</h3>
-                    </div>";
+                // Check connection
+                if (!$conn) {
+                  die("Connection failed: " . mysqli_connect_error());
                 }
-        
-                echo "</div>"; //end last row
-            } else {
-                echo "0 results";
-            }
+                
+                $getAllInterestsQuery = "SELECT InterestId, Name, Description FROM Interest;";
+                $stmt = $conn->prepare($getAllInterestsQuery);
+                $stmt->execute();
+                $stmt->store_result();
+                $stmt->bind_result($InterestId, $Name, $Description);
 
-            mysqli_close($conn);
+                if($stmt->num_rows > 0) {
+            
+                    $rowEleCount = 1;
+                    echo "<div class='row'>";
+                    
+                    while($stmt->fetch()) {
+            
+                        if($rowEleCount > MAX_ROW_SIZE) {
+                            $rowEleCount = 1;
+                            // start a new row
+                            echo "</div>
+                            <div class='row'>";
+                        }
+            
+                        $rowEleCount = $rowEleCount + 1;
+            
+                        echo "<div class='col-md-4 col-sm-10 col-xs-11 wow bounceIn' id=".$InterestId.">
+                            <figure class='effect'>
+                                <img alt='LMB Productions' src='images/bat.jpg' />
+                                <figcaption>
+                                    <h3>".$Name."</h3>
+                                    <p>".$Description."</p>
+                                    <a href='search.php?interest=".$InterestId."' target='_self'>View more</a> 
+                                    <span class='icon'> </span> 
+                                </figcaption>
+                            </figure>
+    						<h3 class='text-center'>".$Name."</h3>
+                        </div>";
+                    }
+            
+                    echo "</div>"; //end last row
+                } else {
+                    echo "0 results";
+                }
+
+                mysqli_close($conn);
+            ?>
     
     
-        echo "</div>
+        </div>
     </section>
     
     
@@ -180,9 +181,8 @@
                 </div>
             </div>
         </div>      
-    </section>";
+    </section>
   
-
-include 'footer.php';
-    
+<?php
+    include 'footer.php';
 ?>
