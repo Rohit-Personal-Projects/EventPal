@@ -5,9 +5,21 @@
 
     
     <section id='slider'>
+
+        <?php
+            $sliderImages = array(
+                // Label, Description, ImagePath
+                array('Cat slide label', 'Cat slide Description', 'Images/Slider/Cat.jpg'),
+                array('Minions slide label', 'Minions slide Description', 'Images/Slider/Minions.jpg'),
+                array('Bat slide label', 'Bat slide Description', 'Images/Slider/Bat.jpg')
+            );
+
+        ?>
+
         <div id='myCarousel' class='carousel slide' data-interval='2000' data-ride='carousel'>
 
             <!-- Carousel indicators -->
+            <!-- To-do: make this dynamic -->
             <ol class='carousel-indicators'>
                 <li data-target='#myCarousel' data-slide-to='0' class='active'></li>
                 <li data-target='#myCarousel' data-slide-to='1'></li>
@@ -16,28 +28,20 @@
 
             <!-- Wrapper for carousel items -->
             <div class='carousel-inner'>
-                <div class='active item'>
-                    <img class = 'fill' src='images/600.jpg' alt='First Slide'>
-                    <div class='carousel-caption'>
-                      <h3>First slide label</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </div>
-                <div class='item'>
-                    <img src='images/600.jpg' alt='Second Slide'>
-                    <div class='carousel-caption'>
-                      <h3>Second slide label</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                      <a href='http://bootstrapthemes.co/' target='_blank'  class='btn btn-primary' data-animation='animated fadeInDown'>Sign up</a>
-                    </div>
-                </div>
-                <div class='item'>
-                    <img src='images/600.jpg' alt='Third Slide'>
-                    <div class='carousel-caption'>
-                      <h3>Third slide label</h3>
-                      <a href='http://bootstrapthemes.co/' target='_blank'  class='btn btn-primary' data-animation='animated fadeInDown'>select two</a>
-                    </div>
-                </div>
+
+                <?php   $first = True; ?>
+
+                <?php   foreach ($sliderImages as $imageDetails) { ?>
+                            <div class='item<?php if($first) { echo ' active';} ?>'>
+                                <img <?php if($first) { $first = False; echo ' class = "fill" ';} ?> src='<?php echo $imageDetails[2] ?>' alt='Second Slide'>
+                                <div class='carousel-caption'>
+                                  <h3><?php echo $imageDetails[0] ?></h3>
+                                  <p><?php echo $imageDetails[1] ?></p>
+                                  <a href='register.php' class='btn btn-primary' data-animation='animated fadeInDown'>Sign up</a>
+                                </div>
+                            </div>
+                <?php   } ?>
+                
             </div>
 
             <!-- Carousel controls -->
@@ -47,6 +51,7 @@
             <a class='carousel-control right' href='#myCarousel' data-slide='next'>
                 <span class='glyphicon glyphicon-chevron-right'></span>
             </a>
+            
         </div>
     </section>
     

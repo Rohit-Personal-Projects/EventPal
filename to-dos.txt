@@ -39,6 +39,8 @@ HTML/CSS Tasks:
 JS Tasks:
 	form validations for pages ...
 
+	fit sizes of images on homepage slider
+
 
 
 Professor Requirements:
