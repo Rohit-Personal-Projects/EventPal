@@ -28,36 +28,19 @@
                 </select>
                 <br/><label>Your Interests</label>
                 
-                <?php
-                    // Create connection
-                    $conn = mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
-                                            
-                    // Check connection
-                    if (!$conn) {
-                      die("Connection failed: " . mysqli_connect_error());
-                    }
+                
 
-                    $getAllInterestsQuery = "SELECT InterestId, Name, Description FROM Interest;";
-                    $stmt = $conn->prepare($getAllInterestsQuery);
-                    $stmt->execute();
-                    $stmt->store_result();
-                    $stmt->bind_result($InterestId, $Name, $Description);
+                <?php   $interests = getAllInterestsFromDB(); ?>
 
-                    if($stmt->num_rows > 0) {
-                        echo "<ul type = 'None' id ='searchbar'>";
-                        while($stmt->fetch()) {
-                            echo "
-                                <li> <input type='checkbox' name='interests[]' value='".$InterestId."'>".$Name."</li>
-                            ";
-                        }
-                        echo"</ul>";
-                    }
+                        <ul type = 'None' id ='searchbar'>
+                <?php   foreach ($interests as $interest) { ?>
+                            <li>
+                                <input type='checkbox' name='interests[]' value='<?php echo $interest->InterestId; ?>'>
+                                <?php echo $interest->Name; ?>
+                            </li>
+                <?php   } ?>
+                        </ul>
 
-                    mysqli_close($conn);
-
-                ?>
-
-                <br><br>
                 <button type="button" onclick="applyFilter(\'InterestFilter\', \'interest\')">
                     Update
                 </button>
@@ -80,13 +63,16 @@
                     }
 
                     foreach($eventsArray as $event) {
+                        if(empty($event->Image)) {
+                            $event->Image = 'Images/Default.jpg';
+                        }
                         echo '
                             <div class="col-md-4 col-sm-10 col-xs-11 wow bounceIn">
                                 <figure class="effect">
-                                    <img alt="LMB Productions" src="images/bat.jpg" /> 
+                                    <img alt="Event" src="'.$event->Image.'" />
                                     <figcaption>
                                         <h3>'.$event->Title.'</h3>
-                                        <a href="http://lmbproductions.in" target="_blank">View more</a> <span class="icon"> </span> 
+                                        <a href="event.php?eventid='.$event->EventId.'">View more</a> <span class="icon"> </span> 
                                     </figcaption>
                                 </figure>
                             </div>
