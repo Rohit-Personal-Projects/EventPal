@@ -1,9 +1,10 @@
 <?php
 
-    include 'Models/Event.php';
-    include 'Models/Location.php';
-    include 'Models/Member.php';
-    include 'Constants.php';
+    require 'Models/Event.php';
+    require 'Models/Location.php';
+    require 'Models/Member.php';
+    require 'Models/Interest.php';
+    require 'Constants.php';
 
     function testDBUtil() {
         return "test testDBUtil success";
@@ -20,6 +21,48 @@
     }
 
     
+    /*
+        param: None
+        return: Array of Interests
+
+        This function will return all the interests from the database
+    */
+    function getAllInterestsFromDB() {
+
+        $conn = createDBConnection();
+        
+
+        // Query to get Events associated with the selected Interest
+        $query = "
+                SELECT InterestId, Name, Description, ImagePath
+                FROM Interest;
+            ";
+
+        $stmt = $conn->prepare($query);
+        //$stmt->bind_param("i", $interestId);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($InterestId, $Name, $Description, $ImagePath);
+
+
+        $interestsArray = array();
+            
+        if($stmt->num_rows > 0) {
+            while($stmt->fetch()) {
+                $interest = new Interest($InterestId, $Name, $Description, $ImagePath);
+                array_push($interestsArray, $interest);
+            }
+        } 
+        
+        
+        $stmt->close();
+        mysqli_close($conn);
+        
+        return $interestsArray;
+
+    }
+
+
     /*
         param: InterestId
         return: Array of Events
