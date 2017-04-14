@@ -4,6 +4,8 @@
     include 'Utils/DatabaseUtil.php';
 ?>
 
+<script src='js/search.js'></script>
+
 <div class="clearfix">&nbsp;</div>
 <section id = "categories">
     <div class="col-md-4"></div>
@@ -29,19 +31,18 @@
                 <br/><label>Your Interests</label>
                 
                 
-
                 <?php   $interests = getAllInterestsFromDB(); ?>
 
                         <ul type = 'None' id ='searchbar'>
                 <?php   foreach ($interests as $interest) { ?>
                             <li>
-                                <input type='checkbox' name='interests[]' value='<?php echo $interest->InterestId; ?>'>
+                                <input type='checkbox' name='allInterests' value='<?php echo $interest->InterestId; ?>'>
                                 <?php echo $interest->Name; ?>
                             </li>
                 <?php   } ?>
                         </ul>
 
-                <button type="button" onclick="applyFilter(\'InterestFilter\', \'interest\')">
+                <button type="button" onclick="applyFilter('allInterests', 'interest')">
                     Update
                 </button>
 

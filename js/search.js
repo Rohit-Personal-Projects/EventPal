@@ -1,5 +1,27 @@
 function applyFilter(elementId, filterType) {
+	var checkboxes = document.getElementsByName(elementId);
+	
+	if(checkboxes.length == 0) {
+		alert("Please select at least one value");
+	}
+	else {
+		
+		var values = "";
+		for(var resInd = 0; resInd < checkboxes.length; resInd++) {
+			if (checkboxes[resInd].checked) {
+				values += checkboxes[resInd].value + ",";
+			}
+		}
+		values = values.slice(0, -1);
+		
+		window.location.href = updateURLParameter(window.location.href, filterType, values);
+		
+	}
 
+}
+
+
+function applyFilter2(elementId, filterType) {
 	var resultSet = document.getElementById(elementId + "_chosen").getElementsByClassName("result-selected");
 	console.log(resultSet.length);
 	if(resultSet.length == 0) {
