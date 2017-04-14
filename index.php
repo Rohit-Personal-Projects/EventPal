@@ -1,8 +1,9 @@
 <?php
-    include 'Constants.php';
     include 'header.php';
+    require 'Utils/DatabaseUtil.php';
 ?>
 
+    
     <section id='slider'>
         <div id='myCarousel' class='carousel slide' data-interval='2000' data-ride='carousel'>
 
@@ -62,27 +63,17 @@
             <div class='clearfix'>&nbsp;</div>
     
             <?php
-                // Create connection
-                $conn = mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
-            
-                // Check connection
-                if (!$conn) {
-                  die("Connection failed: " . mysqli_connect_error());
-                }
-                
-                $getAllInterestsQuery = "SELECT InterestId, Name, Description FROM Interest;";
-                $stmt = $conn->prepare($getAllInterestsQuery);
-                $stmt->execute();
-                $stmt->store_result();
-                $stmt->bind_result($InterestId, $Name, $Description);
 
-                if($stmt->num_rows > 0) {
-            
+                $interests = getAllInterestsFromDB();
+
+                if(empty($interests)) {
+                    echo "Problem fetching interests. PLease try later<br><br>";
+                }
+                else {
                     $rowEleCount = 1;
                     echo "<div class='row'>";
                     
-                    while($stmt->fetch()) {
-            
+                    foreach ($interests as $interest) {
                         if($rowEleCount > MAX_ROW_SIZE) {
                             $rowEleCount = 1;
                             // start a new row
@@ -91,27 +82,32 @@
                         }
             
                         $rowEleCount = $rowEleCount + 1;
+
+                        if(empty($interest->ImagePath)) {
+                            $interest->ImagePath = "Images/Default.jpg";
+                        }
             
-                        echo "<div class='col-md-4 col-sm-10 col-xs-11 wow bounceIn' id=".$InterestId.">
-                            <figure class='effect'>
-                                <img alt='LMB Productions' src='images/bat.jpg' />
-                                <figcaption>
-                                    <h3>".$Name."</h3>
-                                    <p>".$Description."</p>
-                                    <a href='search.php?interest=".$InterestId."' target='_self'>View more</a> 
-                                    <span class='icon'> </span> 
-                                </figcaption>
-                            </figure>
-    						<h3 class='text-center'>".$Name."</h3>
-                        </div>";
+                        ?>
+
+                            <div class='col-md-4 col-sm-10 col-xs-11 wow bounceIn' id=<?php echo $interest->InterestId; ?> >
+                                <figure class='effect'>
+                                    <img alt='LMB Productions' src='<?php echo $interest->ImagePath; ?>' />
+                                    <figcaption>
+                                        <h3><?php echo $interest->Name; ?></h3>
+                                        <p><?php echo $interest->Description; ?></p>
+                                        <a href="search.php?interest=<?php echo $interest->InterestId; ?>">View more</a>
+                                        <span class='icon'> </span> 
+                                    </figcaption>
+                                </figure>
+                                <h3 class='text-center'><?php echo $interest->Name; ?></h3>
+                            </div>
+
+                        <?php
                     }
             
                     echo "</div>"; //end last row
-                } else {
-                    echo "0 results";
                 }
 
-                mysqli_close($conn);
             ?>
     
     
