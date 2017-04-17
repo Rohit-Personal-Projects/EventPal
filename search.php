@@ -63,21 +63,26 @@
                         }
                     }
 
-                    foreach($eventsArray as $event) {
-                        if(empty($event->Image)) {
-                            $event->Image = 'Images/Default.jpg';
+                    if(empty($eventsArray)) {
+                        echo '<div><h4>There are currently no events listed under the interest(s) you have selected. Please select other interests.</h4></div>';
+                    }
+                    else {
+                        foreach($eventsArray as $event) {
+                            if(empty($event->Image)) {
+                                $event->Image = 'Images/Default.jpg';
+                            }
+                            echo '
+                                <div class="col-md-4 col-sm-10 col-xs-11 wow bounceIn">
+                                    <figure class="effect">
+                                        <img alt="Event" src="'.$event->Image.'" />
+                                        <figcaption>
+                                            <h3>'.$event->Title.'</h3>
+                                            <a href="event.php?eventid='.$event->EventId.'">View more</a> <span class="icon"> </span> 
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            ';
                         }
-                        echo '
-                            <div class="col-md-4 col-sm-10 col-xs-11 wow bounceIn">
-                                <figure class="effect">
-                                    <img alt="Event" src="'.$event->Image.'" />
-                                    <figcaption>
-                                        <h3>'.$event->Title.'</h3>
-                                        <a href="event.php?eventid='.$event->EventId.'">View more</a> <span class="icon"> </span> 
-                                    </figcaption>
-                                </figure>
-                            </div>
-                        ';
                     }
                 ?>
 
