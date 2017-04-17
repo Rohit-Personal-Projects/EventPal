@@ -1,10 +1,10 @@
 <?php
 
-    require 'Models/Event.php';
-    require 'Models/Location.php';
-    require 'Models/Member.php';
-    require 'Models/Interest.php';
-    require 'Constants.php';
+    require_once 'Models/Event.php';
+    require_once 'Models/Location.php';
+    require_once 'Models/Member.php';
+    require_once 'Models/Interest.php';
+    require_once 'Constants.php';
 
     function testDBUtil() {
         return "test testDBUtil success";
@@ -21,6 +21,12 @@
     }
 
     
+
+    /************************************************************
+                            SELECT QUERIES
+    ************************************************************/
+
+
     /*
         param: None
         return: Array of Interests
@@ -123,7 +129,7 @@
 
         This function will return all the info about the organizer with OrganizerId passed as a parameter
     */
-    function getOrganizer($OrganizerId, $conn) {
+    function getOrganizer($OrganizerId, $conn=null) {
 
         if(is_null ($conn)) {
             $conn = createDBConnection();
@@ -166,7 +172,7 @@
 
         This function will return all the info about the Event with EventId passed as a parameter
     */
-    function getEvent($EventId, $conn) {
+    function getEvent($EventId, $conn=null) {
 
         if(is_null ($conn)) {
             $conn = createDBConnection();
@@ -210,7 +216,7 @@
 
         This function will return a list of all the members who have joined the event with EventId passed as a parameter
     */
-    function getMembers($EventId, $conn) {
+    function getMembers($EventId, $conn=null) {
 
         if(is_null ($conn)) {
             $conn = createDBConnection();
@@ -360,6 +366,86 @@
         mysqli_close($conn);
         
         return $eventsArray;
+
+    }
+
+
+    /*
+        param: Member Id, Event Id
+        return: If Member has registered to this event, return true else return false
+    */
+    function hasMemberRegisteredToEvent($memberId, $eventId) {
+        $memberId = (int) $memberId;
+        $eventId = (int) $eventId;
+        
+        $conn = createDBConnection();
+        
+        // Query to get the Organizer of an Event
+        $query = "
+            SELECT *
+            FROM RegisteredEvents
+            WHERE MemberId = ?
+            AND EventId = ?;
+        ;";
+
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("ii", $memberId, $eventId);
+        $stmt->execute();
+        $stmt->store_result();
+        
+        
+        if($stmt->num_rows == 0) {
+            $res = False;
+        }
+        else {
+            $res = True;
+        }
+
+        $stmt->close();
+        mysqli_close($conn);
+        
+        return $res;
+
+    }
+
+
+
+    /************************************************************
+                            INSERT QUERIES
+    ************************************************************/
+
+
+    /*
+        param: Member id, Event Id
+        return: Whether or not the insertion was successful
+
+        Insert member-event mapping to the RegisteredEvents table
+    */
+    function eventRegister($memberId, $eventId) {
+        $memberId = (int) $memberId;
+        $eventId = (int) $eventId;
+        
+        $conn = createDBConnection();
+        
+        $query = "
+            INSERT INTO RegisteredEvents (MemberId, EventId)
+            VALUES (?, ?);
+        ;";
+
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("ii", $memberId, $eventId);
+        $stmt->execute();
+        $stmt->store_result();
+        
+        $res = False;
+        if($stmt->affected_rows == 1) {
+            $res = True;
+        }
+        
+        $stmt->close();
+        mysqli_close($conn);
+        
+        return $res;
 
     }
 
