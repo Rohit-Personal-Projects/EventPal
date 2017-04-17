@@ -35,11 +35,11 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Search</a></li>
-            <li><a href="#about">Create Event</a></li>
+            <li><a href="search.php">Search</a></li>
+            <li><a href="create_event.php">Create Event</a></li>
             <li><a href="">My Settings</a></li>
             <li><a href="">My Events</a></li>            
-			<li><a href="">Logout</a></li>
+	    <li><a href="">Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
