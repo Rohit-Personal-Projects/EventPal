@@ -89,7 +89,7 @@
                         $rowEleCount = $rowEleCount + 1;
 
                         if(empty($interest->ImagePath)) {
-                            $interest->ImagePath = "Images/Default.jpg";
+                            $interest->ImagePath = "Images/Default.png";
                         }
             
                         ?>
