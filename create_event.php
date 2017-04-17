@@ -50,12 +50,9 @@ if (!$conn) {
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Search</a></li>
-            <li><a href="#about">Create Event</a></li>
-            <li><a href="#about">Create Event</a></li>
-            <li><a href="#about">Login</a></li>
-			
-            <li><a href="#about">Sign up</a></li>            
+            <li><a href="search.php">Search</a></li>
+            <li><a href="create_event.php">Create Event</a></li>
+            <li><a href="register.php">Login/Signup</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
