@@ -11,7 +11,7 @@
                 // Label, Description, ImagePath
                 array('Cat slide label', 'Cat slide Description', 'Images/Slider/Cat.jpg'),
                 array('Minions slide label', 'Minions slide Description', 'Images/Slider/Minions.jpg'),
-                array('Bat slide label', 'Bat slide Description', 'Images/Slider/Bat.jpg')
+                array('Bat slide label', 'Bat slide Description', 'Images/Slider/bat.jpg')
             );
 
         ?>
