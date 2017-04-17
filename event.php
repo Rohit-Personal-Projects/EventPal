@@ -22,6 +22,17 @@
 		</div>
 
 		<div class="row">
+			<?php
+				if(empty($event->Image)) {
+                    $event->Image = 'Images/Default.png';
+                }
+			?>
+
+			<img alt="Event Image" src=" <?php echo $event->Image; ?>" />
+		</div>
+		<!-- /end row-->
+
+		<div class="row">
 			<ul type='None' class="list-inline">
 				<li>
 					<h4><?php echo $event->Address->City . ', ' . $event->Address->State; ?></h4>
