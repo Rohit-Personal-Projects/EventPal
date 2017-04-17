@@ -490,7 +490,7 @@ if (!$conn) {
                <li><a href="https://www.linkedin.com" target="_blank"><i class="fa fa-linkedin"></i></a></li>
                <li><a href="https://twitter.com" target="_blank"><i class="fa fa-twitter"></i></a></li>
                <li><a href="https://instagram.com" target="_blank"><i class="fa fa-instagram"></i></a></li>
-               <li><a href="http://snapchat.com" target="_blank"><i class="fa fa-snapchat"></i></a></li>               
+               <li><a href="http://snapchat.com" target="_blank"><i class="fa fa-snapchat-ghost"></i></a></li>               
             </ul>
 </div>
 </div>
