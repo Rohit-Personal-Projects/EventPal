@@ -101,7 +101,7 @@
                                         <h3><?php echo $interest->Name; ?></h3>
                                         <p><?php echo $interest->Description; ?></p>
                                         <a href="search.php?interest=<?php echo $interest->InterestId; ?>">View more</a>
-                                        <span class='icon'> </span> 
+										<span class="icon"> </span>
                                     </figcaption>
                                 </figure>
                                 <h3 class='text-center'><?php echo $interest->Name; ?></h3>
