@@ -76,9 +76,8 @@ require 'login_handler.php';
 	?>
 
 	<div class="wrapper">
-
 		<div class="login_box">
-
+			
 			<br>
 			<div id="first">
 
