@@ -16,7 +16,7 @@
 			array_push($error_array, "Email or password was incorrect<br>");
 		}
 		else {	
-			//$_SESSION['MemberId'] = $member->MemberId;
+			$_SESSION['MemberId'] = $member->MemberId;
 			$_SESSION['EMail'] = $member->EMail;
 			$_SESSION['FirstName'] = $member->FirstName;
 			$_SESSION['LastName'] = $member->LastName;

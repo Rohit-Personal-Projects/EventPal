@@ -1,11 +1,16 @@
 <?php
 	
-	include 'Constants.php';
-	include 'header.php';
-	include 'Utils/DatabaseUtil.php';
-	include 'Utils/Helpers.php';
-
+	session_start();
+	require_once 'Constants.php';
+	require_once 'header.php';
+	require_once 'Utils/DatabaseUtil.php';
+	require_once 'Utils/Helpers.php';
+	
 ?>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/event.js"></script>
+
 
 <div class="clearfix">&nbsp;</div>
 <div class="clearfix">&nbsp;</div>
@@ -45,7 +50,37 @@
 						</li>
 
 						<li class="pull-right">
-							<button class="btn btn-primary" type="submit" name="submit">Go for it!</button>
+							<?php
+								if(isset($_SESSION['MemberId'])) {
+									$funcCallString = "eventRegister('".$_SESSION['MemberId']."', ".$event->EventId.")";
+								}
+								else {
+									$funcCallString = "location.href='register.php'";
+								}
+							?>
+							
+							<button
+								class="btn btn-primary" 
+								id="eventRegisterBtn" 
+								type="submit"
+								name="insertEventRegister"
+								onclick="<?php echo $funcCallString; ?>"
+							>
+								Go for it!
+							</button>
+
+							<div id="eventRegisterBtnSuccess" style="display: none;">
+								<p>You have registered to this event. Yayy! Lookin forward to see you there</p>
+							</div>
+							<div id="eventRegisterBtnFailure" style="display: none;">
+								<p>Could not register. Please try again :(</p>
+							</div>
+
+							<?php if(hasMemberRegisteredToEvent($_SESSION['MemberId'], $event->EventId)) { ?>
+								<script type="text/javascript">
+								    initEventRegisterDisplays();
+								</script>
+							<?php } ?>
 						</li>
 					</ul>
 				</div>
