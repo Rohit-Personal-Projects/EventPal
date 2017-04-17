@@ -5,9 +5,9 @@
             <ul class="social">
                <li><a href="https://facebook.com/vipmunot" target="_blank"><i class="fa fa-facebook"></i></a></li>
                <li><a href="https://www.linkedin.com/in/vipmunot" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-               <li><a href="https://github.com/vipmunot" target="_blank"><i class="fa fa-github"></i></a></li>
-               <li><a href="skype:vipmunot?call" target="_blank"><i class="fa fa-skype"></i></a></li>
-               <li><a href="http://www.slideshare.net/vipmunot" target="_blank"><i class="fa fa-slideshare"></i></a></li>               
+               <li><a href="https://github.com/vipmunot" target="_blank"><i class="fa fa-twitter"></i></a></li>
+               <li><a href="skype:vipmunot?call" target="_blank"><i class="fa fa-instagram"></i></a></li>
+               <li><a href="http://www.slideshare.net/vipmunot" target="_blank"><i class="fa fa-snapchat"></i></a></li>               
             </ul>
 </div>
 </div>
