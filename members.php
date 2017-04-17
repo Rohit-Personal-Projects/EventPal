@@ -26,7 +26,12 @@
 									
 										<div class='col-md-4 col-sm-10 col-xs-11 wow bounceIn'>
 											<figure class='effect'>
-												<img alt='LMB Productions' src='images/bat.jpg' /> 
+												<?php
+													if(empty($event->Image)) {
+					                                	$event->Image = 'Images/Default.jpg';
+						                            }
+												?>
+												<img alt='Event Image' src='<?php echo $event->Image; ?>' /> 
 												<figcaption>
 													<h3><?php echo $event->Title; ?></h3>
 													<p><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;April 25,2017</p>
@@ -54,7 +59,7 @@
 
 		<div class ="col-xs-6 col-lg-4">
 			<div class="row">
-				<img src="images/calendar.jpg"/>
+				<img src="Images/Calendar.jpg"/>
 			</div>
 			<br>
 
