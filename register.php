@@ -1,8 +1,8 @@
 <?php  
 session_start();
 require 'Utils/Helpers.php';
-require 'register_handler.php';
-require 'login_handler.php';
+require 'Utils/register_handler.php';
+require 'Utils/login_handler.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
