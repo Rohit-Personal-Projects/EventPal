@@ -1,5 +1,7 @@
 <?php 
-session_start();
-session_destroy();
-header("register.php");
+
+	session_start();
+	session_destroy();
+	header("Location: register.php");
+
  ?>
