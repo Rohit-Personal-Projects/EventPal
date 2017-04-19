@@ -5,7 +5,7 @@
 	require 'member_header.php';
 	require_once 'Utils/DatabaseUtil.php';
 	require_once 'Utils/Helpers.php';
-	
+	require 'Utils/settings_handler.php';
 ?>
 	<link href="css/register_style.css" rel="stylesheet" /><!-- Fonts -->
 <section id ="settings">
@@ -67,49 +67,18 @@ if($member == -1) {
 					} 
 					?>" >
 					<br>
-
-					<input type="text" name="city" placeholder="City">
+					<input type="text" name="fburl" placeholder="Add your Facebook Username" value="<?php 
+					if(isset($member->FacebookUrl)) {
+						echo $member->FacebookUrl;
+					} 
+					?>">
 					<br>
 
-					<input type="text" name="state" placeholder="State">
-					<br>	
-					<select id="country" name="country" class="dropdown" required >
-                            <option value ="" selected>Country*</option>
-                                <?php
-                                    $countries = getCountriesList();
-                                    if(isset($_POST['country']))
-                                        echo $countries[$_POST['country']];
-                                    else
-                                        echo "(Please select a country)";
-                                ?>
-                            </option>
-                            <?php
-                                foreach($countries as $key => $value) {
-                                    echo '<option value='.$key.'>'.$value.'</option>';
-                                }
-                            ?>
-                    </select>
 
-					<?php 
-                        if(in_array("Please select your country<br>", $error_array)) 
-                            echo "Please select your country<br>"; 
-                    ?>
-					<br/>						
-					<input type="text" name="zip" placeholder="Zip Code*" required>
-					<?php 
-                        if(in_array("Please enter your Zip Code<br>", $error_array)) 
-                            echo "Please enter your Zip Code<br>"; 
-                    ?>
-					<br>
-					<input type="submit" name="register_button" value="Update Details">
-					<br>
+			<?php echo $message; ?>					
 
+		<input type="submit" name="update_details" id="save_details" value="Update Details" class="info settings_submit"><br>
 					
-					 
-					<?php 
-                        if(in_array("<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>", $error_array)) 
-                            echo "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>";
-                    ?>
 
 
 				</form>	
