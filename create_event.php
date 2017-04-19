@@ -472,7 +472,7 @@ if (!$conn) {
                 <div class="form-group">
                   
                   <div class="col-md-9">
-                             <button class="btn btn-large btn-primary contact-submit pull-right" type="submit" name="submit">Create Event!</button>
+                             <button class="btn btn-large btn-primary contact-submit pull-right" type="submit" name="create_submit">Create Event!</button>
 
                   </div>
                 </div><!-- end form-group -->
