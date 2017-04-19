@@ -1,5 +1,11 @@
 <?php
 	session_start();
+
+	if(!isset($_SESSION['MemberId'])) {
+		header("Location: index.php");
+		exit();
+	}
+
 	require 'member_header.php';
 	require 'Utils/Helpers.php';
 	require 'Utils/DatabaseUtil.php';
