@@ -56,6 +56,12 @@ if(isset($_POST['register_button'])){
 	$country = str_replace(' ', '', $country); //remove spaces
 	$country = strtolower($country); //Lower case everything
 	$_SESSION['country'] = $country; //Stores email into session variable
+
+	//zip
+	$zip = strip_tags(mysqli_real_escape_string($conn, $_POST['zip'])); //Remove html tags
+	$zip = str_replace(' ', '', $zip); //remove spaces
+	$zip = strtolower($zip); //Lower case everything
+	$_SESSION['zip'] = $zip; //Stores email into session variable
 	
 	//email
 	$email = strip_tags(mysqli_real_escape_string($conn, $_POST['reg_email'])); //Remove html tags
@@ -84,6 +90,10 @@ if(isset($_POST['register_button'])){
 			array_push($error_array, "Invalid email format<br>");
 		}
 
+
+	if(strlen($zip) < 2){
+		array_push($error_array, "Your Zip Code must greater than 2 characters<br>");
+	}
 
 	if(strlen($fname) > 50 || strlen($fname) < 2){
 		array_push($error_array, "Your first name must be between 2 and 50 characters<br>");
