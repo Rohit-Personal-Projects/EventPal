@@ -4,6 +4,7 @@ $ename = ""; //Event Name
 $desc = ""; //Description
 $img = ""; //Image
 $category = ""; //category
+$address = ""; //address
 $days = ""; //days
 $city = ""; //City
 $state = ""; //state
@@ -56,7 +57,28 @@ if(isset($_POST['create_submit'])){
 	$country = str_replace(' ', '', $country); //remove spaces
 	$country = strtolower($country); //Lower case everything
 	$_SESSION['country'] = $country; //Stores email into session variable
+
+
+	//address1
+	$address1 = strip_tags(mysqli_real_escape_string($conn, $_POST['address-line1'])); //Remove html tags
+	$address1 = str_replace(' ', '', $address1); //remove spaces
+	$address1 = strtolower($address1); //Lower case everything
+
+
+	//address2
+	$address2 = strip_tags(mysqli_real_escape_string($conn, $_POST['address-line2'])); //Remove html tags
+	$address2 = str_replace(' ', '', $address2); //remove spaces
+	$address2 = strtolower($address2); //Lower case everything
+
+	if (strlen($address2) < 1){
+	$address = $address1
+	}
+	else{$address = $address1 ." ". $address2}
+	$_SESSION['address'] = $address; //Stores email into session variable
 	
+	if(strlen($address1) < 2){
+		array_push($error_array, "Please put your address<br>");
+	}
 
 	if(strlen($ename) > 50 || strlen($ename) < 2){
 		array_push($error_array, "Your event name must be between 2 and 25 characters<br>");
@@ -66,13 +88,7 @@ if(isset($_POST['create_submit'])){
 		array_push($error_array, "Your description must be between 20 and 150 characters<br>");
 	}
 
-	if(preg_match('/[^A-Za-z0-9]/', $password)) {
-		array_push($error_array, "Your password can only contain english characters or numbers<br>");
-	}	
 
-	if(strlen($password) > 30 || strlen($password) < 5){
-		array_push($error_array, "Your password must be between 5 and 30 characters<br>");
-	}
 	if(strlen($country) < 3){
 		array_push($error_array, "Please select your country<br>");
 	}
