@@ -62,8 +62,8 @@ if(isset($_POST['create_submit'])){
 		array_push($error_array, "Your event name must be between 2 and 25 characters<br>");
 	}
 
-	if(strlen($lname) > 50 || strlen($lname) < 2){
-		array_push($error_array, "Your last name must be between 2 and 50 characters<br>");
+	if(strlen($desc) > 150 || strlen($desc) < 20){
+		array_push($error_array, "Your description must be between 20 and 150 characters<br>");
 	}
 
 	if(preg_match('/[^A-Za-z0-9]/', $password)) {

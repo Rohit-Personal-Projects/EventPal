@@ -34,8 +34,13 @@ if (!$conn) {
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">Description*</label>
                   <div class="col-md-9">
-				  <textarea class="form-control" id="message" name="message" rows="4" placeholder="What the event about?" required></textarea>
-                        
+				  <textarea class="form-control" id="message" name="message" rows="4" placeholder="What the event about?" value="<?php 
+					if(isset($_SESSION['desc'])) {
+						echo $_SESSION['desc'];
+					} 
+					?>"required></textarea>
+					<br>
+					<?php if(in_array("Your description must be between 20 and 150 characters<br>", $error_array)) echo "Your description must be between 20 and 150 characters<br>"; ?>                        
                   </div>
                 </div><!-- end form-group -->
               </div><!-- /row -->  
