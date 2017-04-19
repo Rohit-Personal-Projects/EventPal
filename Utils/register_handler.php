@@ -1,5 +1,7 @@
 <?php
-require 'Constants.php';
+require_once 'Constants.php';
+require_once 'login_handler.php';
+
 $fname = ""; //First name
 $lname = ""; //Last name
 $email = ""; //email
@@ -93,14 +95,10 @@ if(isset($_POST['register_button'])){
 		array_push($error_array, "Your last name must be between 2 and 50 characters<br>");
 	}
 
-	if(preg_match('/[^A-Za-z0-9]/', $password)) {
-		array_push($error_array, "Your password can only contain english characters or numbers<br>");
-	}	
-
 	if(strlen($password) > 30 || strlen($password) < 5){
 		array_push($error_array, "Your password must be between 5 and 30 characters<br>");
 	}
-	if(strlen($country) < 3){
+	if(strlen($country) < 2){
 		array_push($error_array, "Please select your country<br>");
 	}
 
@@ -117,8 +115,8 @@ if(isset($_POST['register_button'])){
 		
 		$query = mysqli_query($conn, "INSERT INTO Member(FirstName,LastName,EMail,Password,Phone,City,Zip,State,Country) VALUES ('$fname', '$lname','$email','$password','$phone','$city','$zip','$state','$country')");		
 		
-	array_push($error_array, "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>");	
-	
+		array_push($error_array, "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>");
+
 		//Clear session variables 
 		$_SESSION['fname'] = "";
 		$_SESSION['lname'] = "";
@@ -128,6 +126,9 @@ if(isset($_POST['register_button'])){
 		$_SESSION['country'] = "";	
 		$_SESSION['state'] = "";	
 		$_SESSION['zip'] = "";	
+
+		login($email, $password);
+	
 	}	//empty error array	
 	
 
