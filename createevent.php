@@ -80,7 +80,8 @@ if (!$conn) {
 
 							}
 							?>                            
-
+					<br>
+					<?php if(in_array("Please select categories for the event<br>", $error_array)) echo "Please select categories for the event<br>"; ?>  
                   </div>
                 </div><!-- end form-group -->
               </div><!-- /row -->  
@@ -97,7 +98,10 @@ if (!$conn) {
                              <label class="checkbox"><input name="weekdays[]" type="checkbox" value="Friday"/>Friday</label>
                              <label class="checkbox"><input name="weekdays[]" type="checkbox" value="Saturday"/>Saturday</label>
                              <label class="checkbox"><input name="weekdays[]" type="checkbox" value="Sunday"/>Sunday</label>
-                  </div>
+					<br>
+					<?php if(in_array("Please select days the event will be open<br>", $error_array)) echo "Please select days the event will be open<br>"; ?>  
+
+							 </div>
                 </div><!-- end form-group -->
               </div><!-- /row -->    
 
