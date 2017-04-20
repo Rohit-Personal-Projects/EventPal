@@ -1,22 +1,20 @@
 <?php
-require 'Constants.php';					  
+
+require '../Constants.php';					  
 $ename = ""; //Event Name
 $desc = ""; //Description
 $img = ""; //Image
-$category = ""; //category
 $address = ""; //address
-$days = ""; //days
 $city = ""; //City
 $state = ""; //state
 $country= ""; // Country
 $zip= ""; // Zip Code	
-$address = ""; //Address
 $stdate = ""; //Start Date
 $endate = ""; //End Date
 $sttime = ""; //Start Time
 $entime = ""; //End Time
 $error_array = array(); //Holds error messages
-$weekday = array();
+$dayofweek = array();
 $catint = array();
 
 $conn = mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
@@ -24,22 +22,43 @@ $conn = mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
                     if (!$conn) {
                       die("Connection failed: " . mysqli_connect_error());
                     }
+		
 
 if(isset($_POST['create_submit'])){
 
 	//Event name
 	$ename = strip_tags(mysqli_real_escape_string($conn, $_POST['ename'])); //Remove html tags
-	$ename = str_replace(' ', '', $fname); //remove spaces
-	$ename = ucfirst(strtolower($fname)); //Uppercase first letter
+	$ename = str_replace(' ', '', $ename); //remove spaces
+	$ename = ucfirst(strtolower($ename)); //Uppercase first letter
 	$_SESSION['ename'] = $ename; //Stores first name into session variable
 
 	//Description
 	$desc  = strip_tags(mysqli_real_escape_string($conn, $_POST['message'])); //Remove html tags
-	$desc  = str_replace(' ', '', $lname); //remove spaces
-	$desc  = ucfirst(strtolower($lname)); //Uppercase first letter
+	$desc  = str_replace(' ', '', $desc); //remove spaces
+	$desc  = ucfirst(strtolower($desc)); //Uppercase first letter
 	$_SESSION['desc'] = $desc;//Stores last name into session variable
 
+	//start time
+	$sttime = strip_tags(mysqli_real_escape_string($conn, $_POST['start_time'])); //Remove html tags
+	$_SESSION['sttime'] = $sttime; //Stores email into session variable
 
+	//end time
+	$entime = strip_tags(mysqli_real_escape_string($conn, $_POST['end_time'])); //Remove html tags
+	$_SESSION['entime'] = $entime; //Stores email into session variable
+	//start time
+	
+	$stdate = strip_tags(mysqli_real_escape_string($conn, $_POST['start_date'])); //Remove html tags
+	$_SESSION['stdate'] = $stdate; //Stores email into session variable
+	//start time
+	$endate = strip_tags(mysqli_real_escape_string($conn, $_POST['end_date'])); //Remove html tags
+	$_SESSION['endate'] = $endate; //Stores email into session variable
+
+	//zipcode
+	$zip = strip_tags(mysqli_real_escape_string($conn, $_POST['zipcode'])); //Remove html tags
+	$zip = str_replace(' ', '', $zip); //remove spaces
+	$zip = strtolower($zip); //Lower case everything
+	$_SESSION['zip'] = $zip; //Stores email into session variable
+	
 	//city
 	$city = strip_tags(mysqli_real_escape_string($conn, $_POST['city'])); //Remove html tags
 	$city = str_replace(' ', '', $city); //remove spaces
@@ -72,8 +91,8 @@ if(isset($_POST['create_submit'])){
 
 	if(!empty($_POST['weekdays'])) {
 		foreach($_POST['weekdays'] as $wday) {
-				echo $check; 
-				array_push($weekday,$wday);				
+
+				array_push($dayofweek,$wday);				
 		}
 	}	
 	else{
@@ -82,7 +101,7 @@ if(isset($_POST['create_submit'])){
 
 	if(!empty($_POST['category'])) {
 		foreach($_POST['category'] as $cat) {
-				echo $cat; 
+
 				array_push($catint,$cat);
 		}
 	}	
@@ -90,7 +109,7 @@ if(isset($_POST['create_submit'])){
 		array_push($error_array, "Please select categories for the event<br>");
 	}
 
-	
+
 
 	if(strlen($ename) > 50 || strlen($ename) < 2){
 		array_push($error_array, "Your event name must be between 2 and 25 characters<br>");
@@ -99,6 +118,7 @@ if(isset($_POST['create_submit'])){
 	if(strlen($desc) > 150 || strlen($desc) < 20){
 		array_push($error_array, "Your description must be between 20 and 150 characters<br>");
 	}
+
 
 
 	if(strlen($country) < 2){
@@ -116,43 +136,35 @@ if(isset($_POST['create_submit'])){
 	$address = $address1 ." ". $address2;
 	}
 	$_SESSION['address'] = $address; //Stores email into session variable
-/*		echo $ename; //Event Name
-		echo $desc; //Description
-		echo $img; //Image
-		echo $category; //category
-		echo $address; //address
-		echo $days; //days
-		echo $city; //City
-		echo $state; //state
-		echo $country; // Country
-		echo $zip; // Zip Code	
-		echo $address; //Address
-		echo $stdate; //Start Date
-		echo $endate; //End Date
-		echo $sttime; //Start Time
-		echo $entime; //End Time
-		echo $weekday;
-		echo $catint;
+		echo "<br/>event". $ename; //Event Name
+		echo "<br/>desc". $desc; //Description
+		echo "<br/>img". $img; //Image
+		echo "<br/>addre". $address; //address
+		echo "<br/>city". $city; //City
+		echo "<br/>state". $state; //state
+		echo "<br/>country". $country; // Country
+		echo "<br/>zip". $zip; // Zip Code	
+		echo "<br/>st date". $stdate; //Start Date
+		echo "<br/>en date". $endate; //End Date
+		echo "<br/>st time". $sttime; //Start Time
+		echo "<br/>en time". $entime; //End Time
+		echo "<br/>week". print_r($dayofweek);
+		echo "<br/>cat". print_r($catint);
+		echo "<br/>mmID". $_SESSION['MemberId'];
+		echo "<br/>emial". $_SESSION['EMail'];
 	
-*/
+/*
 
 	if(empty($error_array)) {
-/*	
-		$query = mysqli_query($conn, "INSERT INTO Member(FirstName,LastName,EMail,Password,Phone,City,Zip,State,Country) VALUES ('$fname', '$lname','$email','$password','$phone','$city','$zip','$state','$country')");		
+
+		$query = mysqli_query($conn, "insert into Event(OrganizerId,Title,Description,Days,StartDate,EndDate,StartTime,EndTime,Street,City,Zip,State,Country) values ($_SESSION['MemberId'],'$ename','$desc','$dayofweek','$stdate','$endate','$sttime','$entime','$address','$city','$zip','$state','$country')");		
 	
-*/	array_push($error_array, "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>");	
-	
-		//Clear session variables 
-		$_SESSION['fname'] = "";
-		$_SESSION['lname'] = "";
-		$_SESSION['reg_email'] = "";
-		$_SESSION['city'] = "";
-		$_SESSION['phone'] = "";
-		$_SESSION['country'] = "";	
-		$_SESSION['state'] = "";	
-		$_SESSION['zip'] = "";	
-	}	//empty error array	
+	array_push($error_array, "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>");	
 	
 
+
+	}	//empty error array	
+	
+*/
 }
 ?>

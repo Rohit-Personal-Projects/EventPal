@@ -17,7 +17,7 @@ if (!$conn) {
 
     $result = $conn->query("SELECT InterestId, Name, Description FROM Interest");
 
-	  require 'Utils/event_validation.php';
+	  //require 'Utils/event_validation.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,7 +77,7 @@ if (!$conn) {
 <section id ="createevent">
 <div class="container"><div class="row">
 <div class="col-md-7 col-sm-5">
-<form action = "createevent.php" method="POST" enctype="multipart/form-data">
+<form action = "Utils/event_validation.php" method="POST" enctype="multipart/form-data">
               <div class="row">
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">Name*</label>
@@ -164,7 +164,7 @@ if (!$conn) {
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">Start Date</label>
                   <div class="col-md-9">
-                             <input  type="text" class="form-control floating-label" placeholder="dd/mm/yyyy"  id="example1" required>
+                             <input  type="text" name = "start_date" class="form-control floating-label" placeholder="dd/mm/yyyy"  id="example1" required>
 
                   </div>
                 </div><!-- end form-group -->
@@ -174,7 +174,7 @@ if (!$conn) {
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">End Date</label>
                   <div class="col-md-9">
-                             <input  type="text" class="form-control floating-label" placeholder="dd/mm/yyyy"  id="example2">
+                             <input  type="text" name = "end_date" class="form-control floating-label" placeholder="dd/mm/yyyy"  id="example2">
                   </div>
                 </div><!-- end form-group -->
               </div><!-- /row --> 
@@ -183,7 +183,7 @@ if (!$conn) {
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">Start Time</label>
                   <div class="col-md-9">
-							<input id="basicExample" type="text" class="time form-control floating-label"placeholder="HH:MM(AM/PM)"required />
+							<input id="basicExample" name = "start_time" type="text" class="time form-control floating-label"placeholder="HH:MM(AM/PM)"required />
                              
 
                   </div>
@@ -194,7 +194,7 @@ if (!$conn) {
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">End Time</label>
                   <div class="col-md-9">
-                             <input id="basicExample1" type="text" class="time form-control floating-label"placeholder="HH:MM(AM/PM)"required />
+                             <input id="basicExample1" name = "end_time" type="text" class="time form-control floating-label"placeholder="HH:MM(AM/PM)"required />
                   </div>
                 </div><!-- end form-group -->
               </div><!-- /row --> 
@@ -240,7 +240,7 @@ if (!$conn) {
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">State / Province / Region</label>
                   <div class="col-md-9">
-                             <input id="city" name="city" type="text" placeholder="State / Province / Region" class="form-control floating-label" required>
+                             <input id="state" name="state" type="text" placeholder="State / Province / Region" class="form-control floating-label" required>
                   </div>
                 </div><!-- end form-group -->
               </div><!-- /row -->                                                                            
@@ -249,7 +249,7 @@ if (!$conn) {
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">Zip / Postal Code</label>
                   <div class="col-md-9">
-                             <input id="city" name="city" type="text" placeholder="Zip / Postal Code" class="form-control floating-label" required>
+                             <input id="zipcode" name="zipcode" type="text" placeholder="Zip / Postal Code" class="form-control floating-label" required>
                         
                   </div>
                 </div><!-- end form-group -->
