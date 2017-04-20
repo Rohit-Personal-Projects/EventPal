@@ -16,7 +16,8 @@ $endate = "" //End Date
 $sttime = "" //Start Time
 $entime = "" //End Time
 $error_array = array(); //Holds error messages
-
+$weekday = array();
+$catint = array();
 $conn = mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
                     // Check connection
                     if (!$conn) {
@@ -71,10 +72,9 @@ if(isset($_POST['create_submit'])){
 	$address2 = strtolower($address2); //Lower case everything
 
 	if(!empty($_POST['weekdays'])) {
-		foreach($_POST['weekdays'] as $check) {
-				echo $check; //echoes the value set in the HTML form for each checked checkbox.
-							 //so, if I were to check 1, 3, and 5 it would echo value 1, value 3, value 5.
-							 //in your case, it would echo whatever $row['Report ID'] is equivalent to.
+		foreach($_POST['weekdays'] as $wday) {
+				echo $check; 
+				array_push($weekday,$wday);				
 		}
 	}	
 	else{
@@ -82,10 +82,9 @@ if(isset($_POST['create_submit'])){
 	}
 
 	if(!empty($_POST['category'])) {
-		foreach($_POST['category'] as $check) {
-				echo $check; //echoes the value set in the HTML form for each checked checkbox.
-							 //so, if I were to check 1, 3, and 5 it would echo value 1, value 3, value 5.
-							 //in your case, it would echo whatever $row['Report ID'] is equivalent to.
+		foreach($_POST['category'] as $cat) {
+				echo $cat; 
+				array_push($catint,$cat);
 		}
 	}	
 	else{
