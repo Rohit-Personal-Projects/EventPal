@@ -63,13 +63,35 @@ if(isset($_POST['create_submit'])){
 	$address1 = strip_tags(mysqli_real_escape_string($conn, $_POST['address-line1'])); //Remove html tags
 	$address1 = str_replace(' ', '', $address1); //remove spaces
 	$address1 = strtolower($address1); //Lower case everything
-
+	
 
 	//address2
 	$address2 = strip_tags(mysqli_real_escape_string($conn, $_POST['address-line2'])); //Remove html tags
 	$address2 = str_replace(' ', '', $address2); //remove spaces
 	$address2 = strtolower($address2); //Lower case everything
 
+	if(!empty($_POST['weekdays'])) {
+		foreach($_POST['weekdays'] as $check) {
+				echo $check; //echoes the value set in the HTML form for each checked checkbox.
+							 //so, if I were to check 1, 3, and 5 it would echo value 1, value 3, value 5.
+							 //in your case, it would echo whatever $row['Report ID'] is equivalent to.
+		}
+	}	
+	else{
+		array_push($error_array, "Please select days the event will be open<br>");
+	}
+
+	if(!empty($_POST['category'])) {
+		foreach($_POST['category'] as $check) {
+				echo $check; //echoes the value set in the HTML form for each checked checkbox.
+							 //so, if I were to check 1, 3, and 5 it would echo value 1, value 3, value 5.
+							 //in your case, it would echo whatever $row['Report ID'] is equivalent to.
+		}
+	}	
+	else{
+		array_push($error_array, "Please select categories for the event<br>");
+	}
+	
 	if (strlen($address2) < 1){
 	$address = $address1
 	}

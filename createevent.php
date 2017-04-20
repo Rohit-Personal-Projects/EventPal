@@ -76,7 +76,7 @@ if (!$conn) {
 											  $id = $row['InterestId'];
 											  $name = $row['Name']; 
 											  
-											  echo"<label class='checkbox'><input name='checkbox' type='checkbox' value='".$id."'/>".$name."</label>";
+											  echo"<label class='checkbox'><input name='category[]' type='checkbox' value='".$id."'/>".$name."</label>";
 
 							}
 							?>                            
@@ -90,13 +90,13 @@ if (!$conn) {
                   <label for="name" class="col-md-3 control-label">Days</label>
                   <div class="col-md-9">
                             
-                             <label class="checkbox"><input name="checkbox" type="checkbox" value="Monday"/>Monday</label>
-                             <label class="checkbox"><input name="checkbox" type="checkbox" value="Tuesday"/>Tuesday</label>
-                             <label class="checkbox"><input name="checkbox" type="checkbox" value="Wednesday"/>Wednesday</label>
-                             <label class="checkbox"><input name="checkbox" type="checkbox" value="Thursday"/>Thursday</label>
-                             <label class="checkbox"><input name="checkbox" type="checkbox" value="Friday"/>Friday</label>
-                             <label class="checkbox"><input name="checkbox" type="checkbox" value="Saturday"/>Saturday</label>
-                             <label class="checkbox"><input name="checkbox" type="checkbox" value="Sunday"/>Sunday</label>
+                             <label class="checkbox"><input name="weekdays[]" type="checkbox" value="Monday"/>Monday</label>
+                             <label class="checkbox"><input name="weekdays[]" type="checkbox" value="Tuesday"/>Tuesday</label>
+                             <label class="checkbox"><input name="weekdays[]" type="checkbox" value="Wednesday"/>Wednesday</label>
+                             <label class="checkbox"><input name="weekdays[]" type="checkbox" value="Thursday"/>Thursday</label>
+                             <label class="checkbox"><input name="weekdays[]" type="checkbox" value="Friday"/>Friday</label>
+                             <label class="checkbox"><input name="weekdays[]" type="checkbox" value="Saturday"/>Saturday</label>
+                             <label class="checkbox"><input name="weekdays[]" type="checkbox" value="Sunday"/>Sunday</label>
                   </div>
                 </div><!-- end form-group -->
               </div><!-- /row -->    
