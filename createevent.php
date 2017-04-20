@@ -8,7 +8,7 @@
   
   require_once 'Constants.php';
   require_once 'Utils/Helpers.php';
-  require 'Utils/event_validation.php';
+
 $conn = mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
 // Check connection
 if (!$conn) {
@@ -16,6 +16,8 @@ if (!$conn) {
 }
 
     $result = $conn->query("SELECT InterestId, Name, Description FROM Interest");
+
+	  require 'Utils/event_validation.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

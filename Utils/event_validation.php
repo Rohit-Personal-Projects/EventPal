@@ -1,5 +1,5 @@
 <?php
-require '../Constants.php';					  
+require 'Constants.php';					  
 $ename = ""; //Event Name
 $desc = ""; //Description
 $img = ""; //Image
