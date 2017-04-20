@@ -16,11 +16,25 @@ require 'header.php';
   <h2>We are the place where people of all ages and backgrounds can come to talk, share and bond with new friends. </h2> <br />
   
  
-<h3>Founder and CEO</h3>
+<h3>Our Team</h3>
   <table width="100%" border="0" cellpadding="0">
+        <tr>
+      <td valign="top"><p><img src="S:\Info Arc Website\finalwebsite\EventPal-master\profpic.jpg" alt="Amanda Blain" hspace="5" vspace="5" border="1" /></p></td>
+      <td valign="top"><p class="text-justify"><strong>Rohit Nair</strong> amanda (at) girlfriendsocial.com - <a href="http://www.amandablain.com">AmandaBlain.com</a>  <br />
+      Amanda is the driving force behind Girlfriend Social. She currently lives in Toronto, Ontario, Canada. She's the one that has designed the concept, website, content and graphics for the site. With an ever-growing base of followers across all social media channels, including well over 2 million people having circled her on Google+, she is a tour-de-force in many technical areas, and social areas.<br>
+ </p>
+      </td>
+  </tr>
     <tr>
       <td valign="top"><p><img src="S:\Info Arc Website\finalwebsite\EventPal-master\profpic.jpg" alt="Amanda Blain" hspace="5" vspace="5" border="1" /></p></td>
       <td valign="top"><p class="text-justify"><strong>Shruthi Ramakrishnan</strong> amanda (at) girlfriendsocial.com - <a href="http://www.amandablain.com">AmandaBlain.com</a>  <br />
+      Amanda is the driving force behind Girlfriend Social. She currently lives in Toronto, Ontario, Canada. She's the one that has designed the concept, website, content and graphics for the site. With an ever-growing base of followers across all social media channels, including well over 2 million people having circled her on Google+, she is a tour-de-force in many technical areas, and social areas.<br>
+ </p>
+      </td>
+  </tr>
+      <tr>
+      <td valign="top"><p><img src="S:\Info Arc Website\finalwebsite\EventPal-master\profpic.jpg" alt="Amanda Blain" hspace="5" vspace="5" border="1" /></p></td>
+      <td valign="top"><p class="text-justify"><strong>Vipul Munot</strong> amanda (at) girlfriendsocial.com - <a href="http://www.amandablain.com">AmandaBlain.com</a>  <br />
       Amanda is the driving force behind Girlfriend Social. She currently lives in Toronto, Ontario, Canada. She's the one that has designed the concept, website, content and graphics for the site. With an ever-growing base of followers across all social media channels, including well over 2 million people having circled her on Google+, she is a tour-de-force in many technical areas, and social areas.<br>
  </p>
       </td>
