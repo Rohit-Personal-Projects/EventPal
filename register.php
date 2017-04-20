@@ -190,8 +190,8 @@
 					<br/>						
 					<input type="text" name="zip" placeholder="Zip Code*" required>
 					<?php 
-                        if(in_array("Please enter your Zip Code<br>", $error_array)) 
-                            echo "Please enter your Zip Code<br>"; 
+                        if(in_array("Your Zip Code must greater than 2 characters<br>", $error_array)) 
+                            echo "Your Zip Code must greater than 2 characters<br>"; 
                     ?>
 					<br>
 					<input type="submit" name="register_button" value="Register">
