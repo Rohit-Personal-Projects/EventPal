@@ -1,6 +1,14 @@
 <?php
-require 'Constants.php';
-require 'header.php';
+  session_start();
+  
+  if(!isset($_SESSION['MemberId'])) {
+    header("Location: register.php");
+    exit();
+  }
+  
+  require_once 'Constants.php';
+  require_once 'Utils/Helpers.php';
+  require 'header.php';
 $conn = mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
 // Check connection
 if (!$conn) {
