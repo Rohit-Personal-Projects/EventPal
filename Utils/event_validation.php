@@ -33,7 +33,7 @@ if(isset($_POST['create_submit'])){
 	$ename = ucfirst(strtolower($fname)); //Uppercase first letter
 	$_SESSION['ename'] = $ename; //Stores first name into session variable
 
-	//Description
+	//Last name
 	$desc  = strip_tags(mysqli_real_escape_string($conn, $_POST['message'])); //Remove html tags
 	$desc  = str_replace(' ', '', $lname); //remove spaces
 	$desc  = ucfirst(strtolower($lname)); //Uppercase first letter
@@ -58,27 +58,6 @@ if(isset($_POST['create_submit'])){
 	$country = strtolower($country); //Lower case everything
 	$_SESSION['country'] = $country; //Stores email into session variable
 
-	//zip
-	$zip = strip_tags(mysqli_real_escape_string($conn, $_POST['zipcode'])); //Remove html tags
-	$zip = str_replace(' ', '', $zip); //remove spaces
-	$zip = strtolower($zip); //Lower case everything
-	$_SESSION['zipcode'] = $zip; //Stores email into session variable
-
-	//start date
-	$stdate = strip_tags(mysqli_real_escape_string($conn, $_POST['start_date'])); //Remove html tags
-	$_SESSION['stdate'] = $stdate; //Stores email into session variable
-
-	//end date
-	$endate = strip_tags(mysqli_real_escape_string($conn, $_POST['end_date'])); //Remove html tags
-	$_SESSION['endate'] = $endate; //Stores email into session variable
-
-	//start time
-	$stdate = strip_tags(mysqli_real_escape_string($conn, $_POST['start_time'])); //Remove html tags
-	$_SESSION['sttime'] = $sttime; //Stores email into session variable
-
-	//end time
-	$endate = strip_tags(mysqli_real_escape_string($conn, $_POST['end_time'])); //Remove html tags
-	$_SESSION['entime'] = $entime; //Stores email into session variable
 
 	//address1
 	$address1 = strip_tags(mysqli_real_escape_string($conn, $_POST['address-line1'])); //Remove html tags
@@ -116,6 +95,7 @@ if(isset($_POST['create_submit'])){
 
 
 	if(empty($error_array)) {
+		$password = md5($password); //Encrypt password before sending to database
 		//Profile picture assignment
 		$rand = rand(1, 2); //Random number between 1 and 2
 
