@@ -70,6 +70,23 @@
 			<br>
 
 			<div class="row">
+				<?php
+					$suggestedEvents = getSuggestedEventsByMemberId($_SESSION['MemberId']);
+
+					// If there're no suggested events, just display random ones
+					if(empty($suggestedEvents)) {
+						$suggestedEvents = getAllInterestsFromDB();
+					}
+
+					$suggestedEvents = selectRandomFive($suggestedEvents);
+
+					foreach ($suggestedEvents as $event) {
+						echo $event->Title . "<br>";
+					}
+					echo "<br><br>";
+				?>
+
+
 				<h4>Events you might like</h4>
 				<div class="row">
 					<ul type="none">

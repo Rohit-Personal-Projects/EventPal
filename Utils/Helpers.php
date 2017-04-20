@@ -74,6 +74,12 @@
 		}
 		return substr($daysString, 0, -2);
 	}
+
+
+	function selectRandomFive($arr) {
+		//not implemented yet
+		return $arr;
+	}
 	
 
 	function getCountriesList() {
