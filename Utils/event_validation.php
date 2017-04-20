@@ -27,13 +27,13 @@ if(isset($_POST['create_submit'])){
 
 	//Registration form values
 
-	//First name
+	//Event name
 	$ename = strip_tags(mysqli_real_escape_string($conn, $_POST['ename'])); //Remove html tags
 	$ename = str_replace(' ', '', $fname); //remove spaces
 	$ename = ucfirst(strtolower($fname)); //Uppercase first letter
 	$_SESSION['ename'] = $ename; //Stores first name into session variable
 
-	//Last name
+	//Description
 	$desc  = strip_tags(mysqli_real_escape_string($conn, $_POST['message'])); //Remove html tags
 	$desc  = str_replace(' ', '', $lname); //remove spaces
 	$desc  = ucfirst(strtolower($lname)); //Uppercase first letter
@@ -95,14 +95,6 @@ if(isset($_POST['create_submit'])){
 
 
 	if(empty($error_array)) {
-		$password = md5($password); //Encrypt password before sending to database
-		//Profile picture assignment
-		$rand = rand(1, 2); //Random number between 1 and 2
-
-		if($rand == 1)
-			$profile_pic = "tmp1";
-		else if ($rand == 2)
-			$profile_pic = "tmp2";	
 		
 		$query = mysqli_query($conn, "INSERT INTO Member(FirstName,LastName,EMail,Password,Phone,City,Zip,State,Country) VALUES ('$fname', '$lname','$email','$password','$phone','$city','$zip','$state','$country')");		
 		
