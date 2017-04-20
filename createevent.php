@@ -8,7 +8,6 @@
   
   require_once 'Constants.php';
   require_once 'Utils/Helpers.php';
-  require 'header.php';
 $conn = mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
 // Check connection
 if (!$conn) {
@@ -17,6 +16,59 @@ if (!$conn) {
 
     $result = $conn->query("SELECT InterestId, Name, Description FROM Interest");
 ?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="This is my one page resume website." name="description" />
+    <meta content="Vipul,Vipul Munot,Munot,Indiana University,Indiana, Indiana University Bloomington,Bloomington,Data Science, Data, Scientist,Data Scientist" name="keywords" />
+    <meta content="Vipul Munot" name="author" />
+    <title>Create Event | Eventpal</title>
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="css/datepicker.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.timepicker.css" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Custom Fonts -->
+    <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Plugin CSS -->
+    <link href="css/animate.min.css" rel="stylesheet" type="text/css" />
+    <!-- Custom CSS -->
+    <link href="css/creative.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" />
+    <!-- Fonts -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries --><!-- WARNING: Respond.js doesn't work if you view the page via file:// --><!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand animated bounceInLeft" href="index.php">Eventpal</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="search.php">Search</a></li>
+              <li><a href="create_event.php">Create Event</a></li>
+              <li><a href="register.php">Login/Signup</a></li>
+            </ul>
+          </div>
+          <!--/.nav-collapse -->
+        </div>
+      </nav>
+    </header>
+
 <div class="clearfix">&nbsp;</div>
 <div class="clearfix">&nbsp;</div>
 <section id ="createevent">
@@ -246,22 +298,35 @@ if (!$conn) {
 			  
 </div></div></div><!--/container -->
 </section>
-  <script src="js/bootstrap-datepicker.js"></script><script type="text/javascript" src="js/jquery.timepicker.js"></script>
-        <script type="text/javascript">
-            // When the document is ready
-            $(document).ready(function () {
-                
-                $('#example1').datepicker({
-                    format: "dd/mm/yyyy"
-                });  
-                $('#example2').datepicker({
-                    format: "dd/mm/yyyy"
-                });				
-            $('#basicExample').timepicker();
-			$('#basicExample1').timepicker();
-            });
-        </script>
-
-<?php
-require 'footer.php';
-?>
+    <footer class='modal-footer'>
+      <!-- Social Section
+        ================================================== -->
+      <div class='row'>
+        <div class='social-container'>
+          <ul class="social">
+            <li><a href="https://facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="https://www.linkedin.com" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="https://twitter.com" target="_blank"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="https://instagram.com" target="_blank"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="http://snapchat.com" target="_blank"><i class="fa fa-snapchat-ghost"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <!-- jQuery --><script src="js/jquery.js"></script><!-- Bootstrap Core JavaScript --><script src="js/bootstrap.min.js"></script><!-- Plugin JavaScript --><script src="js/jquery.easing.min.js"></script><script src="js/jquery.fittext.js"></script><script src="js/wow.min.js"></script><!-- Custom Theme JavaScript --><script src="js/creative.js"></script>        <script src="js/bootstrap-datepicker.js"></script><script type="text/javascript" src="js/jquery.timepicker.js"></script>
+    <script type="text/javascript">
+      // When the document is ready
+      $(document).ready(function () {
+          
+          $('#example1').datepicker({
+              format: "dd/mm/yyyy"
+          });  
+          $('#example2').datepicker({
+              format: "dd/mm/yyyy"
+          });       
+      $('#basicExample').timepicker();
+      $('#basicExample1').timepicker();
+      });
+    </script>
+  </body>
+</html>

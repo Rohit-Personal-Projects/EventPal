@@ -1,5 +1,5 @@
 <?php
-require 'Constants.php';
+require '../Constants.php';					  
 $ename = ""; //Event Name
 $desc = ""; //Description
 $img = ""; //Image
@@ -10,23 +10,22 @@ $city = ""; //City
 $state = ""; //state
 $country= ""; // Country
 $zip= ""; // Zip Code	
-$address = "" //Address
-$stdate = "" //Start Date
-$endate = "" //End Date
-$sttime = "" //Start Time
-$entime = "" //End Time
+$address = ""; //Address
+$stdate = ""; //Start Date
+$endate = ""; //End Date
+$sttime = ""; //Start Time
+$entime = ""; //End Time
 $error_array = array(); //Holds error messages
 $weekday = array();
 $catint = array();
+
 $conn = mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
                     // Check connection
                     if (!$conn) {
                       die("Connection failed: " . mysqli_connect_error());
                     }
-					  
-if(isset($_POST['create_submit'])){
 
-	//Registration form values
+if(isset($_POST['create_submit'])){
 
 	//Event name
 	$ename = strip_tags(mysqli_real_escape_string($conn, $_POST['ename'])); //Remove html tags
@@ -90,16 +89,8 @@ if(isset($_POST['create_submit'])){
 	else{
 		array_push($error_array, "Please select categories for the event<br>");
 	}
+
 	
-	if (strlen($address2) < 1){
-	$address = $address1
-	}
-	else{$address = $address1 ." ". $address2}
-	$_SESSION['address'] = $address; //Stores email into session variable
-	
-	if(strlen($address1) < 2){
-		array_push($error_array, "Please put your address<br>");
-	}
 
 	if(strlen($ename) > 50 || strlen($ename) < 2){
 		array_push($error_array, "Your event name must be between 2 and 25 characters<br>");
@@ -110,16 +101,46 @@ if(isset($_POST['create_submit'])){
 	}
 
 
-	if(strlen($country) < 3){
+	if(strlen($country) < 2){
 		array_push($error_array, "Please select your country<br>");
 	}
 
+	if(strlen($address1) < 2){
+		array_push($error_array, "Please put your address<br>");
+	}
+
+	if (strlen($address2) < 1){
+	$address = $address1;
+	}
+	else{
+	$address = $address1 ." ". $address2;
+	}
+	$_SESSION['address'] = $address; //Stores email into session variable
+/*		echo $ename; //Event Name
+		echo $desc; //Description
+		echo $img; //Image
+		echo $category; //category
+		echo $address; //address
+		echo $days; //days
+		echo $city; //City
+		echo $state; //state
+		echo $country; // Country
+		echo $zip; // Zip Code	
+		echo $address; //Address
+		echo $stdate; //Start Date
+		echo $endate; //End Date
+		echo $sttime; //Start Time
+		echo $entime; //End Time
+		echo $weekday;
+		echo $catint;
+	
+*/
 
 	if(empty($error_array)) {
-		
+/*	
 		$query = mysqli_query($conn, "INSERT INTO Member(FirstName,LastName,EMail,Password,Phone,City,Zip,State,Country) VALUES ('$fname', '$lname','$email','$password','$phone','$city','$zip','$state','$country')");		
-		
-	array_push($error_array, "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>");	
+	
+*/	array_push($error_array, "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>");	
 	
 		//Clear session variables 
 		$_SESSION['fname'] = "";

@@ -77,7 +77,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-7 col-sm-5">
-            <form action = "" method="POST" enctype="multipart/form-data">
+            <form action = "Utils/event_validation.php" method="POST" enctype="multipart/form-data">
               <div class="row">
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">Name</label>
@@ -252,7 +252,7 @@
             <div class="row">
             <div class="form-group">
             <div class="col-md-9">
-            <button class="btn btn-large btn-primary contact-submit pull-right" type="submit" name="submit">Create Event!</button>
+            <button class="btn btn-large btn-primary contact-submit pull-right" type="submit" name="create_submit">Create Event!</button>
             </div>
             </div><!-- end form-group -->
             </div><!-- /row -->                                                                                                                                                                                                                                                                                                              
