@@ -8,6 +8,7 @@
   
   require_once 'Constants.php';
   require_once 'Utils/Helpers.php';
+  require 'Utils/event_validation.php';
 $conn = mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
 // Check connection
 if (!$conn) {
@@ -74,7 +75,7 @@ if (!$conn) {
 <section id ="createevent">
 <div class="container"><div class="row">
 <div class="col-md-7 col-sm-5">
-<form action = "Utils/event_validation.php" method="POST" enctype="multipart/form-data">
+<form action = "createevent.php" method="POST" enctype="multipart/form-data">
               <div class="row">
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">Name*</label>
