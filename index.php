@@ -9,9 +9,10 @@
         <?php
             $sliderImages = array(
                 // Label, Description, ImagePath
-                array('Cat slide label', 'Cat slide Description', 'Images/Slider/Cat.jpg'),
-                array('Minions slide label', 'Minions slide Description', 'Images/Slider/Minions.jpg'),
-                array('Bat slide label', 'Bat slide Description', 'Images/Slider/bat.jpg')
+                array('Watch Anime together', 'Dive into the wonder world of Dragon Ball', 'Images/Slider/Vegeta.jpg'),
+                array('Intense Battle movies', 'Come discuss stories and predict the future with the like minded', 'Images/Slider/Naruto.jpg'),
+                array('Cat person?', 'Play with pets and enjoy the company', 'Images/Slider/Cat.jpg'),
+                array('Minions slide label', 'Minions slide Description', 'Images/Slider/Minions.jpg')
             );
 
         ?>
@@ -33,7 +34,8 @@
 
                 <?php   foreach ($sliderImages as $imageDetails) { ?>
                             <div class='item<?php if($first) { echo ' active';} ?>'>
-                                <img <?php if($first) { $first = False; echo ' class = "fill" ';} ?> src='<?php echo $imageDetails[2] ?>' alt='Second Slide'>
+                                <br>
+                                <img style="max-height:500px" <?php if($first) { $first = False; echo ' class = "fill" ';} ?> src='<?php echo $imageDetails[2] ?>' alt='Second Slide'>
                                 <div class='carousel-caption'>
                                   <h3><?php echo $imageDetails[0] ?></h3>
                                   <p><?php echo $imageDetails[1] ?></p>
