@@ -28,7 +28,7 @@ my events (those that i have organized) - choose a name:
 	not implemented
 
 static pages:
-	about us??
+	about us: shruthi and alien's part remain
 	faq??
 	contact us??
 
