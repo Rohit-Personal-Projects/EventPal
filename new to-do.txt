@@ -1,3 +1,9 @@
+requirements remaining:
+	db delete - unsubscribe
+	db modify - 
+	jquery UI
+
+
 home:
 	slider images
 	testimonials
@@ -36,3 +42,9 @@ static pages:
 	about us
 	faq
 	contact us
+
+
+
+final touches:
+	UI color changes
+
