@@ -76,12 +76,6 @@
 	}
 
 
-	function selectRandomFive($arr) {
-		//not implemented yet
-		return $arr;
-	}
-	
-
 	function getCountriesList() {
 		return 
 			array(

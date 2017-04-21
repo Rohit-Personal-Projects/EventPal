@@ -45,10 +45,6 @@
 							<h4><?php echo $event->Address->City . ', ' . $event->Address->State; ?></h4>
 						</li>
 						
-						<li>
-							<p>Founded April 04, 2017</p>
-						</li>
-
 						<li class="pull-right">
 							<?php
 								if(isset($_SESSION['MemberId'])) {
