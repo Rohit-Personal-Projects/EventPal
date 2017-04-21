@@ -142,7 +142,10 @@
 							echo '<p>' . count($eventMembers) . ' Going</p> ';
 							foreach ($eventMembers as $member) {
 								echo '
-									<br>' . $member->FirstName . ' ' . $member->LastName . '
+									<a href = "/member.php?memberid=' . $member->MemberId . '">' 
+										. $member->FirstName . ' ' . $member->LastName . '
+									</a>
+									<br>
 								';
 							}
 						?>
