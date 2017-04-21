@@ -74,7 +74,7 @@
 		}
 		return substr($daysString, 0, -2);
 	}
-	
+
 
 	function getCountriesList() {
 		return 

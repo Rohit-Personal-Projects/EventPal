@@ -1,0 +1,43 @@
+requirements remaining:
+	db modify - 
+	jquery UI
+
+
+home:
+	slider images
+	testimonials
+	footer update
+		faqs, contact us etc, copyright sign
+
+
+event:
+	UI formatting
+	
+	change header if logged in
+
+
+profile page:
+	not implemented
+
+create event:
+	on create, redirect to event page
+
+event:
+	days	
+
+my settings:
+	not implemented
+
+my events (those that i have organized) - choose a name:
+	not implemented
+
+static pages:
+	about us
+	faq
+	contact us
+
+
+
+final touches:
+	UI color changes
+

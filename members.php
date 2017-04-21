@@ -1,5 +1,11 @@
 <?php
 	session_start();
+
+	if(!isset($_SESSION['MemberId'])) {
+		header("Location: index.php");
+		exit();
+	}
+
 	require 'member_header.php';
 	require 'Utils/Helpers.php';
 	require 'Utils/DatabaseUtil.php';
@@ -14,6 +20,8 @@
 			<div class="row">
 				<h3>Hi <?php echo $_SESSION['FirstName']; ?>!</h3>
 				<div class="row">
+
+					<?php $suggestedEventIds = array(); ?>
 					
 					<?php $events = getMemberRegisteredEventsByMemberEMail($_SESSION['EMail']); ?>
 
@@ -23,6 +31,7 @@
 								<h4>Your Upcoming Events:</h4>
 								<div class="row">
 									<?php foreach ($events as $event) { ?>
+										<?php array_push($suggestedEventIds, $event->EventId); ?>
 									
 										<div class='col-md-4 col-sm-10 col-xs-11 wow bounceIn'>
 											<figure class='effect'>
@@ -57,69 +66,70 @@
 
 		</div><!--/col-8-->
 
+		
+
 		<div class ="col-xs-6 col-lg-4">
-			<div class="row">
-				<img src="Images/Calendar.jpg"/>
-			</div>
-			<br>
+			<br><br><br>
 
 			<div class="row">
-				<h4>Events you might like</h4>
-				<div class="row">
-					<ul type="none">
-						<li>
-							<h3><a href="">Alien Go Karting</a></h3>
-						</li>
-						<li><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;April 25,2017</li>
-						<li><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;4:00 - 5:00 PM</li>
-						<li><button class="btn btn-primary" type="submit" name="submit">Go for it!</button></li>
-					</ul>
-				</div>
-				<!--/row-->
-				<div class="row">
-					<ul type="none">
-						<li>
-							<h3><a href="">Alien Go Karting</a></h3>
-						</li>
-						<li><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;April 25,2017</li>
-						<li><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;4:00 - 5:00 PM</li>
-						<li><button class="btn btn-primary" type="submit" name="submit">Go for it!</button></li>
-					</ul>
-				</div>
-				<!--/row-->
-				<div class="row">
-					<ul type="none">
-						<li>
-							<h3><a href="">Alien Go Karting</a></h3>
-						</li>
-						<li><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;April 25,2017</li>
-						<li><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;4:00 - 5:00 PM</li>
-						<li><button class="btn btn-primary" type="submit" name="submit">Go for it!</button></li>
-					</ul>
-				</div>
-				<!--/row-->
-				<div class="row">
-					<ul type="none">
-						<li>
-							<h3><a href="">Alien Go Karting</a></h3>
-						</li>
-						<li><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;April 25,2017</li>
-						<li><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;4:00 - 5:00 PM</li>
-						<li><button class="btn btn-primary" type="submit" name="submit">Go for it!</button></li>
-					</ul>
-				</div>
-				<!--/row-->
-				<div class="row">
-					<ul type="none">
-						<li>
-							<h3><a href="">Alien Go Karting</a></h3>
-						</li>
-						<li><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;April 25,2017</li>
-						<li><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;4:00 - 5:00 PM</li>
-						<li><button class="btn btn-primary" type="submit" name="submit">Go for it!</button></li>
-					</ul>
-				</div>
-				<!--/row-->								
+				
+				<!-- Suggested events for the user -->
+				<?php
+					$suggestedEvents = getSuggestedEventsByMemberId($_SESSION['MemberId']);
+					
+					if(!empty($suggestedEvents)) {
+						echo "<h4>Events you might like</h4>";
+						foreach ($suggestedEvents as $event) {
+							array_push($suggestedEventIds, $event->EventId);
+				?>
+							<div class="row">
+								<ul type="none">
+									<li>
+										<h3><a href="event.php?eventid=<?php echo $event->EventId; ?>"><?php echo $event->Title; ?></a></h3>
+									</li>
+									<li><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<?php echo $event->StartDate; ?></li>
+									<li><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;<?php echo $event->StartTime . " - " . $event->EndTime; ?></li>
+									
+								</ul>
+							</div>
+				<?php
+						}
+					}
+				?>
+
+				<br>
+
+				<!-- Other events for the user to explore new domains -->
+				<?php
+
+					$otherEvents = getAllEventsFromDB();
+
+					if(!empty($otherEvents)) {
+						$firstEvent = True;
+						foreach ($otherEvents as $event) {
+							if(!in_array($event->EventId, $suggestedEventIds)) {
+								if($firstEvent) {
+									echo "<h4>Try something new</h4>";
+									$firstEvent = False;
+								}
+				?>
+								<div class="row">
+									<ul type="none">
+										<li>
+											<h3><a href="event.php?eventid=<?php echo $event->EventId; ?>"><?php echo $event->Title; ?></a></h3>
+										</li>
+										<li><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<?php echo $event->StartDate; ?></li>
+										<li><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;<?php echo $event->StartTime . " - " . $event->EndTime; ?></li>
+									</ul>
+								</div>
+				<?php
+							}
+						}
+					}
+				?>
+				
+
+											
 			</div>
 			<!--/row-->
 		</div>

@@ -1,9 +1,13 @@
-<?php  
-session_start();
-require 'Utils/Helpers.php';
-require 'Utils/register_handler.php';
-require 'Utils/login_handler.php';
+<?php
+
+	session_start();
+	ini_set('display_errors', 1);
+	require_once 'Utils/Helpers.php';
+	require_once 'Utils/register_handler.php';
+	require_once 'Utils/login_handler.php';
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,6 +32,7 @@ require 'Utils/login_handler.php';
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
+
 <body>
 <header>
     <!-- Fixed navbar -->
@@ -56,31 +61,20 @@ require 'Utils/login_handler.php';
 <div class="container">
 <div class="row">
 
-	<?php  
-
-	if(isset($_POST['register_button'])) {
-		echo '
-		<script>
-
-		$(document).ready(function() {
-			$("#first").hide();
-			$("#second").show();
-		});
-
-		</script>
-
-		';
-	}
-
-
-	?>
+	<?php   if(isset($_POST['register_button'])) { ?>
+				<script>
+					$(document).ready(function() {
+						$("#first").hide();
+						$("#second").show();
+					});
+				</script>
+	<?php  	} ?>
 
 	<div class="wrapper">
 		<div class="login_box">
 			
 			<br>
 			<div id="first">
-
 				<form action="register.php" method="POST">
 					<input type="email" name="log_email" placeholder="Email Address" value="<?php 
 					if(isset($_SESSION['log_email'])) {
@@ -98,10 +92,11 @@ require 'Utils/login_handler.php';
 					<input type="submit" name="login_button" value="Login">
 					<br>
 					<a href="#" id="signup" class="signup">Need and account? Register here!</a>
-
 				</form>
-
 			</div>
+
+
+
 
 			<div id="second">
 
@@ -112,10 +107,13 @@ require 'Utils/login_handler.php';
 					} 
 					?>" required>
 					<br>
-					<?php if(in_array("Your first name must be between 2 and 25 characters<br>", $error_array)) echo "Your first name must be between 2 and 25 characters<br>"; ?>
+					
+					<?php 
+						if(in_array("Your first name must be between 2 and 25 characters<br>", $error_array)) 
+							echo "Your first name must be between 2 and 25 characters<br>"; 
+					?>
 					
 					
-
 
 					<input type="text" name="lname" placeholder="Last Name*" value="<?php 
 					if(isset($_SESSION['lname'])) {
@@ -163,14 +161,20 @@ require 'Utils/login_handler.php';
 					<input type="text" name="state" placeholder="State">
 					<br>	
 					<select id="country" name="country" class="dropdown" required >
-                            <option value ="" selected>Country*</option>
-                                <?php
-                                    $countries = getCountriesList();
-                                    if(isset($_POST['country']))
-                                        echo $countries[$_POST['country']];
-                                    else
-                                        echo "(Please select a country)";
-                                ?>
+							<?php
+                                $countries = getCountriesList();
+                                if(isset($_POST['country'])) {
+                                	$defaultKey = $_POST['country'];
+                                	$defaultValue = $countries[$_POST['country']];
+                                }
+                                else {
+                                	$defaultKey = "0";
+                                	$defaultValue = "(Please select a country)";
+                                }
+                            ?>
+
+                            <option value ="<?php echo $defaultKey; ?>" selected>
+                            	<?php echo $defaultValue; ?>
                             </option>
                             <?php
                                 foreach($countries as $key => $value) {
@@ -186,8 +190,8 @@ require 'Utils/login_handler.php';
 					<br/>						
 					<input type="text" name="zip" placeholder="Zip Code*" required>
 					<?php 
-                        if(in_array("Please enter your Zip Code<br>", $error_array)) 
-                            echo "Please enter your Zip Code<br>"; 
+                        if(in_array("Your Zip Code must greater than 2 characters<br>", $error_array)) 
+                            echo "Your Zip Code must greater than 2 characters<br>"; 
                     ?>
 					<br>
 					<input type="submit" name="register_button" value="Register">
@@ -195,11 +199,6 @@ require 'Utils/login_handler.php';
 
 					
 					
-					<?php 
-                        if(in_array("<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>", $error_array)) 
-                            echo "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>";
-                    ?>
-
 					<a href="#" id="signin" class="signin">Already have an account? Sign in here!</a>
 
 				</form>
@@ -210,6 +209,7 @@ require 'Utils/login_handler.php';
 	</div>
 
 </div></div></section>
+
 <?php
-require 'footer.php';
+	require 'footer.php';
 ?>
