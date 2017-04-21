@@ -1,5 +1,4 @@
 requirements remaining:
-	db modify - 
 	jquery UI
 
 
@@ -23,18 +22,15 @@ create event:
 	on create, redirect to event page
 
 event:
-	days	
-
-my settings:
-	not implemented
+	days
 
 my events (those that i have organized) - choose a name:
 	not implemented
 
 static pages:
-	about us
-	faq
-	contact us
+	about us??
+	faq??
+	contact us??
 
 
 
