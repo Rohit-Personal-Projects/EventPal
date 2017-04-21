@@ -13,8 +13,6 @@ home:
 event:
 	UI formatting
 	
-	make going members as links
-	
 	change header if logged in
 
 
