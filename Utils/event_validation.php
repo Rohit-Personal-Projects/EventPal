@@ -1,6 +1,6 @@
 <?php
 
-require '../Constants.php';					  
+require 'Constants.php';					  
 $ename = ""; //Event Name
 $desc = ""; //Description
 $img = ""; //Image
@@ -38,6 +38,12 @@ if(isset($_POST['create_submit'])){
 	$desc  = ucfirst(strtolower($desc)); //Uppercase first letter
 	$_SESSION['desc'] = $desc;//Stores last name into session variable
 
+
+	//MemberId
+	$memid = strip_tags(mysqli_real_escape_string($conn, $_POST['membid'])); //Remove html tags
+	$memid = str_replace(' ', '', $memid); //remove spaces
+	$_SESSION['memid'] = $memid; //Stores email into session variable
+
 	//start time
 	$sttime = strip_tags(mysqli_real_escape_string($conn, $_POST['start_time'])); //Remove html tags
 	$_SESSION['sttime'] = $sttime; //Stores email into session variable
@@ -45,12 +51,15 @@ if(isset($_POST['create_submit'])){
 	//end time
 	$entime = strip_tags(mysqli_real_escape_string($conn, $_POST['end_time'])); //Remove html tags
 	$_SESSION['entime'] = $entime; //Stores email into session variable
-	//start time
+	//start date
 	
 	$stdate = strip_tags(mysqli_real_escape_string($conn, $_POST['start_date'])); //Remove html tags
+	$stdate = date('Y-m-d', strtotime(str_replace('/', '-', $stdate)));
 	$_SESSION['stdate'] = $stdate; //Stores email into session variable
-	//start time
+
+	//start date
 	$endate = strip_tags(mysqli_real_escape_string($conn, $_POST['end_date'])); //Remove html tags
+	$endate = date('Y-m-d', strtotime(str_replace('/', '-', $endate)));
 	$_SESSION['endate'] = $endate; //Stores email into session variable
 
 	//zipcode
@@ -136,7 +145,7 @@ if(isset($_POST['create_submit'])){
 	$address = $address1 ." ". $address2;
 	}
 	$_SESSION['address'] = $address; //Stores email into session variable
-		echo "<br/>event". $ename; //Event Name
+/*		echo "<br/>event". $ename; //Event Name
 		echo "<br/>desc". $desc; //Description
 		echo "<br/>img". $img; //Image
 		echo "<br/>addre". $address; //address
@@ -150,21 +159,24 @@ if(isset($_POST['create_submit'])){
 		echo "<br/>en time". $entime; //End Time
 		echo "<br/>week". print_r($dayofweek);
 		echo "<br/>cat". print_r($catint);
-		echo "<br/>mmID". $_SESSION['MemberId'];
+		echo "<br/>mmID" . $memid;
 		echo "<br/>emial". $_SESSION['EMail'];
 	
-/*
+*/
+	$dayofweek = join(', ', $dayofweek); // converting array to comma separated string
 
 	if(empty($error_array)) {
 
-		$query = mysqli_query($conn, "insert into Event(OrganizerId,Title,Description,Days,StartDate,EndDate,StartTime,EndTime,Street,City,Zip,State,Country) values ($_SESSION['MemberId'],'$ename','$desc','$dayofweek','$stdate','$endate','$sttime','$entime','$address','$city','$zip','$state','$country')");		
+		$query = mysqli_query($conn, "insert into Event(OrganizerId,Title,Description,Days,StartDate,EndDate,StartTime,EndTime,Street,City,Zip,State,Country) values ('$memid','$ename','$desc','$dayofweek','$stdate','$endate','$sttime','$entime','$address','$city','$zip','$state','$country')");		
 	
 	array_push($error_array, "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>");	
+	header("Location: members.php");
+
 	
 
 
 	}	//empty error array	
 	
-*/
+
 }
 ?>

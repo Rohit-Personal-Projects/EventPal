@@ -5,7 +5,7 @@
     header("Location: register.php");
     exit();
   }
-  
+
   require_once 'Constants.php';
   require_once 'Utils/Helpers.php';
 
@@ -17,7 +17,7 @@ if (!$conn) {
 
     $result = $conn->query("SELECT InterestId, Name, Description FROM Interest");
 
-	  //require 'Utils/event_validation.php';
+	  require 'Utils/event_validation.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,9 +62,11 @@ if (!$conn) {
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="search.php">Search</a></li>
-              <li><a href="create_event.php">Create Event</a></li>
-              <li><a href="register.php">Login/Signup</a></li>
+            <li><a href="search.php">Search</a></li>
+            <li><a href="create_event.php">Create Event</a></li>
+            <li><a href="">My Settings</a></li>
+            <li><a href="">My Events</a></li>            
+	    <li><a href="logout.php">Logout</a></li>
             </ul>
           </div>
           <!--/.nav-collapse -->
@@ -77,12 +79,16 @@ if (!$conn) {
 <section id ="createevent">
 <div class="container"><div class="row">
 <div class="col-md-7 col-sm-5">
-<form action = "Utils/event_validation.php" method="POST" enctype="multipart/form-data">
+
+<form action = "create_event.php" method="POST" enctype="multipart/form-data">
               <div class="row">
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">Name*</label>
                   <div class="col-md-9">
-
+					<input type = "hidden" name = "membid" value="<?php if(isset($_SESSION['MemberId'])) {
+						echo $_SESSION['MemberId'];
+					} 
+					?>">
 					<input type="text" class="form-control" id="ename" name="ename" placeholder="Hello, what's Event name?" value="<?php 
 					if(isset($_SESSION['ename'])) {
 						echo $_SESSION['ename'];
