@@ -1,5 +1,4 @@
 requirements remaining:
-	db delete - unsubscribe
 	db modify - 
 	jquery UI
 
@@ -10,16 +9,12 @@ home:
 	footer update
 		faqs, contact us etc, copyright sign
 
-members:
-	suggested evetns for no registered events
-
 
 event:
 	UI formatting
+	
 	make going members as links
 	
-	unsubscribe the event
-
 	change header if logged in
 
 
