@@ -17,6 +17,13 @@ $error_array = array(); //Holds error messages
 $dayofweek = array();
 $catint = array();
 
+$target_dir = "../Images/Events/";
+$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$uploadOk = 1;
+$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
+
+
 $conn = mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
                     // Check connection
                     if (!$conn) {
@@ -25,6 +32,9 @@ $conn = mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
 		
 
 if(isset($_POST['create_submit'])){
+
+	
+
 
 	//Event name
 	$ename = strip_tags(mysqli_real_escape_string($conn, $_POST['ename'])); //Remove html tags
