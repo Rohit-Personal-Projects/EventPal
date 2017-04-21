@@ -7,6 +7,11 @@
                 echo eventRegister($_POST['memberId'], $_POST['eventId']);
                 break;
 
+            case 'removeEventRegister':
+                echo eventDeRegister($_POST['memberId'], $_POST['eventId']);
+                break;
+
+
             default:
                 echo "No matching request";
         }

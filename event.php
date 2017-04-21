@@ -66,11 +66,21 @@
 							</button>
 
 							<div id="eventRegisterBtnSuccess" style="display: none;">
-								<p>You have registered to this event. Yayy! Lookin forward to see you there</p>
+								<p>You have registered to this event.</p>
+								<button
+									class="btn btn-primary"
+									id="eventDeRegisterBtn"
+									type="submit"
+									name="removeEventRegister"
+									onclick="<?php echo "eventDeRegister(" . $_SESSION['MemberId'] . ", " . $event->EventId . ")"; ?>"
+								>
+									Not going
+								</button>
 							</div>
 							<div id="eventRegisterBtnFailure" style="display: none;">
 								<p>Could not register. Please try again :(</p>
 							</div>
+							
 
 							<?php if(hasMemberRegisteredToEvent($_SESSION['MemberId'], $event->EventId)) { ?>
 								<script type="text/javascript">

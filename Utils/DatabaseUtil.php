@@ -568,4 +568,47 @@
     }
 
 
+
+
+
+    /************************************************************
+                            DELETE QUERIES
+    ************************************************************/
+
+
+    /*
+        param: Member id, Event Id
+        return: Whether or not the deletion was successful
+
+        Remove member-event mapping from the RegisteredEvents table
+    */
+    function eventDeRegister($memberId, $eventId) {
+        $memberId = (int) $memberId;
+        $eventId = (int) $eventId;
+        
+        $conn = createDBConnection();
+        
+        $query = "
+            DELETE FROM RegisteredEvents
+            WHERE MemberId = ?
+            AND EventId = ?
+        ;";
+
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("ii", $memberId, $eventId);
+        $stmt->execute();
+        $stmt->store_result();
+        
+        $res = False;
+        if($stmt->affected_rows == 1) {
+            $res = True;
+        }
+        
+        $stmt->close();
+        mysqli_close($conn);
+        
+        return $res;
+
+    }
+
 ?>

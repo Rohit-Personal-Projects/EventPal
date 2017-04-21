@@ -20,6 +20,8 @@
 			<div class="row">
 				<h3>Hi <?php echo $_SESSION['FirstName']; ?>!</h3>
 				<div class="row">
+
+					<?php $suggestedEventIds = array(); ?>
 					
 					<?php $events = getMemberRegisteredEventsByMemberEMail($_SESSION['EMail']); ?>
 
@@ -29,6 +31,7 @@
 								<h4>Your Upcoming Events:</h4>
 								<div class="row">
 									<?php foreach ($events as $event) { ?>
+										<?php array_push($suggestedEventIds, $event->EventId); ?>
 									
 										<div class='col-md-4 col-sm-10 col-xs-11 wow bounceIn'>
 											<figure class='effect'>
@@ -73,12 +76,11 @@
 				<!-- Suggested events for the user -->
 				<?php
 					$suggestedEvents = getSuggestedEventsByMemberId($_SESSION['MemberId']);
-					$suggestedEventsMemberIds = array();
-
+					
 					if(!empty($suggestedEvents)) {
 						echo "<h4>Events you might like</h4>";
 						foreach ($suggestedEvents as $event) {
-							array_push($suggestedEventsMemberIds->MemberId);
+							array_push($suggestedEventIds, $event->EventId);
 				?>
 							<div class="row">
 								<ul type="none">
@@ -105,7 +107,7 @@
 					if(!empty($otherEvents)) {
 						$firstEvent = True;
 						foreach ($otherEvents as $event) {
-							if(in_array($event->MemberId, $suggestedEventsMemberIds)) {
+							if(!in_array($event->EventId, $suggestedEventIds)) {
 								if($firstEvent) {
 									echo "<h4>Try something new</h4>";
 									$firstEvent = False;
@@ -114,7 +116,7 @@
 								<div class="row">
 									<ul type="none">
 										<li>
-											<h3><a href=""><?php echo $event->Title; ?></a></h3>
+											<h3><a href="event.php?eventid=<?php echo $event->EventId; ?>"><?php echo $event->Title; ?></a></h3>
 										</li>
 										<li><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<?php echo $event->StartDate; ?></li>
 										<li><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;<?php echo $event->StartTime . " - " . $event->EndTime; ?></li>
