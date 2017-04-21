@@ -6,6 +6,11 @@
     require_once 'Models/Interest.php';
     require_once 'Constants.php';
 
+
+    /************************************************************
+                            UTILITIES
+    ************************************************************/
+
     function testDBUtil() {
         return "test testDBUtil success";
     }
@@ -65,6 +70,50 @@
         mysqli_close($conn);
         
         return $interestsArray;
+
+    }
+
+
+    /*
+        param: None
+        return: Array of Events
+
+        This function will return all the events from the database
+    */
+    function getAllEventsFromDB() {
+
+        $conn = createDBConnection();
+        
+
+        // Query to get Events associated with the selected Interest
+        $query = "
+                SELECT EventId, OrganizerId, Title, Description, Days, StartDate, EndDate, StartTime, EndTime, Image, Street, City, Zip, State, Country
+                FROM Event;
+            ";
+
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($EventId, $OrganizerId, $Title, $Description, $Days, $StartDate, $EndDate, $StartTime, $EndTime, $Image, $Street, $City, $Zip, $State, $Country);
+
+
+        $eventsArray = array();
+            
+        if($stmt->num_rows > 0) {
+            while($stmt->fetch()) {
+                $event = new Event($EventId, $OrganizerId, $Title, $Description, $Days, $StartDate, $EndDate, $StartTime, $EndTime, $Image, $Street, $City, $Zip, $State, $Country);
+                
+                $event->Organizer = getOrganizer($OrganizerId, $conn);
+
+                array_push($eventsArray, $event);
+            }
+        } 
+        
+        
+        $stmt->close();
+        mysqli_close($conn);
+        
+        return $eventsArray;
 
     }
 
@@ -405,6 +454,75 @@
         mysqli_close($conn);
         
         return $res;
+
+    }
+
+
+    /*
+        param: Member Id
+        return: If Member Id is valid, return all events from his registered interests and from interests in the same family as his registered events (only the events that he has not yet registered), else empty array
+    */
+    function getSuggestedEventsByMemberId($memberId) {
+        $memberId = (int) $memberId;
+        
+        $conn = createDBConnection();
+        
+
+        // Query to get Events associated with the selected Interest
+        $query = "
+                SELECT EventId, OrganizerId, Title, Description, Days, StartDate, EndDate, StartTime, EndTime, Image, Street, City, Zip, State, Country
+                FROM Event
+                WHERE EventId IN
+                (
+                    SELECT EventId
+                    FROM RegisteredEvents
+                    WHERE MemberId = ?
+                    
+                    UNION
+                    
+                    SELECT EventId
+                    FROM EventInterest
+                    WHERE InterestId IN
+                    (
+                        SELECT InterestId FROM MemberInterest
+                        WHERE MemberId = ?
+                    )
+                )
+                AND EventId NOT IN
+                (
+                    SELECT EventId
+                    FROM RegisteredEvents
+                    WHERE MemberId = ?
+                );
+            ";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("iii", $memberId, $memberId, $memberId);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($EventId, $OrganizerId, $Title, $Description, $Days, $StartDate, $EndDate, $StartTime, $EndTime, $Image, $Street, $City, $Zip, $State, $Country);
+
+
+        if($stmt->num_rows > 0) {
+
+            $eventsArray = array();
+            
+            while($stmt->fetch()) {
+
+                $event = new Event($EventId, $OrganizerId, $Title, $Description, $Days, $StartDate, $EndDate, $StartTime, $EndTime, $Image, $Street, $City, $Zip, $State, $Country);
+                
+                $event->Organizer = getOrganizer($OrganizerId, $conn);
+
+                array_push($eventsArray, $event);
+
+            }
+
+        } 
+        
+        
+        $stmt->close();
+        mysqli_close($conn);
+        
+        return $eventsArray;
 
     }
 

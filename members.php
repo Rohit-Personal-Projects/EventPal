@@ -63,69 +63,71 @@
 
 		</div><!--/col-8-->
 
+		
+
 		<div class ="col-xs-6 col-lg-4">
-			<div class="row">
-				<img src="Images/Calendar.jpg"/>
-			</div>
-			<br>
+			<br><br><br>
 
 			<div class="row">
-				<h4>Events you might like</h4>
-				<div class="row">
-					<ul type="none">
-						<li>
-							<h3><a href="">Alien Go Karting</a></h3>
-						</li>
-						<li><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;April 25,2017</li>
-						<li><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;4:00 - 5:00 PM</li>
-						<li><button class="btn btn-primary" type="submit" name="submit">Go for it!</button></li>
-					</ul>
-				</div>
-				<!--/row-->
-				<div class="row">
-					<ul type="none">
-						<li>
-							<h3><a href="">Alien Go Karting</a></h3>
-						</li>
-						<li><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;April 25,2017</li>
-						<li><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;4:00 - 5:00 PM</li>
-						<li><button class="btn btn-primary" type="submit" name="submit">Go for it!</button></li>
-					</ul>
-				</div>
-				<!--/row-->
-				<div class="row">
-					<ul type="none">
-						<li>
-							<h3><a href="">Alien Go Karting</a></h3>
-						</li>
-						<li><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;April 25,2017</li>
-						<li><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;4:00 - 5:00 PM</li>
-						<li><button class="btn btn-primary" type="submit" name="submit">Go for it!</button></li>
-					</ul>
-				</div>
-				<!--/row-->
-				<div class="row">
-					<ul type="none">
-						<li>
-							<h3><a href="">Alien Go Karting</a></h3>
-						</li>
-						<li><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;April 25,2017</li>
-						<li><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;4:00 - 5:00 PM</li>
-						<li><button class="btn btn-primary" type="submit" name="submit">Go for it!</button></li>
-					</ul>
-				</div>
-				<!--/row-->
-				<div class="row">
-					<ul type="none">
-						<li>
-							<h3><a href="">Alien Go Karting</a></h3>
-						</li>
-						<li><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;April 25,2017</li>
-						<li><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;4:00 - 5:00 PM</li>
-						<li><button class="btn btn-primary" type="submit" name="submit">Go for it!</button></li>
-					</ul>
-				</div>
-				<!--/row-->								
+				
+				<!-- Suggested events for the user -->
+				<?php
+					$suggestedEvents = getSuggestedEventsByMemberId($_SESSION['MemberId']);
+					$suggestedEventsMemberIds = array();
+
+					if(!empty($suggestedEvents)) {
+						echo "<h4>Events you might like</h4>";
+						foreach ($suggestedEvents as $event) {
+							array_push($suggestedEventsMemberIds->MemberId);
+				?>
+							<div class="row">
+								<ul type="none">
+									<li>
+										<h3><a href="event.php?eventid=<?php echo $event->EventId; ?>"><?php echo $event->Title; ?></a></h3>
+									</li>
+									<li><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<?php echo $event->StartDate; ?></li>
+									<li><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;<?php echo $event->StartTime . " - " . $event->EndTime; ?></li>
+									
+								</ul>
+							</div>
+				<?php
+						}
+					}
+				?>
+
+				<br>
+
+				<!-- Other events for the user to explore new domains -->
+				<?php
+
+					$otherEvents = getAllEventsFromDB();
+
+					if(!empty($otherEvents)) {
+						$firstEvent = True;
+						foreach ($otherEvents as $event) {
+							if(in_array($event->MemberId, $suggestedEventsMemberIds)) {
+								if($firstEvent) {
+									echo "<h4>Try something new</h4>";
+									$firstEvent = False;
+								}
+				?>
+								<div class="row">
+									<ul type="none">
+										<li>
+											<h3><a href=""><?php echo $event->Title; ?></a></h3>
+										</li>
+										<li><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;<?php echo $event->StartDate; ?></li>
+										<li><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;<?php echo $event->StartTime . " - " . $event->EndTime; ?></li>
+									</ul>
+								</div>
+				<?php
+							}
+						}
+					}
+				?>
+				
+
+											
 			</div>
 			<!--/row-->
 		</div>
