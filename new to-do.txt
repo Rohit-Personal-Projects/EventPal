@@ -1,0 +1,38 @@
+home:
+	slider images
+	testimonials
+	footer update
+		faqs, contact us etc, copyright sign
+
+members:
+	suggested evetns for no registered events
+
+
+event:
+	UI formatting
+	make going members as links
+	
+	unsubscribe the event
+
+	change header if logged in
+
+
+profile page:
+	not implemented
+
+create event:
+	on create, redirect to event page
+
+event:
+	days	
+
+my settings:
+	not implemented
+
+my events (those that i have organized) - choose a name:
+	not implemented
+
+static pages:
+	about us
+	faq
+	contact us
