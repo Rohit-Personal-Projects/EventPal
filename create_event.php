@@ -1,10 +1,11 @@
 <?php
   session_start();
   
-  if(!isset($_SESSION['MemberId'])) {
+  /*if(!isset($_SESSION['MemberId'])) {
     header("Location: register.php");
     exit();
-  }
+  }*/
+  
 
   require_once 'Constants.php';
   require_once 'Utils/Helpers.php';

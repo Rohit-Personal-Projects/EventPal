@@ -37,7 +37,7 @@
 											<figure class='effect'>
 												<?php
 													if(empty($event->Image)) {
-					                                	$event->Image = 'Images/Default.jpg';
+					                                	$event->Image = 'Images/Default.png';
 						                            }
 												?>
 												<img alt='Event Image' src='<?php echo $event->Image; ?>' /> 
