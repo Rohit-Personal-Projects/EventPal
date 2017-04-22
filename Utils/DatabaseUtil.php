@@ -1,5 +1,6 @@
 <?php
 
+    //ini_set('display_errors', 1);
     require_once 'Models/Event.php';
     require_once 'Models/Location.php';
     require_once 'Models/Member.php';
@@ -255,6 +256,53 @@
         }
 
         return $event;
+
+    }
+
+
+    /*
+        param: EventId
+        return: Event Details
+
+        This function will return all the info about the Event with EventId passed as a parameter
+    */
+    function getEventsByOrganizerId($OrganizerId) {
+        $OrganizerId = (int) $OrganizerId;
+        
+
+        $conn = createDBConnection();
+
+        // Query to get the Organizer of an Event
+        $query = "
+            SELECT EventId, OrganizerId, Title, Description, Days, StartDate, EndDate, StartTime, EndTime, Image, Street, City, Zip, State, Country
+            FROM Event
+            WHERE OrganizerId = ?
+        ;";
+
+        $stmt = $conn->prepare($query);
+
+        $stmt->bind_param("i", $OrganizerId);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($EventId, $OrganizerId, $Title, $Description, $Days, $StartDate, $EndDate, $StartTime, $EndTime, $Image, $Street, $City, $Zip, $State, $Country);
+
+
+        if($stmt->num_rows > 0) {
+            $eventsArray = array();
+            while($stmt->fetch()) {
+                $event = new Event($EventId, $OrganizerId, $Title, $Description, $Days, $StartDate, $EndDate, $StartTime, $EndTime, $Image, $Street, $City, $Zip, $State, $Country);
+                
+                $event->Organizer = getOrganizer($OrganizerId, $conn);
+
+                array_push($eventsArray, $event);
+            }
+        }
+
+        
+        $stmt->close();
+        mysqli_close($conn);
+
+        return $eventsArray;
 
     }
 
@@ -574,7 +622,7 @@
 
     /*
         param: Member id, Event Id
-        return: Whether or not the insertion was successful
+        return: Returns pri key id if successful, else -1
 
         Insert member-event mapping to the RegisteredEvents table
     */
@@ -594,9 +642,9 @@
         $stmt->execute();
         $stmt->store_result();
         
-        $res = False;
+        $res = -1;
         if($stmt->affected_rows == 1) {
-            $res = True;
+            $res = $conn->insert_id;
         }
         
         $stmt->close();
