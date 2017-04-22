@@ -3,9 +3,9 @@ requirements remaining:
 
 
 home:
-	slider images
+	slider images - Done
 	testimonials
-	footer update
+	footer update - DONE
 		faqs, contact us etc, copyright sign
 
 
@@ -28,9 +28,9 @@ my events (those that i have organized) - choose a name:
 	not implemented
 
 static pages:
-	about us: shruthi and alien's part remain
-	faq??
-	contact us??
+	about us: shruthi part remain 
+	faq?? - Done
+	contact us?? - Done
 
 
 
