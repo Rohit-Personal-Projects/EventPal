@@ -33,9 +33,10 @@
                     $event->Image = 'Images/Default.png';
                 }
 		?>
-				<div class="row text-center">
-					<h1><?php echo $event->Title; ?></h1>
-					<img alt="Event Image" class="img-responsive" src=" <?php echo $event->Image; ?>" />
+				<div class="row">
+
+					<h1 class="text-center"><?php echo $event->Title; ?></h1><br/>
+					<img alt="Event Image" class="img-responsive center-block" src=" <?php echo $event->Image; ?>" />
 				</div>
 				<!-- /end row-->
 
