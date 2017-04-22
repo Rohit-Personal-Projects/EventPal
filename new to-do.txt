@@ -3,15 +3,11 @@ requirements remaining:
 
 
 home:
-	slider images - Done
 	testimonials
-	footer update - DONE
-		faqs, contact us etc, copyright sign
-
+	
 
 event:
 	UI formatting
-	
 	change header if logged in
 
 
@@ -27,10 +23,7 @@ event:
 my events (those that i have organized) - choose a name:
 	not implemented
 
-static pages:
-	about us: shruthi part remain 
-	faq?? - Done
-	contact us?? - Done
+about us: shruthi's part remains
 
 
 
