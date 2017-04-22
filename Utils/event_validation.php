@@ -35,6 +35,7 @@ if(isset($_POST['create_submit'])){
 
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
 $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     if($check !== false) {
         echo "File is an image - " . $check["mime"] . ".";
@@ -64,7 +65,9 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
 if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
-} else {
+} 
+
+else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
     } else {
@@ -190,11 +193,12 @@ if ($uploadOk == 0) {
 	}
 
 	if (strlen($address2) < 1){
-	$address = $address1;
+		$address = $address1;
 	}
 	else{
-	$address = $address1 ." ". $address2;
+		$address = $address1 ." ". $address2;
 	}
+
 	$_SESSION['address'] = $address; //Stores email into session variable
 /*		echo "<br/>event". $ename; //Event Name
 		echo "<br/>desc". $desc; //Description
@@ -218,15 +222,17 @@ if ($uploadOk == 0) {
 
 	if(empty($error_array)) {
 
+		$imageName = $target_dir . $ename . "." . $imageFileType;
+		$imageName = str_replace("../", "", $imageName);
+
+	
 		$query = mysqli_query($conn, "insert into Event(OrganizerId,Title,Description,Days,StartDate,EndDate,StartTime,EndTime,Street,City,Zip,State,Country,Image) values ('$memid','$ename','$desc','$dayofweek','$stdate','$endate','$sttime','$entime','$address','$city','$zip','$state','$country','$tmp_file')");		
-	
-	array_push($error_array, "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>");	
-	header("Location: members.php");
+		array_push($error_array, "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>");	
+		
+		header("Location: event.php?eventid=" . mysqli_insert_id($conn));
 
-	
+	}
 
-
-	}	//empty error array	
 	
 
 }
