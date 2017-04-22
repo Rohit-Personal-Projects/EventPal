@@ -15,8 +15,9 @@ profile page:
 	not implemented
 
 create event:
-	on create, redirect to event page
-
+	image upload with correct fiename as eventTitle.extention
+	correct image path in event table
+	
 event:
 	days
 
