@@ -76,7 +76,8 @@ else {
 }
 
 
-	$tmp_file = str_replace("../", "", $target_file);
+		$imageName = $target_dir . $ename . "." . $imageFileType;
+		$imageName = str_replace("../", "", $imageName);
 	
 
 
@@ -222,8 +223,6 @@ else {
 
 	if(empty($error_array)) {
 
-		$imageName = $target_dir . $ename . "." . $imageFileType;
-		$imageName = str_replace("../", "", $imageName);
 
 	
 		$query = mysqli_query($conn, "insert into Event(OrganizerId,Title,Description,Days,StartDate,EndDate,StartTime,EndTime,Street,City,Zip,State,Country,Image) values ('$memid','$ename','$desc','$dayofweek','$stdate','$endate','$sttime','$entime','$address','$city','$zip','$state','$country','$tmp_file')");		
