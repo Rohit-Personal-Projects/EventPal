@@ -52,22 +52,23 @@ if (!$conn) {
       <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
           <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+		        <a class="navbar-brand animated bounceInLeft" href="members.php"><img src="Images/logo.png" class="img-responsive" alt="Eventpal"></a>
+		        <a class="navbar-brand animated bounceInLeft" href="members.php">Eventpal</a>	
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand animated bounceInLeft" href="index.php">Eventpal</a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
+          </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
             <li><a href="search.php">Search</a></li>
             <li><a href="create_event.php">Create Event</a></li>
-            <li><a href="">My Settings</a></li>
+            <li><a href="settings.php">My Settings</a></li>
             <li><a href="">My Events</a></li>            
 	    <li><a href="logout.php">Logout</a></li>
-            </ul>
+          </ul>
           </div>
           <!--/.nav-collapse -->
         </div>
