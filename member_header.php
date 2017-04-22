@@ -45,7 +45,7 @@
             <li><a href="search.php">Search</a></li>
             <li><a href="create_event.php">Create Event</a></li>
             <li><a href="settings.php">My Settings</a></li>
-            <li><a href="">My Events</a></li>            
+            <li><a href="myevents.php">My Events</a></li>            
 	    <li><a href="logout.php">Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->

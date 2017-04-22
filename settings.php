@@ -14,8 +14,7 @@
 <section id ="settings">
 	<div class="container">
 		<div class="clearfix">&nbsp;</div>
-		<div class="clearfix">&nbsp;</div>
-		<div class="clearfix">&nbsp;</div>
+
 
 		<div class="row">
 			<div class="wrapper">
