@@ -39,7 +39,7 @@
 					<img alt="Event Image" class="img-responsive center-block" src="<?php echo $event->Image; ?>" />
 				</div>
 				<!-- /end row-->
-
+				<div class="clearfix">&nbsp;</div>
 				<div class="row">
 					<ul type='None' class="list-inline">
 						<li>
