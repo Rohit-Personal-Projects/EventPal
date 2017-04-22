@@ -3,7 +3,6 @@
     require 'Utils/DatabaseUtil.php';
 ?>
 
-    
     <section id='slider'>
 
         <?php
@@ -35,7 +34,16 @@
                 <?php   foreach ($sliderImages as $imageDetails) { ?>
                             <div class='item<?php if($first) { echo ' active';} ?>'>
                                 <br>
-                                <img style="" <?php if($first) { $first = False; echo ' class = "fill" ';} ?> src='<?php echo $imageDetails[2] ?>' alt='Second Slide'>
+                                <img 
+                                    <?php 
+                                        if($first) { 
+                                            $first = False; 
+                                            echo ' class = "fill" ';
+                                        } 
+                                    ?> 
+                                    src='<?php echo $imageDetails[2] . "?" . filemtime($imageDetails[2]) ?>' alt='Slider Image'
+                                >
+
                                 <div class='carousel-caption'>
                                   <h3><?php echo $imageDetails[0] ?></h3>
                                   <p><?php echo $imageDetails[1] ?></p>
