@@ -3,7 +3,6 @@
 require 'Constants.php';					  
 $ename = ""; //Event Name
 $desc = ""; //Description
-$img = ""; //Image
 $address = ""; //address
 $city = ""; //City
 $state = ""; //state
@@ -17,7 +16,7 @@ $error_array = array(); //Holds error messages
 $dayofweek = array();
 $catint = array();
 
-$target_dir = "../Images/Events/";
+$target_dir = "Images/Events/";
 $uploadOk = 1;
 
 
@@ -76,20 +75,17 @@ else {
 }
 
 
-		$imageName = $target_dir . $ename . "." . $imageFileType;
-		$imageName = str_replace("../", "", $imageName);
-	
 
 
 	//Event name
 	$ename = strip_tags(mysqli_real_escape_string($conn, $_POST['ename'])); //Remove html tags
-	$ename = str_replace(' ', '', $ename); //remove spaces
+//	$ename = str_replace(' ', '', $ename); //remove spaces
 	$ename = ucfirst(strtolower($ename)); //Uppercase first letter
 	$_SESSION['ename'] = $ename; //Stores first name into session variable
 
 	//Description
 	$desc  = strip_tags(mysqli_real_escape_string($conn, $_POST['message'])); //Remove html tags
-	$desc  = str_replace(' ', '', $desc); //remove spaces
+//	$desc  = str_replace(' ', '', $desc); //remove spaces
 	$desc  = ucfirst(strtolower($desc)); //Uppercase first letter
 	$_SESSION['desc'] = $desc;//Stores last name into session variable
 
@@ -225,7 +221,7 @@ else {
 
 
 	
-		$query = mysqli_query($conn, "insert into Event(OrganizerId,Title,Description,Days,StartDate,EndDate,StartTime,EndTime,Street,City,Zip,State,Country,Image) values ('$memid','$ename','$desc','$dayofweek','$stdate','$endate','$sttime','$entime','$address','$city','$zip','$state','$country','$tmp_file')");		
+		$query = mysqli_query($conn, "insert into Event(OrganizerId,Title,Description,Days,StartDate,EndDate,StartTime,EndTime,Street,City,Zip,State,Country,Image) values ('$memid','$ename','$desc','$dayofweek','$stdate','$endate','$sttime','$entime','$address','$city','$zip','$state','$country','$target_file')");		
 		array_push($error_array, "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>");	
 		
 		header("Location: event.php?eventid=" . mysqli_insert_id($conn));

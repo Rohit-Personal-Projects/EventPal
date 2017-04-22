@@ -18,7 +18,8 @@ if (!$conn) {
 
     $result = $conn->query("SELECT InterestId, Name, Description FROM Interest");
 
-	  require 'Utils/event_validation.php';
+  require_once 'Utils/event_validation.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -312,7 +313,7 @@ if (!$conn) {
                 </div><!-- end form-group -->
               </div><!-- /row -->                                                                                                                                                                                                                                                                                                              
 </form>
-			  
+		  
 </div></div></div><!--/container -->
 </section>
 <footer class="modal-footer"><!-- Social Section

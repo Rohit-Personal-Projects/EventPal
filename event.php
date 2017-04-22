@@ -36,7 +36,7 @@
 				<div class="row">
 
 					<h1 class="text-center"><?php echo $event->Title; ?></h1><br/>
-					<img alt="Event Image" class="img-responsive center-block" src=" <?php echo $event->Image; ?>" />
+					<img alt="Event Image" class="img-responsive center-block" src="<?php echo $event->Image; ?>" />
 				</div>
 				<!-- /end row-->
 
