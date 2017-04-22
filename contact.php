@@ -1,6 +1,8 @@
 <?php 
 require 'header.php';
 ?>
+	<script language="JavaScript" src="js/gen_validatorv4.js" type="text/javascript"></script>
+
 <section id="section-contact">
     <div class="container">
     <div class = "clearfix">&nbsp;</div>
@@ -13,7 +15,7 @@ require 'header.php';
         <div class="col-md-10 col-sm-8" >
           <!--////////// CONTACT FORM STARTS HERE ///////////-->
           <div class="contact-form">
-            <form id="contact-form" class="form-horizontal" name="lform" action="contact.php" method="post">
+            <form id="contact-form" class="form-horizontal" name="lform" action="emailcontact.php" method="post">
               <div class="row">
                 <div class="form-group">
                   <label for="name" class="col-md-3 control-label">&nbsp;</label>
