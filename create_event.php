@@ -128,6 +128,14 @@ if (!$conn) {
                   <label for="name" class="col-md-3 control-label">Image</label>
                   <div class="col-md-9">
 					<input type="file" name="fileToUpload" id="fileToUpload"class="form-control">
+<br>
+					<?php if(in_array("Sorry, there was an error uploading your file.<br>", $error_array)) echo "<font color ='red'>Sorry, there was an error uploading your file.</font><br>"; 
+if(in_array("Sorry, your file was not uploaded.<br>", $error_array)) echo "<font color ='red'>Sorry, your file was not uploaded.</font><br>"; 
+if(in_array("Sorry, only JPG, JPEG, PNG & GIF files are allowed.<br>", $error_array)) echo "<font color ='red'>Sorry, only JPG, JPEG, PNG & GIF files are allowed.</font><br>"; 
+if(in_array("Sorry, your file is too large.<br>", $error_array)) echo "<font color ='red'>Sorry, your file is too large.</font><br>"; 
+if(in_array("Sorry, file already exists.<br>", $error_array)) echo "<font color ='red'>Sorry, file already exists.</font><br>"; 
+if(in_array("File is not an image.<br>", $error_array)) echo "<font color ='red'>File is not an image.</font><br>"; 
+?>      
                   </div>
                 </div><!-- end form-group -->
               </div><!-- /row -->
