@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
   require 'header.php';
 ?>
 
@@ -10,7 +10,7 @@
   		<h1 align=center>About Us </h1>
   		<h2>What and Who is EventPal?</h2>
   		
-  		<p class="text-justify"><strong>We are the place where people of all ages and backgrounds can come to talk, share and bond with new friends. </strong>EventPal is the biggest friendship social networking sites available. Established in April, 2017</a>, EventPal is growing at an amazing pace. Free for all to sign up, EventPal website allows them to talk, share and bond in whatever ways they are comfortable. <br /><br />Events are posted by a local rep and sometimes local companies. The allows people to find friends for various activities on topics ranging from the best local hair salons to how best to get over a break up or how to deal with fleas on your pet. <br />EventPal brings people together in thousands of cities to do more of what they want to do in life. It is organized around one simple idea: <br><h4><strong>&nbsp; &nbsp; &nbsp; "When we get together and do the things that matter to us, we’re at our best."</strong></h4></p><br><br>
+  		<p class="text-justify"><strong>We are the place where people of all ages and backgrounds can come to talk, share and bond with new friends. </strong>EventPal is the biggest friendship social networking sites available. Established in April, 2017</a>, EventPal is growing at an amazing pace. Free for all to sign up, EventPal website allows them to talk, share and bond in whatever ways they are comfortable. <br /><br />Events are posted by a local rep and sometimes local companies. The allows people to find friends for various activities on topics ranging from the best local hair salons to how best to get over a break up or how to deal with fleas on your pet. <br />EventPal brings people together in thousands of cities to do more of what they want to do in life. It is organized around one simple idea:</p><h4 class="text-center"><strong> "When we get together and do the things that matter to us, we’re at our best."</strong></h4><br><br>
   		
   		<article id="faq-wrapper">
 
@@ -79,9 +79,9 @@
               <p class="text-justify">
                 <a href = "/member.php?memberid=1"><strong>Vipul</strong></a>
                 - 
-                <a href="mailto:email@gmail.com">email@gmail.com</a>  
+                <a href="mailto:vipmunot@gmail.com">vipmunot@gmail.com</a>  
                 <br>
-                Alien's one liner
+                I love exploring new things, travelling, trekking, music and coffee.
                 <br>
               </p>
             </td>
