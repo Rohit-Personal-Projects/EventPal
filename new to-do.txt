@@ -2,10 +2,6 @@ requirements remaining:
 	jquery UI
 
 
-home:
-	testimonials - Done
-	
-
 event:
 	UI formatting
 	change header if logged in
@@ -14,20 +10,15 @@ event:
 profile page:
 	not implemented
 
-create event: - Done
-	image upload with correct fiename as eventTitle.extention
-	correct image path in event table
-	
-event:
-	days
-
-my events (those that i have organized) - choose a name: - Done
-	not implemented
-
-about us: shruthi's part remains - Done
-
-
 
 final touches:
 	UI color changes
+
+
+
+geolocation and google maps api
+
+add page titles for each page
+
+compress images
 
