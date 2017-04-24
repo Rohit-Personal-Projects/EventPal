@@ -136,14 +136,14 @@
 
 		//address1
 		$address1 = strip_tags(mysqli_real_escape_string($conn, $_POST['address-line1'])); //Remove html tags
-		$address1 = str_replace(' ', '', $address1); //remove spaces
-		$address1 = strtolower($address1); //Lower case everything
+		//$address1 = str_replace(' ', '', $address1); //remove spaces
+		//$address1 = strtolower($address1); //Lower case everything
 		
 
 		//address2
 		$address2 = strip_tags(mysqli_real_escape_string($conn, $_POST['address-line2'])); //Remove html tags
-		$address2 = str_replace(' ', '', $address2); //remove spaces
-		$address2 = strtolower($address2); //Lower case everything
+		//$address2 = str_replace(' ', '', $address2); //remove spaces
+		//$address2 = strtolower($address2); //Lower case everything
 
 		if(!empty($_POST['weekdays'])) {
 			foreach($_POST['weekdays'] as $wday) {

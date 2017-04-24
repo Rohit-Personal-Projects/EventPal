@@ -43,17 +43,17 @@ if(isset($_POST['register_button'])){
 	//city
 	$city = strip_tags(mysqli_real_escape_string($conn, $_POST['city'])); //Remove html tags
 	$city = str_replace(' ', '', $city); //remove spaces
-	$city = strtolower($city); //Lower case everything
+	$city = ucfirst(strtolower($city)); //Lower case everything
 	$_SESSION['city'] = $city; //Stores email into session variable
 	//state
 	$state = strip_tags(mysqli_real_escape_string($conn, $_POST['state'])); //Remove html tags
 	$state = str_replace(' ', '', $state); //remove spaces
-	$state = strtolower($state); //Lower case everything
+	$fname = ucfirst(strtolower($state)); //Uppercase first letter
 	$_SESSION['state'] = $state; //Stores email into session variable
 	//country
 	$country = strip_tags(mysqli_real_escape_string($conn, $_POST['country'])); //Remove html tags
 	$country = str_replace(' ', '', $country); //remove spaces
-	$country = strtolower($country); //Lower case everything
+
 	$_SESSION['country'] = $country; //Stores email into session variable
 	//zip
 	$zip = strip_tags(mysqli_real_escape_string($conn, $_POST['zip'])); //Remove html tags
