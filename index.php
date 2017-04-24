@@ -153,37 +153,43 @@
                             <div class='item'>
                                 <div class='profile-circle' style='background-color: rgba(0,0,0,.2);'></div>
                                 <blockquote>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+                                    <p>"I'm a movie fanatic. I try to catch every movie that comes out in theaters, but I don't like going by myself. I want someone there with me who can enjoy the movie, then catch a bite to eat afterwards to talk about it. EventPal is great for me. I know have an endless supply of people to contact to go with me to the movies night or day. Thank you!" </p>
+									<p>Steve M, Arizona</p>
                                 </blockquote>   
                             </div>
                             <div class='item'>
                                 <div class='profile-circle' style='background-color: rgba(77,5,51,.2);'></div>
                                 <blockquote>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+                                    <p>I must say this is a great site to get to meet very nice people and I have had learning enlightening experiences. I met some wonderful people and had a great click with a local lady who is a wonderful friend and we have exchanged many texts and had a great time.</p>
+									<p>Peter Hue</p>
                                 </blockquote>
                             </div>
                             <div class='active item'>
                                 <div class='profile-circle' style='background-color: rgba(145,169,216,.2);'></div>
                                 <blockquote>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+                                    <p>I was having a hard time making friends once all my college friends moved away and I had felt like I tried everything. I went out a lot, tried meet ups, etc. but nothing was sticking. I remember joking with my mom one day how I wished there was site ...   </p>
+									<p>Maria Jones</p>
                                 </blockquote>
                             </div>
                             <div class='item'>
                                 <div class='profile-circle' style='background-color: rgba(77,5,51,.2);'></div>
                                 <blockquote>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+                                    <p>EventPal is FANTASTIC! Making friends is easy now.</p>
+									<p>John Mendel</p>
                                 </blockquote>
                             </div>
                             <div class='item'>
                                 <div class='profile-circle' style='background-color: rgba(77,5,51,.2);'></div>
                                 <blockquote>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+                                    <p>I'm so glad I joined EventPal although some people do not response to your requests in the beginning. I stayed on the site and now meet up with three lovely ladies. We meet up a once a month for a coffee or a meal and now we all enjoy our new social life. Thanks to EventPal!  </p>
+									<p>Meena Patel</p>
                                 </blockquote>
                             </div>
                             <div class='item'>
                                 <div class='profile-circle' style='background-color: rgba(77,5,51,.2);'></div>
                                 <blockquote>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, veritatis nulla eum laudantium totam tempore optio doloremque laboriosam quas, quos eaque molestias odio aut eius animi. Impedit temporibus nisi accusamus.</p>
+                                    <p> I come from a background in classical dance, but through EventPal I've met some wonderful people who have taught me some amazing dances that I would have never thought of learning such as Irish dancing, tap dancing and even step dancing! What a marvelous website."</p>
+									<p>Christina William</p>
                                 </blockquote>
                             </div>
                             </div>

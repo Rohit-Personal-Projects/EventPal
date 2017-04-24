@@ -54,11 +54,11 @@
 
             <td valign="center">
               <p class="text-justify">
-                <a href = "/member.php?memberid=1"><strong>Shruthi</strong></a>
+                <a href = "/member.php?memberid=1"><strong>Shruthi Ramakrishnan</strong></a>
                 - 
-                <a href="mailto:email@gmail.com">email@gmail.com</a>  
+                <a href="mailto:shruthi2811@gmail.com">shruthi2811@gmail.com</a>  
                 <br>
-                Shruthi's one liner
+                Data Analyst, Coding enthusiast, Art lover, very passionate about dance too.
                 <br>
               </p>
             </td>
@@ -91,7 +91,7 @@
 
       <br> 
       <h1 align=center>Our Local Commitment</h1>
-      <p class="text-justify">EventPal, based in Bloomington, Indiana, USA is currently available for everyone within the USA. What are you waiting for? <a href="./register.php">Sign up now!</a></p>
+      <p class="text-center">EventPal, based in Bloomington, Indiana, USA is currently available for everyone within the USA. What are you waiting for? <a href="./register.php">Sign up now!</a></p>
 
     </div>
   </div>
