@@ -27,7 +27,7 @@
 					?>
 
 
-					<form action="settings.php" method="POST">
+					<form action="settings.php" method="POST" enctype="multipart/form-data">
 						<?php //displayPost(); displaySession(); ?>
 
 						First Name:

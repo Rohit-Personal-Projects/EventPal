@@ -1,6 +1,6 @@
 <?php  
 	
-	ini_set('display_errors', 1);
+
 	require 'Constants.php';
 
 	$target_dir = "Images/Members/";
@@ -11,6 +11,9 @@
 	if (!$conn) {
 	  die("Connection failed: " . mysqli_connect_error());
 	}
+	
+	
+
 	if(isset($_POST['update_details'])) {
 		// Image Upload
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
@@ -141,7 +144,7 @@ array_push($error_array, "Sorry, there was an error uploading your file.<br>");
 			$_SESSION['TwitterUrl'] = $twitterUrl;
 			$_SESSION['ImagePath'] = $target_file;
 			
-			$message = "Details updated!<br><br>" . $target_file . "<br>" . $_POST['fileToUpload'] + "<br>" . $_FILES["fileToUpload"]["name"];
+			$message = "Details updated!<br>";
 			
 		}
 		else {
