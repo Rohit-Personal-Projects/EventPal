@@ -3,7 +3,7 @@ requirements remaining:
 
 
 home:
-	testimonials
+	testimonials - Done
 	
 
 event:
@@ -14,17 +14,17 @@ event:
 profile page:
 	not implemented
 
-create event:
+create event: - Done
 	image upload with correct fiename as eventTitle.extention
 	correct image path in event table
 	
 event:
 	days
 
-my events (those that i have organized) - choose a name:
+my events (those that i have organized) - choose a name: - Done
 	not implemented
 
-about us: shruthi's part remains
+about us: shruthi's part remains - Done
 
 
 
