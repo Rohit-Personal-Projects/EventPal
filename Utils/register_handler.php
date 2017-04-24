@@ -103,11 +103,11 @@ if(isset($_POST['register_button'])){
 		//Profile picture assignment
 		$rand = rand(1, 2); //Random number between 1 and 2
 		if($rand == 1)
-			$profile_pic = "tmp1";
+			$profile_pic = "Images/Members/unknown1.jpg";
 		else if ($rand == 2)
-			$profile_pic = "tmp2";	
+			$profile_pic = "Images/Members/unknown2.jpg";	
 		
-		$query = mysqli_query($conn, "INSERT INTO Member(FirstName,LastName,EMail,Password,Phone,City,Zip,State,Country) VALUES ('$fname', '$lname','$email','$password','$phone','$city','$zip','$state','$country')");		
+		$query = mysqli_query($conn, "INSERT INTO Member(FirstName,LastName,EMail,Password,Phone,City,Zip,State,Country,ImagePath) VALUES ('$fname', '$lname','$email','$password','$phone','$city','$zip','$state','$country','$profile_pic')");		
 		
 	array_push($error_array, "<span style='color: #14C800;'>You're all set! Go ahead and login!</span><br>");	
 	
