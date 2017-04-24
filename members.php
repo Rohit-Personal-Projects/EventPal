@@ -18,8 +18,11 @@
 		<div class="clearfix">&nbsp;</div>
 		<div class ="col-xs-12 col-sm-6 col-lg-8">
 			<div class="row">
-			<div class="col-lg-4"><img alt="Member Image" class="img-responsive center-block" src="<?php echo $_SESSION['ImagePath']; ?>" /></div>
-			<div class="col-lg-4"><h3>Hi <?php echo $_SESSION['FirstName']; ?>!</h3></div>
+				<div class="row">
+				<div class="col-lg-4"><img alt="Member Image" class="img-responsive center-block" src="<?php echo $_SESSION['ImagePath']; ?>" /></div>
+				<div class="col-lg-4"><h3>Hi <?php echo $_SESSION['FirstName']; ?>!</h3></div>
+				</div>
+				
 				<div class="row">
 
 					<?php $suggestedEventIds = array(); ?>

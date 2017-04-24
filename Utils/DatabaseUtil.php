@@ -322,7 +322,7 @@
 
         // Query to get the Organizer of an Event
         $membersInEventQuery = "
-            SELECT MemberId, FirstName, LastName, EMail, Phone, Bio, FacebookUrl, TwitterUrl, Password, Street, City, Zip, State, Country
+            SELECT MemberId, FirstName, LastName, EMail, Phone, Bio, FacebookUrl, TwitterUrl, Password, Street, City, Zip, State, Country, ImagePath
             FROM Member
             WHERE MemberId IN
             (
@@ -336,7 +336,7 @@
         $stmt->bind_param("i", $EventId);
         $stmt->execute();
         $stmt->store_result();
-        $stmt->bind_result($MemberId, $FirstName, $LastName, $EMail, $Phone, $Bio, $FacebookUrl, $TwitterUrl, $Password, $Street, $City, $Zip, $State, $Country);
+        $stmt->bind_result($MemberId, $FirstName, $LastName, $EMail, $Phone, $Bio, $FacebookUrl, $TwitterUrl, $Password, $Street, $City, $Zip, $State, $Country, $ImagePath);
 
 
         if($stmt->num_rows > 0) {
@@ -345,7 +345,7 @@
             
             while($stmt->fetch()) {
 
-                $member = new Member($MemberId, $FirstName, $LastName, $EMail, $Phone, $Bio, $FacebookUrl, $TwitterUrl, $Password, $Street, $City, $Zip, $State, $Country);
+                $member = new Member($MemberId, $FirstName, $LastName, $EMail, $Phone, $Bio, $FacebookUrl, $TwitterUrl, $Password, $Street, $City, $Zip, $State, $Country, $ImagePath);
                 
                 array_push($membersArray, $member);
 
@@ -373,7 +373,7 @@
         
         // Query to get the Organizer of an Event
         $memberQuery = "
-            SELECT MemberId, FirstName, LastName, EMail, Phone, Street, City, Zip, State, Country
+            SELECT MemberId, FirstName, LastName, EMail, Phone, Street, City, Zip, State, Country, ImagePath
             FROM Member
             WHERE EMail = ?
             AND Password = ?
@@ -383,12 +383,12 @@
         $stmt->bind_param("ss", $memberEMail, $pwMD5);
         $stmt->execute();
         $stmt->store_result();
-        $stmt->bind_result($MemberId, $FirstName, $LastName, $EMail, $Phone, $Street, $City, $Zip, $State, $Country);
+        $stmt->bind_result($MemberId, $FirstName, $LastName, $EMail, $Phone, $Street, $City, $Zip, $State, $Country, $ImagePath);
 
         
         if($stmt->num_rows == 1) {
             while($stmt->fetch()) {
-                $member = Member::MemberHome($MemberId, $FirstName, $LastName, $EMail, $Phone, $Street, $City, $Zip, $State, $Country);
+                $member = Member::MemberHome($MemberId, $FirstName, $LastName, $EMail, $Phone, $Street, $City, $Zip, $State, $Country, $ImagePath);
             }
         }
         else {
@@ -414,7 +414,7 @@
         
         // Query to get the Organizer of an Event
         $query = "
-            SELECT MemberId,  FirstName,  LastName,  EMail,  Phone,  Bio,  FacebookUrl,  TwitterUrl,  Password,  Street,  City,  Zip,  State,  Country
+            SELECT MemberId,  FirstName,  LastName,  EMail,  Phone,  Bio,  FacebookUrl,  TwitterUrl,  Password,  Street,  City,  Zip,  State,  Country, ImagePath
             FROM Member
             WHERE EMail = ?
         ;";
@@ -423,12 +423,12 @@
         $stmt->bind_param("s", $memberEMail);
         $stmt->execute();
         $stmt->store_result();
-        $stmt->bind_result($MemberId, $FirstName, $LastName, $EMail, $Phone, $Bio, $FacebookUrl, $TwitterUrl, $Password, $Street, $City, $Zip, $State, $Country);
+        $stmt->bind_result($MemberId, $FirstName, $LastName, $EMail, $Phone, $Bio, $FacebookUrl, $TwitterUrl, $Password, $Street, $City, $Zip, $State, $Country, $ImagePath);
 
         
         if($stmt->num_rows == 1) {
             while($stmt->fetch()) {
-                $member = new Member($MemberId, $FirstName, $LastName, $EMail, $Phone, $Bio, $FacebookUrl, $TwitterUrl, $Password, $Street, $City, $Zip, $State, $Country);
+                $member = new Member($MemberId, $FirstName, $LastName, $EMail, $Phone, $Bio, $FacebookUrl, $TwitterUrl, $Password, $Street, $City, $Zip, $State, $Country, $ImagePath);
             }
         }
         else {

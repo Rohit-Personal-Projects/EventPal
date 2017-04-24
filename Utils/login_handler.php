@@ -30,6 +30,7 @@
 			$_SESSION['State'] = $member->State;
 			$_SESSION['Country'] = $member->Country;
 			$_SESSION['Zip'] = $member->Zip;
+			$_SESSION['ImagePath'] = $member->ImagePath;
 
 			header("Location: members.php");
 			exit();
