@@ -148,7 +148,10 @@
 								} 
 							?>">
 						<br>
+						Image:
+						<input type="file" name="fileToUpload" id="fileToUpload">
 
+						<br>
 
 						<?php echo $message; ?>					
 
