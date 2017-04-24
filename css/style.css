@@ -5,7 +5,7 @@
 
 		Colors 
 
-Blue : #56efd8, Grey : #DFDCE3,  Orange: #FC4A1A, Skin: #F7B733
+Blue : #0099e5, Grey : #DFDCE3,  Orange: #FC4A1A, Skin: #F7B733
 ######################################*/
 
 /*######################################
@@ -26,7 +26,7 @@ body{
 
 ######################################*/
 
-.navbar{background-color: #56efd8;}
+.navbar{background-color: #0099e5;}
 .navbar-default .navbar-brand{color: #fff;font-family: 'Shrikhand', cursive;font-size: 35px}
 .navbar-default .navbar-nav>li>a {color: #fff;font-size: 20px}
 
