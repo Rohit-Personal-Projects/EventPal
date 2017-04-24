@@ -140,3 +140,8 @@
 	</div>
 	<!--/container-->
 </section>
+
+
+<?php 
+require 'footer.php';
+?>
