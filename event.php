@@ -131,8 +131,7 @@
 							<?php
 								echo $event->Description;
 								echo '<br><br><br>';
-								$days = getDaysAsString($event->Days);
-								echo 'We meet on ' . $days . ' till ' . dateDisplayFormat(getDatabaseDateTimeObject($event->EndDate));
+								echo 'We meet on ' . $event->Days . ' till ' . dateDisplayFormat(getDatabaseDateTimeObject($event->EndDate));
 							?>
 						</p>
 					</div>

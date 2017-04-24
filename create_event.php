@@ -146,18 +146,15 @@ if(in_array("File is not an image.<br>", $error_array)) echo "<font color ='red'
                   <label for="name" class="col-md-3 control-label">Category</label>
                   <div class="col-md-9">
 							<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-							<?php	
-							
-								while ($row = $result->fetch_assoc()) {
-
-											  unset($id, $name);
-											  $id = $row['InterestId'];
-											  $name = $row['Name']; 
-											  
-											  echo"<label class='checkbox'><input name='category[]' type='checkbox' value='".$id."'/>".$name."</label>";
-
-							}
-							?>                            
+  							<?php	
+  								while ($row = $result->fetch_assoc()) {
+									  unset($id, $name);
+									  $id = $row['InterestId'];
+									  $name = $row['Name']; 
+									  
+									  echo"<label class='checkbox'><input name='category[]' type='checkbox' value='".$id."'/>".$name."</label>";
+                  }
+  							?>                            
 					<br>
 					<?php if(in_array("Please select categories for the event<br>", $error_array)) echo "<font color ='red'>Please select categories for the event</font><br>"; ?>  
                   </div>
