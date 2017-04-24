@@ -31,6 +31,13 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+	
+<!-- Favicons -->
+        <link rel="shortcut icon" href="Images/logo-57x57.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="Images/logo-144x144.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="Images/logo-114x114.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="Images/logo-72x72.png">
+        <link rel="apple-touch-icon-precomposed" href="Images/logo-57x57.png">	
 </head>
 
 <body>
@@ -39,13 +46,14 @@
   <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+		        <a class="navbar-brand animated bounceInLeft" href="index.php"><img src="Images/logo.png" class="img-responsive" alt="Eventpal"></a>
+		        <a class="navbar-brand animated bounceInLeft" href="index.php">Eventpal</a>	
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand animated bounceInLeft" href="index.php">Eventpal</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
