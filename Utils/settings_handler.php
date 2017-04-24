@@ -1,14 +1,16 @@
 <?php  
 	
+	ini_set('display_errors', 1);
 	require 'Constants.php';
+
+	$target_dir = "Images/Members/";
+	$uploadOk = 1;		
 
 	$conn = mysqli_connect(SERVER_NAME, USER_NAME, PASSWORD, DATABASE_NAME);
 	// Check connection
 	if (!$conn) {
 	  die("Connection failed: " . mysqli_connect_error());
 	}
-$target_dir = "Images/Members/";
-$uploadOk = 1;		
 	if(isset($_POST['update_details'])) {
 		// Image Upload
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
@@ -121,7 +123,8 @@ array_push($error_array, "Sorry, there was an error uploading your file.<br>");
 					Country = '$country',
 					Zip = '$zip',
 					FacebookUrl='$fburl',
-					TwitterUrl = '$twitterUrl'
+					TwitterUrl = '$twitterUrl',
+					ImagePath = '$target_file'
 				WHERE EMail='$email'
 			");
 			
@@ -136,8 +139,9 @@ array_push($error_array, "Sorry, there was an error uploading your file.<br>");
 			$_SESSION['Zip'] = $zip;
 			$_SESSION['FacebookUrl'] = $fburl;
 			$_SESSION['TwitterUrl'] = $twitterUrl;
+			$_SESSION['ImagePath'] = $target_file;
 			
-			$message = "Details updated!<br><br>";
+			$message = "Details updated!<br><br>" . $target_file . "<br>" . $_POST['fileToUpload'] + "<br>" . $_FILES["fileToUpload"]["name"];
 			
 		}
 		else {
