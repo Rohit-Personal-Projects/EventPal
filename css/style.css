@@ -492,7 +492,7 @@ padding: 8px 14px;
 
 #members figure { position: relative; overflow: hidden; }
 
-#members figure h3 { color: #FFF; font-weight: 600; margin-bottom: 5px; }
+#members figure h3 { color: #FFF; font-weight: 600; margin-bottom: 5px; font-size:14px }
 
 #members figure p > strong { width: 60px; display: inline-block; margin: 0px; }
 
