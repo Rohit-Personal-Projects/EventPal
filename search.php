@@ -20,6 +20,7 @@
         <div class ="row">
             <div class="col-md-4">
                 <h2>Search Options</h2>
+            <!--
                 <br/>
                 <label>Sort by</label>
                 <select>
@@ -28,8 +29,8 @@
                     <option value="Newest">Newest</option>
                     <option value="Closest">Closest</option>
                 </select>
+            -->
                 <br/><label>Your Interests</label>
-                
                 
                 <?php   $interests = getAllInterestsFromDB(); ?>
 
@@ -56,10 +57,16 @@
                             
                     $parts = parse_url($_SERVER['REQUEST_URI']);
                     parse_str($parts['query'], $queryString);
-                    
-                    foreach (explode(",", $queryString['interest']) as $interest) {
-                        foreach (getEvents($interest) as $event) {
-                            array_push($eventsArray, $event);
+
+                    $interestIds = $queryString['interest'];
+                    if(empty($interestIds)) {
+                        $eventsArray = getAllEventsFromDB();
+                    }
+                    else {
+                        foreach (explode(",", $interestIds) as $interest) {
+                            foreach (getEvents($interest) as $event) {
+                                array_push($eventsArray, $event);
+                            }
                         }
                     }
 
@@ -69,7 +76,7 @@
                     else {
                         foreach($eventsArray as $event) {
                             if(empty($event->Image)) {
-                                $event->Image = 'Images/Default.jpg';
+                                $event->Image = 'Images/Default.png';
                             }
                             echo '
                                 <div class="col-md-4 col-sm-10 col-xs-11 wow bounceIn">
