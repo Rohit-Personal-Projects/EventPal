@@ -444,6 +444,44 @@
 
 
     /*
+        param: Member Id
+        return: If Member Id exists, return member details. Else return -1
+    */
+    function getMemberDetailsById($memberId) {
+
+        $memberId = (int) $memberId;
+
+        $conn = createDBConnection();
+        
+        // Query to get the Organizer of an Event
+        $query = "
+            SELECT MemberId,  FirstName,  LastName,  EMail,  Phone,  Bio,  FacebookUrl,  TwitterUrl,  Password,  Street,  City,  Zip,  State,  Country, ImagePath
+            FROM Member
+            WHERE MemberId = ?
+        ;";
+
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $memberId);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($MemberId, $FirstName, $LastName, $EMail, $Phone, $Bio, $FacebookUrl, $TwitterUrl, $Password, $Street, $City, $Zip, $State, $Country, $ImagePath);
+
+        
+        if($stmt->num_rows == 1) {
+            while($stmt->fetch()) {
+                $member = new Member($MemberId, $FirstName, $LastName, $EMail, $Phone, $Bio, $FacebookUrl, $TwitterUrl, $Password, $Street, $City, $Zip, $State, $Country, $ImagePath);
+            }
+        }
+        
+        $stmt->close();
+        mysqli_close($conn);
+        
+        return $member;
+
+    }
+
+
+    /*
         param: Member's EMail
         return: Array of Events
 

@@ -1,7 +1,7 @@
 <?php
 
 	session_start();
-	ini_set('display_errors', 1);
+	//ini_set('display_errors', 1);
 	require_once 'Utils/Helpers.php';
 	require_once 'Utils/register_handler.php';
 	require_once 'Utils/login_handler.php';
