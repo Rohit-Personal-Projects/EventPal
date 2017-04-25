@@ -15,17 +15,23 @@
 	<div class="container">
 		<div class="clearfix">&nbsp;</div>
 
+		<?php
+			$member = getMemberDetailsByEMail($_SESSION['EMail']);
+			if($member == -1) {
+				header("Location: register.php");
+			}
+		?>
 
 		<div class="row">
 			<div class="wrapper">
 				<div class="login_box">
-					<?php
-						$member = getMemberDetailsByEMail($_SESSION['EMail']);
-						if($member == -1) {
-							header("Location: register.php");
-						}
-					?>
 
+					<a href = "profile.php?memberid=<?php echo $_SESSION['MemberId']; ?>"> 
+						<h3 class="text-center">Visit your Profile Page</h3>
+					</a>
+					<br>
+					
+					<h4 class="text-center">Update your personal information</h4>
 
 					<form action="settings.php" method="POST" enctype="multipart/form-data">
 						<?php //displayPost(); displaySession(); ?>
@@ -148,7 +154,8 @@
 								} 
 							?>">
 						<br>
-						Image:
+
+						<p class="pull-left">Profile Picture: &nbsp;</p>
 						<input type="file" name="fileToUpload" id="fileToUpload">
 
 						<br>

@@ -6,13 +6,14 @@ event:
 	UI formatting
 	change header if logged in
 
-profile page: Adding profile Link in settings page.
-	
+
+setting.php: UI is shit, we've to change that
 
 
 final touches:
 	UI color changes
 
+session clear on login
 
 
 geolocation and google maps api
