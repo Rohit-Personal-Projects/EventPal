@@ -1,3 +1,4 @@
+<div class="clearfix"></div>
 <footer class="modal-footer"><!-- Social Section
    ================================================== -->
 <div class="row">
