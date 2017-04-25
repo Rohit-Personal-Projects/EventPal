@@ -2,9 +2,15 @@
 	
 	session_start();
 	require_once 'Constants.php';
-	require_once 'header.php';
 	require_once 'Utils/DatabaseUtil.php';
 	require_once 'Utils/Helpers.php';
+
+	if(isset($_SESSION['MemberId'])) {
+		require 'member_header.php';
+	}
+	else {
+		require 'header.php';
+	}
 	
 ?>
 
