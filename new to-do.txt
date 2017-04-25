@@ -4,7 +4,7 @@ requirements remaining:
 
 event:
 	UI formatting
-	change header if logged in
+
 
 
 setting.php: UI is shit, we've to change that
