@@ -125,9 +125,9 @@ if (!$conn) {
 
               <div class="row">
                 <div class="form-group">
-                  <label for="name" class="col-md-3 control-label">Image</label>
+                  <label for="name" class="col-md-3 control-label">Image *</label>
                   <div class="col-md-9">
-					<input type="file" name="fileToUpload" id="fileToUpload"class="form-control">
+					<input type="file" name="fileToUpload" id="fileToUpload"class="form-control" required>
 <br>
 					<?php if(in_array("Sorry, there was an error uploading your file.<br>", $error_array)) echo "<font color ='red'>Sorry, there was an error uploading your file.</font><br>"; 
 if(in_array("Sorry, your file was not uploaded.<br>", $error_array)) echo "<font color ='red'>Sorry, your file was not uploaded.</font><br>"; 
