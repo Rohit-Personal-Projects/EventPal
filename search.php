@@ -1,7 +1,15 @@
 <?php
+    
     include 'Constants.php';
-    include 'header.php';
     include 'Utils/DatabaseUtil.php';
+
+    if(isset($_SESSION['MemberId'])) {
+        require 'member_header.php';
+    }
+    else {
+        require 'header.php';
+    }
+
 ?>
 
 <script src='js/search.js'></script>
