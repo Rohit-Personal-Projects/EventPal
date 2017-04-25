@@ -1,5 +1,6 @@
 <?php
     
+    session_start();
     include 'Constants.php';
     include 'Utils/DatabaseUtil.php';
 
