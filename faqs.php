@@ -11,16 +11,16 @@
 <div class = "clearfix">&nbsp;</div><div class = "clearfix">&nbsp;</div>
 <div class="container"><div class="row"><div class="col-md-12">
 <h1> Common Questions about EventPal  </h1><br />
-<a href='http://ella.ils.indiana.edu/~shrurama/EventPal/faqs.php#work'>1. How Does EventPal Allow Me To Meet Friends?</a><br>
-<a href='http://ella.ils.indiana.edu/~shrurama/EventPal/faqs.php#cost'>2. How Much Does EventPal Cost?</a><br>
+<a href='faqs.php#work'>1. How Does EventPal Allow Me To Meet Friends?</a><br>
+<a href='faqs.php#cost'>2. How Much Does EventPal Cost?</a><br>
 
-<a href='http://ella.ils.indiana.edu/~shrurama/EventPal/faqs.php#age'>3. Do you have Members in My City, or My Age Range?</a><br>
+<a href='faqs.php#age'>3. Do you have Members in My City, or My Age Range?</a><br>
 
-<a href='http://ella.ils.indiana.edu/~shrurama/EventPal/faqs.php#who'>4. Who uses EventPal?</a><br>
+<a href='faqs.php#who'>4. Who uses EventPal?</a><br>
 
-<a href='http://ella.ils.indiana.edu/~shrurama/EventPal/faqs.php#privacy'>5. How Do You Protect My Privacy?</a><br>
+<a href='faqs.php#privacy'>5. How Do You Protect My Privacy?</a><br>
 
-<a href='http://ella.ils.indiana.edu/~shrurama/EventPal/faqs.php#safe'>6. Is it Safe To Meet Other Members Off Eventpal?</a><br>
+<a href='faqs.php#safe'>6. Is it Safe To Meet Other Members Off Eventpal?</a><br>
 
 <hr>
  
