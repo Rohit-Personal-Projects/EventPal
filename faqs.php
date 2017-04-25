@@ -1,5 +1,11 @@
 <?php 
-require 'header.php';
+    session_start();
+    if(isset($_SESSION['MemberId'])) {
+        require 'member_header.php';
+    }
+    else {
+        require 'header.php';
+    }
 ?>
 <section id = "faqs">
 <div class = "clearfix">&nbsp;</div><div class = "clearfix">&nbsp;</div>

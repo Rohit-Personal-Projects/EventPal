@@ -1,5 +1,14 @@
 ﻿<?php 
-  require 'header.php';
+    session_start();
+    include 'Constants.php';
+    include 'Utils/DatabaseUtil.php';
+
+    if(isset($_SESSION['MemberId'])) {
+        require 'member_header.php';
+    }
+    else {
+        require 'header.php';
+    }
 ?>
 
 <section id = "aboutus">
