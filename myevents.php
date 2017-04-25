@@ -14,7 +14,7 @@
 <div class = "clearfix">&nbsp;</div><div class = "clearfix">&nbsp;</div><div class = "clearfix">&nbsp;</div>
 <div class="container">
 <div class="row">
-	<div class ="col-xs-12 col-sm-6 col-lg-8">
+	<div class ="col-xs-12 col-sm-8 col-lg-12">
 			<div class="row">
 				<h3>Hi <?php echo $_SESSION['FirstName']; ?>!</h3>
 				<div class="row">
