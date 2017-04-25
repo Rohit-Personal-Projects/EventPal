@@ -18,7 +18,8 @@ session clear on login
 
 geolocation and google maps api
 
-add page titles for each page
 
-compress images
 
+check requirements with prof:
+	1. jqueryUI
+	2. menu
