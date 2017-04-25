@@ -20,6 +20,4 @@ geolocation and google maps api
 
 
 
-check requirements with prof:
-	1. jqueryUI
-	2. menu
+accordian menu for FAQ's
