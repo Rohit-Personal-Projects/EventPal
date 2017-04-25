@@ -83,10 +83,21 @@
                         echo '<div><h4>There are currently no events listed under the interest(s) you have selected. Please select other interests.</h4></div>';
                     }
                     else {
+                        $count = 0;
+                        echo "<div class='row'>";
                         foreach($eventsArray as $event) {
                             if(empty($event->Image)) {
                                 $event->Image = 'Images/Default.png';
                             }
+
+                            if($count > 2) {
+                                echo "</div><div class='row'>";
+                                $count = 1;
+                            }
+                            else {
+                                $count += 1;
+                            }
+
                             echo '
                                 <div class="col-md-4 col-sm-10 col-xs-11 wow bounceIn">
                                     <figure class="effect">
@@ -98,6 +109,10 @@
                                     </figure>
                                 </div>
                             ';
+                            
+                        }
+                        if($count != 0) {
+                            echo "</div>";
                         }
                     }
                 ?>
