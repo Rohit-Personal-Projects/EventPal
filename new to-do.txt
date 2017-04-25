@@ -6,9 +6,7 @@ event:
 	UI formatting
 	change header if logged in
 
-change image of El Classico Party
-
-profile page: Making it dynamic. Adding profile Link in settings page.
+profile page: Adding profile Link in settings page.
 	
 
 

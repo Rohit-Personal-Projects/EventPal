@@ -98,7 +98,7 @@
 						<?php
 							echo '
 								<h3>Organizer</h3>
-								<a href = "/member.php?memberid=' . $event->OrganizerId . '">' 
+								<a href = "profile.php?memberid=' . $event->OrganizerId . '">' 
 									. $event->Organizer->FirstName . ' ' . $event->Organizer->LastName . '
 								</a>
 							';
@@ -142,7 +142,7 @@
 							echo '<p>' . count($eventMembers) . ' Going</p> ';
 							foreach ($eventMembers as $member) {
 								echo '
-									<a href = "/member.php?memberid=' . $member->MemberId . '">' 
+									<a href = "profile.php?memberid=' . $member->MemberId . '">' 
 										. $member->FirstName . ' ' . $member->LastName . '
 									</a>
 									<br>
