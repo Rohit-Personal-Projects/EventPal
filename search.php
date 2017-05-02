@@ -51,6 +51,16 @@
                             </li>
                 <?php   } ?>
                         </ul>
+						<br/><label>Days of Week</label>
+				<ul type = 'None' id = 'searchbar'>
+				<li><input type = 'checkbox' name = 'days' value ="Monday">Monday</li>
+				<li><input type = 'checkbox' name = 'days' value ="Tuesday">Tuesday</li>
+				<li><input type = 'checkbox' name = 'days' value ="Wednesday">Wednesday</li>
+				<li><input type = 'checkbox' name = 'days' value ="Thursday">Thursday</li>
+				<li><input type = 'checkbox' name = 'days' value ="Friday">Friday</li>
+				<li><input type = 'checkbox' name = 'days' value ="Saturday">Saturday</li>
+				<li><input type = 'checkbox' name = 'days' value ="Sunday">Sunday</li>
+				</ul>
 
                 <button type="button" onclick="applyFilter('allInterests', 'interest')">
                     Update
