@@ -39,30 +39,33 @@
                     <option value="Closest">Closest</option>
                 </select>
             -->
-                <br/><label>Your Interests</label>
+                <br/><label>Filter by interest(s)</label>
                 
                 <?php   $interests = getAllInterestsFromDB(); ?>
 
                         <ul type = 'None' id ='searchbar'>
-                <?php   foreach ($interests as $interest) { ?>
-                            <li>
-                                <input type='checkbox' name='allInterests' value='<?php echo $interest->InterestId; ?>'>
-                                <?php echo $interest->Name; ?>
-                            </li>
-                <?php   } ?>
+                            <?php   foreach ($interests as $interest) { ?>
+                                        <li>
+                                            <input type='checkbox' name='interests' value='<?php echo $interest->InterestId; ?>'>
+                                            <?php echo $interest->Name; ?>
+                                        </li>
+                            <?php   } ?>
                         </ul>
-						<br/><label>Days of Week</label>
+
+
+				<br/><label>Filter by day(s)</label>
 				<ul type = 'None' id = 'searchbar'>
-				<li><input type = 'checkbox' name = 'days' value ="Monday">Monday</li>
-				<li><input type = 'checkbox' name = 'days' value ="Tuesday">Tuesday</li>
-				<li><input type = 'checkbox' name = 'days' value ="Wednesday">Wednesday</li>
-				<li><input type = 'checkbox' name = 'days' value ="Thursday">Thursday</li>
-				<li><input type = 'checkbox' name = 'days' value ="Friday">Friday</li>
-				<li><input type = 'checkbox' name = 'days' value ="Saturday">Saturday</li>
-				<li><input type = 'checkbox' name = 'days' value ="Sunday">Sunday</li>
+    				<li><input type = 'checkbox' name = 'days' value ="Monday">Monday</li>
+    				<li><input type = 'checkbox' name = 'days' value ="Tuesday">Tuesday</li>
+    				<li><input type = 'checkbox' name = 'days' value ="Wednesday">Wednesday</li>
+    				<li><input type = 'checkbox' name = 'days' value ="Thursday">Thursday</li>
+    				<li><input type = 'checkbox' name = 'days' value ="Friday">Friday</li>
+    				<li><input type = 'checkbox' name = 'days' value ="Saturday">Saturday</li>
+    				<li><input type = 'checkbox' name = 'days' value ="Sunday">Sunday</li>
 				</ul>
 
-                <button type="button" onclick="applyFilter('allInterests', 'interest')">
+
+                <button type="button" onclick="applyFilter()">
                     Update
                 </button>
 
@@ -77,14 +80,31 @@
                     $parts = parse_url($_SERVER['REQUEST_URI']);
                     parse_str($parts['query'], $queryString);
 
-                    $interestIds = $queryString['interest'];
+                    $interestIds = $queryString['interests'];
+                    $days = $queryString['days'];
+                   
+                    $daysArray = array();
+                    if(!empty($days)) {
+                        $daysArray = explode(",", $days);
+                    }
+
                     if(empty($interestIds)) {
                         $eventsArray = getAllEventsFromDB();
                     }
                     else {
                         foreach (explode(",", $interestIds) as $interest) {
                             foreach (getEvents($interest) as $event) {
-                                array_push($eventsArray, $event);
+                                if(!empty($days)) {
+                                    foreach ($daysArray as $day) {
+                                        if (strpos($event->Days, $day) !== false) {
+                                            array_push($eventsArray, $event);
+                                            break;
+                                        }
+                                    }
+                                }
+                                else {
+                                    array_push($eventsArray, $event);
+                                }
                             }
                         }
                     }

@@ -1,21 +1,32 @@
-function applyFilter(elementId, filterType) {
-	var checkboxes = document.getElementsByName(elementId);
+function applyFilter() {
+	var checkboxesInterest = document.getElementsByName('interests');
+	var checkboxesDays = document.getElementsByName('days');
+		
 	
-	if(checkboxes.length == 0) {
+	var url = window.location.href;
+
+	var interestValues = "";
+	for(var resInd = 0; resInd < checkboxesInterest.length; resInd++) {
+		if (checkboxesInterest[resInd].checked) {
+			interestValues += checkboxesInterest[resInd].value + ",";
+		}
+	}
+	url = updateURLParameter(url, 'interests', interestValues.slice(0, -1));
+
+	var dayValues = "";
+	for(var resInd = 0; resInd < checkboxesDays.length; resInd++) {
+		if (checkboxesDays[resInd].checked) {
+			dayValues += checkboxesDays[resInd].value + ",";
+		}
+	}
+	url = updateURLParameter(url, 'days', dayValues.slice(0, -1));
+
+
+	if(interestValues === "" && dayValues === "") {
 		alert("Please select at least one value");
 	}
 	else {
-		
-		var values = "";
-		for(var resInd = 0; resInd < checkboxes.length; resInd++) {
-			if (checkboxes[resInd].checked) {
-				values += checkboxes[resInd].value + ",";
-			}
-		}
-		values = values.slice(0, -1);
-		
-		window.location.href = updateURLParameter(window.location.href, filterType, values);
-		
+		window.location.href = url;
 	}
 
 }
