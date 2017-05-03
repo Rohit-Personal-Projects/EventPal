@@ -50,7 +50,8 @@
             <li><img 
                   src="<?php echo $_SESSION['ImagePath'];?>" 
                   alt="Profile Picture" 
-                  style="width:28px; height:28px; vertical-align: middle;"
+                  style="padding-top:6px;width:28px; height:28px;"
+				  class = "img-responsive center-block"
                 >
             </li>
             <li><a href="members.php"><?php echo $_SESSION['FirstName']; ?></a></li>
