@@ -1,3 +1,8 @@
+<?php
+  //ini_set('display_errors', 1);
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,6 +47,13 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
+            <li><img 
+                  src="<?php echo $_SESSION['ImagePath'];?>" 
+                  alt="Profile Picture" 
+                  style="width:28px; height:28px; vertical-align: middle;"
+                >
+            </li>
+            <li><a href="members.php"><?php echo $_SESSION['FirstName']; ?></a></li>
             <li><a href="search.php">Search</a></li>
             <li><a href="create_event.php">Create Event</a></li>
             <li><a href="settings.php">My Settings</a></li>
